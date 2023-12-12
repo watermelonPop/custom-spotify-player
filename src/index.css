@@ -1,7 +1,4 @@
-:root {
-  --primaryBackground: black;
-  --primaryTextColor: white;
-}
+
 
 body {
   margin: 0;
@@ -17,72 +14,7 @@ code {
     monospace;
 }
 
-.headerTitle{
-  margin-bottom: 50px;
-}
-
 .container{
-  background-color: var(--primaryBackground);
+  height: 100vh;
+  vertical-align: middle;
 }
-
-
-.settingsPanel{
-  justify-content: center;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 999;
-}
-
-.settingsPanelContent{
-    padding: 50px;
-    background-color: white;
-    color: black;
-    height: 70%;
-    width: 70%;
-    align-items: center;
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 15%;
-    top: 15%;
-    overflow: auto; /* Enable scroll if needed */
-    border-radius: 15.2px;
-    border-style: solid;
-    border-color: black;
-    border-width: 4px;
-}
-
-.close{
-  float: right;
-  cursor: pointer;
-}
-
-.settingsTitle{
-  text-align: center;
-  margin-bottom: 50px;
-}
-
-.colorChoiceDiv{
-  display: flex;
-  margin-bottom: 25px;
-  justify-content: space-between;
-}
-
-.colorChoiceDiv label{
-  font-size: 25px;
-}
-
-.colorChoiceDiv input{
-  width: 25%;
-}
-
-.centerBtnDiv{
-  align-items: center;
-  text-align: center;
-  margin-top: 50px;
-}
-
