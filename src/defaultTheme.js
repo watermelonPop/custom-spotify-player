@@ -2,30 +2,44 @@ import { createTheme, responsiveFontSizes } from '@material-ui/core/styles';
 
 const theme = responsiveFontSizes(
   createTheme({
+    name: "default-theme",
     spacing: 4,
     typography: {
       fontFamily: [
         'Metropolis-SemiBold', // Add the custom font family name
       ].join(','),
       h1: {
-        fontSize: '5rem',
+        fontSize: '3.0rem',
         fontFamily: 'Metropolis-SemiBold',
+        textAlign: 'left',
       },
       h2: {
-        fontSize: '3.5rem',
-        fontFamily: 'Metropolis-SemiBold',
-        fontStyle: 'bold',
-      },
-      h3: {
         fontSize: '2.5rem',
         fontFamily: 'Metropolis-SemiBold',
+        fontStyle: 'bold',
+        textAlign: 'left',
       },
+      h3: {
+        fontSize: '2.0rem',
+        fontFamily: 'Metropolis-SemiBold',
+        textAlign: 'left',
+      },
+      p: {
+        fontSize: '1.8rem',
+        fontFamily: 'Metropolis-SemiBold',
+        textAlign: 'justify',
+      },
+      subtitle1:{
+        fontSize: '1.0rem',
+        fontFamily: 'Metropolis-SemiBold',
+        textAlign: 'justify',
+      }
     },
     palette: {
       background: {
         default: '#121212',
-        dark: 'black',
-        light: 'white',
+        dark: '#000000',
+        light: '#FFFFFF',
       },
       primary: {
         main: '#1FB954',
@@ -47,8 +61,8 @@ const theme = responsiveFontSizes(
         main: '#09FE00', // green
       },
       text: {
-        primary: 'white', // black
-        secondary: '#9FA0A1', // white
+        primary: '#FFFFFF', 
+        secondary: '#9FA0A1', 
       },
     },
   })

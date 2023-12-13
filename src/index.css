@@ -14,7 +14,157 @@ code {
     monospace;
 }
 
-.container{
+.outerBorder {
   height: 100vh;
-  vertical-align: middle;
+  display: flex; /* Add flex display */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+}
+
+.pageDisplay {
+  width: 100%;
+  padding: 5%;
+}
+
+.bottomContols {
+  display: flex;
+  justify-content: space-between; /* Add space between the two divs */
+  height: fit-content;
+}
+
+.ctrlBtns {
+  width: 100%;
+  display: flex;
+  justify-content: center; /* Center the buttons horizontally */
+  align-items: center; /* Center the buttons vertically */
+}
+
+.volumeBtns {
+  display: flex;
+  align-items: center; /* Center the input vertically */
+  padding-right: 5%; /* Add some right padding */
+}
+
+
+
+.songDisplay{
+  display: flex;
+  padding-top: 5%;
+  justify-content: space-around;
+}
+
+
+
+.imgSquare {
+  position: relative;
+  width: 50%;
+  max-width: 600px;
+}
+
+.imgSquare::after {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+}
+
+.imgSquare img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the image covers the entire square */
+}
+
+@media (max-width: 800px) {
+  .imgSquare {
+    width: 100%;
+  }
+}
+
+.now-playing__side{
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
+.seekBarDiv {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
+.seekBarDiv input {
+  width: 80%;
+}
+
+.now-playing__side{
+}
+
+.now-playing__name{
+  margin-bottom: 15%;
+}
+
+.now-playing__album, .now-playing__artist{
+  margin-bottom: 5%;
+}
+
+
+.queueDiv {
+  width: 80%;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  position: relative;
+  top: 50%;
+  transform: translateY(+5%);
+}
+
+.outerOuter{
+  padding-left: 15%;
+  padding-right: 15%;
+}
+
+.smLabel{
+  margin-right: 1vw;
+}
+
+.themeDiv {
+  display: flex;
+  align-items: center;
+  width: 60%;
+  margin: 0 auto;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  justify-content: space-between;
+}
+
+.themeName {
+  font-weight: bold;
+}
+
+.colorBlocks {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.colorBlock {
+  width: 2rem;
+  height: 2rem;
+  border-style: solid;
+  border-width: 5px;
+  border-color: white;
+}
+
+.outerThemeDiv {
+  margin: 0 auto;
+  width: 80vw;
+}
+
+.centerAligned {
+  text-align: center !important;
 }

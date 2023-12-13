@@ -1,0 +1,22 @@
+#legends-container {
+        display: grid;
+        grid-template-columns: auto auto;
+        grid-gap: 10px;
+      }
+      
+      /* Style each individual legend */
+      .legend {
+        display: flex;
+        align-items: center;
+      }
+      
+      /* Style the color block */
+      .legend .color-block {
+        width: 20px;
+        height: 20px;
+      }
+      
+      /* Style the legend text */
+      .legend .legend-text {
+        margin-left: 10px;
+      }
