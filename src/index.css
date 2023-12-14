@@ -168,3 +168,7 @@ code {
 .centerAligned {
   text-align: center !important;
 }
+
+.current_theme {
+  border: 2px solid #000; /* Add your desired border styles here */
+}

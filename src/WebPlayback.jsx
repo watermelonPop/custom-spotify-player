@@ -1,21 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import CssBaseline from "@material-ui/core/CssBaseline";
-import { ThemeProvider } from "@material-ui/styles";
+import { ThemeProvider } from "@mui/material";
 import defaultTheme from "./defaultTheme";
 import pinkTheme from "./pinkTheme";
-import Container from "@material-ui/core/Container";
-import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
-import Modal from '@material-ui/core/Modal';
-import PauseIcon from '@material-ui/icons/Pause';
-import PlayArrowIcon from '@material-ui/icons/PlayArrow';
-import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
-import SkipNextIcon from '@material-ui/icons/SkipNext';
-import VolumeUpIcon from '@material-ui/icons/VolumeUp';
-import QueueMusicIcon from '@material-ui/icons/QueueMusic';
-import CloseIcon from '@material-ui/icons/Close';
-import HistoryIcon from '@material-ui/icons/History';
-import SettingsIcon from '@material-ui/icons/Settings';
+import { Typography } from '@mui/material';
+import { Button } from '@mui/material';
+import { Modal } from '@mui/material';
+import PauseIcon from '@mui/icons-material/Pause';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
+import SkipNextIcon from '@mui/icons-material/SkipNext';
+import VolumeUpIcon from '@mui/icons-material/VolumeUp';
+import QueueMusicIcon from '@mui/icons-material/QueueMusic';
+import CloseIcon from '@mui/icons-material/Close';
+import HistoryIcon from '@mui/icons-material/History';
+import SettingsIcon from '@mui/icons-material/Settings';
+import RefreshIcon from '@mui/icons-material/Refresh';
 
 const track = {
   name: "",
@@ -46,9 +45,13 @@ function WebPlayback(props) {
   const [isQueueModalOpen, setQueueModalOpen] = useState(false);
   const [isHistoryModalOpen, setHistoryModalOpen] = useState(false);
   const [isSettingsModalOpen, setSettingsModalOpen] = useState(false);
+  const [isRefreshModalOpen, setRefreshModalOpen] = useState(false);
   const [nextTracks, setNextTracks] = useState([]);
   const [prevTracks, setPrevTracks] = useState([]);
   const themes = [defaultTheme, pinkTheme];
+  const [playerName, setPlayerName] = useState("Custom Spotify Player");
+
+  //const [selectedTheme, setSelectedTheme] = useState(defaultTheme);
 
 
 
@@ -100,6 +103,11 @@ function WebPlayback(props) {
       
         setCurrentPosition(state.position);
       }));
+
+      const storedPlayerName = getPlayerNameFromLocalStorage();
+      player.setName(storedPlayerName).then(() => {
+        setPlayerName(storedPlayerName);
+      });
 
       player.connect();
     };
@@ -160,11 +168,52 @@ function WebPlayback(props) {
     setSettingsModalOpen(false);
   };
 
+  const handleRefreshModalOpen = () => {
+    setRefreshModalOpen(true);
+  };
+  
+  const handleRefreshModalClose = () => {
+    setRefreshModalOpen(false);
+  };
+
+  const handleThemeChange = (newTheme) => {
+    console.log('Changing theme to:', newTheme);
+    setTheme(newTheme);
+    console.log('Current theme state:', current_theme);
+  };
+
+  // Function to set player name in local storage
+  const setPlayerNameInLocalStorage = (newName) => {
+    localStorage.setItem('playerName', newName);
+  };
+
+  // Function to get player name from local storage
+  const getPlayerNameFromLocalStorage = () => {
+    return localStorage.getItem('playerName') || "Custom Spotify Player";
+  };
+
+  const handlePlayerNameChange = (newName) => {
+    console.log("Player Name:", playerName);
+  
+    // Set player name in local storage
+    setPlayerNameInLocalStorage(newName);
+  
+    player.setName(newName).then(() => {
+      setPlayerName(newName);
+      console.log("Player Name: ", newName);
+    });
+
+    handleRefreshModalOpen();
+  };
+
+  const handleRefresh = () => {
+    window.location.reload();
+  };
+
   if (!is_active) {
     return (
       <>
         <ThemeProvider theme={current_theme}>
-          <CssBaseline />
           <div className="container">
             <div className="main-wrapper">
               <Typography
@@ -175,7 +224,6 @@ function WebPlayback(props) {
                 gutterBottom
               > Instance not active. Transfer your playback using your Spotify app </Typography>
             </div>
-            <button onClick={() => setTheme(pinkTheme)}>change theme</button>
           </div>
         </ThemeProvider>
       </>
@@ -443,9 +491,24 @@ function WebPlayback(props) {
                             <img src={track.album.images[0].url} className="queuedCover" alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                           </div>
                           <div className="queuedTrackInfo">
-                            <div>{track.name}</div>
-                            <div>{track.artists[0].name}</div>
-                            <div>{track.album.name}</div>
+                          <Typography
+                              component="h3"
+                              variant="h3"
+                              color="textPrimary"
+                              gutterBottom
+                            >{track.name}</Typography>
+                            <Typography
+                              component="h4"
+                              variant="h4"
+                              color="textSecondary"
+                              gutterBottom
+                            >{track.artists[0].name}</Typography>
+                            <Typography
+                              component="h4"
+                              variant="h4"
+                              color="textSecondary"
+                              gutterBottom
+                            >{track.album.name}</Typography>
                           </div>
                         </div>
                       ))}
@@ -502,9 +565,24 @@ function WebPlayback(props) {
                             <img src={track.album.images[0].url} className="queuedCover" alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                           </div>
                           <div className="queuedTrackInfo">
-                            <div>{track.name}</div>
-                            <div>{track.artists[0].name}</div>
-                            <div>{track.album.name}</div>
+                            <Typography
+                                component="h3"
+                                variant="h3"
+                                color="textPrimary"
+                                gutterBottom
+                              >{track.name}</Typography>
+                            <Typography
+                              component="h4"
+                              variant="h4"
+                              color="textSecondary"
+                              gutterBottom
+                            >{track.artists[0].name}</Typography>
+                            <Typography
+                              component="h4"
+                              variant="h4"
+                              color="textSecondary"
+                              gutterBottom
+                            >{track.album.name}</Typography>
                           </div>
                         </div>
                       ))}
@@ -550,6 +628,17 @@ function WebPlayback(props) {
                       />
                     </Button>
                     <div style={{marginTop: "3rem"}}>
+                      <Typography
+                        component="h3"
+                        variant="h3"
+                        color="textSecondary"
+                        className="centerAligned"
+                        gutterBottom
+                      >General</Typography>
+                      <label>Player Name: </label><input type="text" id="playerName" value={playerName} onChange={(e) => setPlayerName(e.target.value)} />
+                      <button onClick={() => handlePlayerNameChange(playerName)}>Apply</button>
+                    </div>
+                    <div style={{marginTop: "3rem"}}>
                     <Typography
                       component="h3"
                       variant="h3"
@@ -557,9 +646,13 @@ function WebPlayback(props) {
                       className="centerAligned"
                       gutterBottom
                     >Themes</Typography>
-                      <div className="outerThemeDiv" style={{marginTop: "1.5rem"}}>
+                      <div className="outerThemeDiv" style={{ marginTop: "1.5rem" }}>
                         {themes.map((theme) => (
-                          <div className="themeDiv" key={theme.name} >
+                          <div
+                            className={`themeDiv ${theme === current_theme ? "current_theme" : ""}`}
+                            key={theme.name}
+                            onClick={() => handleThemeChange(theme)}
+                          >
                             <span className="themeName">{theme.name}: </span>
                             <div className="colorBlocks">
                               <div
@@ -579,6 +672,41 @@ function WebPlayback(props) {
                         ))}
                       </div>
                     </div>
+                  </div>
+                </div>
+              </Modal>
+
+              <Modal open={isRefreshModalOpen} onClose={handleRefreshModalClose}>
+                <div>
+                  <div className="queueDiv" style={{
+                    background: current_theme.palette.background.default,
+                    fontSize: "1.7rem",
+                    opacity: "100%",
+                    position: "relative",
+                     // Add margin to create space between the title and tracks
+                  }}>
+                    <Typography component="h1" variant="h1" color="textPrimary" gutterBottom>
+                      Refresh!
+                    </Typography>
+                    <Typography component="h3" variant="h3" color="textSecondary" gutterBottom>
+                      Refresh the page to see changes!
+                    </Typography>
+                    <button onClick={handleRefresh} style={{
+                      backgroundColor: "backgroundDark",
+                      outline: "none",
+                      borderStyle: "solid",
+                      borderColor: "backgroundDark",
+                      borderRadius: "1rem",
+                      padding: "1rem",
+                      marginTop: "1rem",
+                      cursor: "pointer",
+                    }}><RefreshIcon style={{
+                        backgroundColor: "transparent",
+                        outline: "none",
+                        borderStyle: "none",
+                        color: current_theme.palette.secondary.main,
+                        fontSize: "2.5rem",
+                      }}/></button>
                   </div>
                 </div>
               </Modal>

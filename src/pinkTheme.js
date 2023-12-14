@@ -1,44 +1,43 @@
-import { createTheme, responsiveFontSizes } from '@material-ui/core/styles';
+import { createTheme, responsiveFontSizes } from '@mui/material';
+import "@fontsource/gamja-flower";
 
 const theme = responsiveFontSizes(
   createTheme({
     name: "pink-theme",
     spacing: 4,
     typography: {
-      fontFamily: [
-        'Cute-Love', // Add the custom font family name
-      ].join(','),
+      fontFamily: "Gamja Flower",
       h1: {
         fontSize: '3.0rem',
-        fontFamily: 'Cute-Love',
+        fontFamily: 'Gamja Flower', 
         textAlign: 'left',
       },
       h2: {
         fontSize: '2.5rem',
-        fontFamily: 'Cute-Love',
+        fontFamily: 'Gamja Flower', 
         fontStyle: 'bold',
         textAlign: 'left',
       },
       h3: {
         fontSize: '2.0rem',
-        fontFamily: 'Cute-Love',
+        fontFamily: 'Gamja Flower', 
         textAlign: 'left',
       },
-      p: {
+      body1: {
         fontSize: '1.8rem',
-        fontFamily: 'Cute-Love',
+        fontFamily: 'Gamja Flower', 
         textAlign: 'justify',
       },
       subtitle1:{
         fontSize: '1.0rem',
-        fontFamily: 'Cute-Love',
+        fontFamily: 'Gamja Flower', 
         textAlign: 'justify',
       }
     },
     palette: {
       background: {
         default: '#121212',
-        dark: '#000000',
+        dark: '#F7A497',
         light: '#FFFFFF',
       },
       primary: {
@@ -67,17 +66,5 @@ const theme = responsiveFontSizes(
     },
   })
 );
-
-// Add the custom font face rule
-const customFontStyle = document.createElement('style');
-customFontStyle.innerHTML = `
-  @font-face {
-    font-family: 'Cute-Love';
-    src: url('/CuteLove-8M7J0.ttf') format('opentype');
-    font-weight: 600;
-    font-style: normal;
-  }
-`;
-document.head.appendChild(customFontStyle);
 
 export default theme;

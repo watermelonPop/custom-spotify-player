@@ -1,38 +1,48 @@
-import { createTheme, responsiveFontSizes } from '@material-ui/core/styles';
+import { createTheme, responsiveFontSizes } from '@mui/material';
+import '@fontsource/montserrat';
 
 const theme = responsiveFontSizes(
   createTheme({
     name: "default-theme",
     spacing: 4,
     typography: {
-      fontFamily: [
-        'Metropolis-SemiBold', // Add the custom font family name
-      ].join(','),
+        fontFamily: 'Montserrat',
       h1: {
         fontSize: '3.0rem',
-        fontFamily: 'Metropolis-SemiBold',
+        fontFamily: 'Montserrat',
         textAlign: 'left',
+        fontWeight: "bold",
       },
       h2: {
         fontSize: '2.5rem',
-        fontFamily: 'Metropolis-SemiBold',
+        fontFamily: 'Montserrat',
         fontStyle: 'bold',
         textAlign: 'left',
+        fontWeight: "bold",
       },
       h3: {
         fontSize: '2.0rem',
-        fontFamily: 'Metropolis-SemiBold',
+        fontFamily: 'Montserrat',
         textAlign: 'left',
+        fontWeight: "bold",
       },
-      p: {
-        fontSize: '1.8rem',
-        fontFamily: 'Metropolis-SemiBold',
+      h4: {
+        fontSize: '1.5rem',
+        fontFamily: 'Montserrat',
+        textAlign: 'left',
+        fontWeight: "bold",
+      },
+      body1: {
+        fontSize: '1.3rem',
+        fontFamily: 'Montserrat',
         textAlign: 'justify',
+        fontWeight: "bold",
       },
       subtitle1:{
         fontSize: '1.0rem',
-        fontFamily: 'Metropolis-SemiBold',
+        fontFamily: 'Montserrat',
         textAlign: 'justify',
+        fontWeight: "bold",
       }
     },
     palette: {
@@ -67,17 +77,5 @@ const theme = responsiveFontSizes(
     },
   })
 );
-
-// Add the custom font face rule
-const customFontStyle = document.createElement('style');
-customFontStyle.innerHTML = `
-  @font-face {
-    font-family: 'Metropolis-SemiBold';
-    src: url('/Metropolis-SemiBold.otf') format('opentype');
-    font-weight: 600;
-    font-style: normal;
-  }
-`;
-document.head.appendChild(customFontStyle);
 
 export default theme;
