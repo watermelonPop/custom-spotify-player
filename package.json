@@ -4,23 +4,17 @@
   "private": true,
   "dependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "@emotion/react": "^11.11.1",
-    "@emotion/styled": "^11.11.0",
     "@fontsource/gamja-flower": "^5.0.17",
     "@fontsource/montserrat": "^5.0.16",
     "@mui/icons-material": "^5.15.0",
     "@mui/material": "^5.15.0",
     "@mui/system": "^5.15.0",
     "emotion-theming": "^11.0.0",
-    "firebase": "^10.7.1",
-    "graceful-fs": "^4.2.11",
-    "js-cookie": "^3.0.5",
     "path": "^0.12.7",
     "path-browserify": "^1.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-scripts": "^5.0.1",
-    "sqlite3": "^5.1.6"
+    "react-scripts": "^5.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
