@@ -5,7 +5,7 @@ function Login() {
         <div className="App">
             <header className="App-header">
                 <b className='headerTitle'>Custom Spotify Web Player</b>
-                <a className="btn-spotify" href="https://agile-reef-19710-1ba83fbdbbf6.herokuapp.com" >
+                <a className="btn-spotify" href="https://spotify-web-player-server-5f57396ce647.herokuapp.com" >
                     Login with Spotify 
                 </a>
             </header>
