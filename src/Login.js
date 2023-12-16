@@ -5,7 +5,7 @@ function Login() {
         <div className="App">
             <header className="App-header">
                 <b className='headerTitle'>Custom Spotify Web Player</b>
-                <a className="btn-spotify" href="http://spotify-web-player-seven.vercel.app/auth/login" >
+                <a className="btn-spotify" href="https://young-atoll-11598-5b85411c229d.herokuapp.com/auth/login" >
                     Login with Spotify 
                 </a>
             </header>
