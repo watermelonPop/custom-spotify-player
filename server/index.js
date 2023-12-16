@@ -11,7 +11,7 @@ dotenv.config()
 var spotify_client_id = process.env.SPOTIFY_CLIENT_ID
 var spotify_client_secret = process.env.SPOTIFY_CLIENT_SECRET
 
-var spotify_redirect_uri = 'http://spotify-web-player-seven.vercel.app/auth/callback'
+var spotify_redirect_uri = 'https://young-atoll-11598-5b85411c229d.herokuapp.com/auth/callback'
 
 var generateRandomString = function (length) {
   var text = '';
@@ -66,7 +66,7 @@ app.get('/auth/callback', (req, res) => {
   request.post(authOptions, function(error, response, body) {
     if (!error && response.statusCode === 200) {
       access_token = body.access_token;
-      res.redirect('https://spotify-web-player-seven.vercel.app')
+      res.redirect('https://young-atoll-11598-5b85411c229d.herokuapp.com')
     }
   });
   console.log("end");
