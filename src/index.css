@@ -169,6 +169,13 @@ code {
   text-align: center !important;
 }
 
-.current_theme {
-  border: 2px solid #000; /* Add your desired border styles here */
+.labelInputDiv{
+  display: flex;
+  align-items: center;
+  vertical-align: middle;
+}
+
+.labelComp{
+  height: 100%;
+  padding: 0.5rem;
 }

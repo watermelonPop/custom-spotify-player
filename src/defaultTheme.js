@@ -7,6 +7,7 @@ const theme = responsiveFontSizes(
     spacing: 4,
     typography: {
         fontFamily: 'Montserrat',
+        borderRadius: "0rem",
       h1: {
         fontSize: '3.0rem',
         fontFamily: 'Montserrat',

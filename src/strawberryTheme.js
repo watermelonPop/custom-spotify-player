@@ -3,49 +3,50 @@ import "@fontsource/gamja-flower";
 
 const theme = responsiveFontSizes(
   createTheme({
-    name: "pink-theme",
+    name: "strawberry-theme",
     spacing: 4,
     typography: {
       fontFamily: "Gamja Flower",
+      borderRadius: "1rem",
       h1: {
-        fontSize: '3.0rem',
+        fontSize: '4rem',
         fontFamily: 'Gamja Flower', 
         textAlign: 'left',
       },
       h2: {
-        fontSize: '2.5rem',
+        fontSize: '3.5rem',
         fontFamily: 'Gamja Flower', 
         fontStyle: 'bold',
         textAlign: 'left',
       },
       h3: {
-        fontSize: '2.0rem',
+        fontSize: '3.0rem',
         fontFamily: 'Gamja Flower', 
         textAlign: 'left',
       },
       body1: {
-        fontSize: '1.8rem',
+        fontSize: '2.3rem',
         fontFamily: 'Gamja Flower', 
         textAlign: 'justify',
       },
       subtitle1:{
-        fontSize: '1.0rem',
+        fontSize: '1.8rem',
         fontFamily: 'Gamja Flower', 
         textAlign: 'justify',
       }
     },
     palette: {
       background: {
-        default: '#121212',
-        dark: '#F7A497',
-        light: '#FFFFFF',
+        default: '#f0465b',
+        dark: '#f6838c',
+        light: '#000000',
       },
       primary: {
-        main: '#F7A497',
+        main: '#a4d18d',
       },
       secondary: {
-        main: '#62D089',
-        dark: '#457F59',
+        main: '#fef8e6',
+        dark: '#00563b',
       },
       error: {
         main: '#F52735', // red
@@ -60,8 +61,8 @@ const theme = responsiveFontSizes(
         main: '#09FE00', // green
       },
       text: {
-        primary: '#FFFFFF', 
-        secondary: '#9FA0A1', 
+        primary: '#000000', 
+        secondary: '#fef8e6', 
       },
     },
   })

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ThemeProvider } from "@mui/material";
 import defaultTheme from "./defaultTheme";
-import pinkTheme from "./pinkTheme";
+import strawberryTheme from "./strawberryTheme";
 import { Typography } from '@mui/material';
 import { Button } from '@mui/material';
 import { Modal } from '@mui/material';
@@ -28,6 +28,7 @@ const track = {
   ]
 }
 
+
 function formatTime(milliseconds) {
   const minutes = Math.floor(milliseconds / 60000);
   const seconds = Math.floor((milliseconds % 60000) / 1000);
@@ -48,7 +49,7 @@ function WebPlayback(props) {
   const [isRefreshModalOpen, setRefreshModalOpen] = useState(false);
   const [nextTracks, setNextTracks] = useState([]);
   const [prevTracks, setPrevTracks] = useState([]);
-  const themes = [defaultTheme, pinkTheme];
+  const themes = [defaultTheme, strawberryTheme];
   const [playerName, setPlayerName] = useState("Custom Spotify Player");
 
   //const [selectedTheme, setSelectedTheme] = useState(defaultTheme);
@@ -209,6 +210,7 @@ function WebPlayback(props) {
   const handleRefresh = () => {
     window.location.reload();
   };
+  
 
   if (!is_active) {
     return (
@@ -260,10 +262,11 @@ function WebPlayback(props) {
                     </Button>
           </div>
           <div className='outerBorder' style={{ backgroundColor: current_theme.palette.background.dark }}>
-            <div className="pageDisplay" style={{ backgroundColor: current_theme.palette.background.default }}>
+            <div className="pageDisplay" style={{ backgroundColor: current_theme.palette.background.default,
+             borderRadius: current_theme.typography.borderRadius }}>
               <div className="songDisplay">
                 <div className="imgSquare">
-                  <img src={current_track.album.images[0].url} className="playingCover" alt="" />
+                  <img src={current_track.album.images[0].url} className="playingCover" alt="" style={{ borderRadius: current_theme.typography.borderRadius }}/>
                 </div>
 
                 <div className="now-playing__side">
@@ -302,6 +305,7 @@ function WebPlayback(props) {
                   <label className="smLabel" htmlFor="seekInput">{formatTime(currentPosition)}</label>
                 </Typography>
                 <input
+                    id="trackTime"
                     type="range"
                     min={0}
                     max={current_track.duration_ms}
@@ -316,25 +320,56 @@ function WebPlayback(props) {
                     }}
                   />
                   <style>
-                    {`
-                    input[type="range"]::-webkit-slider-runnable-track {
-                      height: 0.5rem;
-                      background: ${current_theme.palette.secondary.main};
-                      border-radius: 0.25rem;
-                    }
+                      {`
+                      #trackTime::-webkit-slider-runnable-track {
+                        height: 0.5rem;
+                        background: ${current_theme.palette.primary.main};
+                        border-radius: 0.25rem;
+                        background-image: linear-gradient(
+                          to right,
+                          ${current_theme.palette.secondary.dark} 0%,
+                          ${current_theme.palette.secondary.dark} ${(currentPosition / current_track.duration_ms) * 100}%,
+                          ${current_theme.palette.secondary.main} ${(currentPosition / current_track.duration_ms) * 100}%,
+                          ${current_theme.palette.secondary.main} 100%
+                        );
+                      }
 
-                    input[type="range"]::-webkit-slider-thumb {
-                      -webkit-appearance: none;
-                      appearance: none;
-                      width: 1rem;
-                      height: 1rem;
-                      background: ${current_theme.palette.secondary.dark};
-                      border-radius: 50%;
-                      cursor: pointer;
-                      transform: translateY(-25%);
-                    }
-                    `}
-                  </style>
+                      #trackTime::-webkit-slider-thumb {
+                        -webkit-appearance: none;
+                        appearance: none;
+                        width: 1rem;
+                        height: 1rem;
+                        background: ${current_theme.palette.secondary.dark};
+                        border-radius: 50%;
+                        cursor: pointer;
+                        transform: translateY(-25%);
+                      }
+
+                      input#volumeInput::-webkit-slider-runnable-track {
+                        height: 0.5rem;
+                        background: ${current_theme.palette.primary.main};
+                        border-radius: 0.25rem;
+                        background-image: linear-gradient(
+                          to right,
+                          ${current_theme.palette.secondary.dark} 0%,
+                          ${current_theme.palette.secondary.dark} ${(volume / 1) * 100}%,
+                          ${current_theme.palette.secondary.main} ${(volume / 1) * 100}%,
+                          ${current_theme.palette.secondary.main} 100%
+                        );
+                      }
+                    
+                      input#volumeInput::-webkit-slider-thumb {
+                        -webkit-appearance: none;
+                        appearance: none;
+                        width: 1rem;
+                        height: 1rem;
+                        background: ${current_theme.palette.secondary.dark};
+                        border-radius: 50%;
+                        cursor: pointer;
+                        transform: translateY(-25%);
+                      }
+                      `}
+                    </style>
               </div>
               <div className="bottomContols">
               <div className='volumeBtns'>
@@ -428,6 +463,7 @@ function WebPlayback(props) {
                         marginRight: "1vw",
                       }}/>
                 <input
+                  id="volumeInput"
                   type="range"
                   min="0"
                   max="1"
@@ -442,6 +478,14 @@ function WebPlayback(props) {
                   }}
                 />
               </div>
+
+              <style>
+                {`
+                  .queueDiv{
+                    border-radius: ${current_theme.typography.borderRadius};
+                  }
+                `}
+              </style>
 
               <Modal open={isQueueModalOpen} onClose={handleQueueModalClose}>
                 <div>
@@ -635,8 +679,37 @@ function WebPlayback(props) {
                         className="centerAligned"
                         gutterBottom
                       >General</Typography>
-                      <label>Player Name: </label><input type="text" id="playerName" value={playerName} onChange={(e) => setPlayerName(e.target.value)} />
-                      <button onClick={() => handlePlayerNameChange(playerName)}>Apply</button>
+                      <div className='labelInputDiv'>
+                        <Typography className="labelComp" component="h4" variant="h4" color="textPrimary" gutterBottom>Player Name: </Typography>
+                        <input type="text" id="playerName" value={playerName} onChange={(e) => setPlayerName(e.target.value)} style={{
+                          backgroundColor: "transparent",
+                          background: "transparent",
+                          color: current_theme.palette.text.primary,
+                          borderStyle: "solid",
+                          borderColor: current_theme.palette.background.light,
+                          borderRadius: "0.5rem",
+                          borderWidth: "0.25rem",
+                          fontFamily: current_theme.typography.fontFamily,
+                          fontSize: current_theme.typography.subtitle1.fontSize,
+                          fontWeight: "bold",
+                          padding: "0.5rem",
+                          margin: "0.5rem",
+                          outline: "none",
+                        }}/>
+                        <button onClick={() => handlePlayerNameChange(playerName)} style={{
+                          backgroundColor: current_theme.palette.background.light,
+                          color: current_theme.palette.primary.main,
+                          borderStyle: "solid",
+                          borderColor: current_theme.palette.background.light,
+                          borderRadius: "0.5rem",
+                          borderWidth: "0.25rem",
+                          fontFamily: current_theme.typography.fontFamily,
+                          fontSize: current_theme.typography.subtitle1.fontSize,
+                          fontWeight: "bold",
+                          padding: "0.5rem",
+                          cursor: "pointer",
+                        }}>Apply</button>
+                      </div>
                     </div>
                     <div style={{marginTop: "3rem"}}>
                     <Typography
@@ -646,6 +719,17 @@ function WebPlayback(props) {
                       className="centerAligned"
                       gutterBottom
                     >Themes</Typography>
+                    <style>
+                    {`
+                      .current_theme {
+                        border-style: solid;
+                        border-radius: 0.5rem;
+                        border-color: ${current_theme.palette.primary.main} ;
+                        background-color: ${current_theme.palette.secondary.main} ;
+                        color: ${current_theme.palette.text.primary};
+                      }
+                    `}
+                    </style>
                       <div className="outerThemeDiv" style={{ marginTop: "1.5rem" }}>
                         {themes.map((theme) => (
                           <div
@@ -653,7 +737,7 @@ function WebPlayback(props) {
                             key={theme.name}
                             onClick={() => handleThemeChange(theme)}
                           >
-                            <span className="themeName">{theme.name}: </span>
+                            <Typography className="labelComp" component="h4" variant="h4" color="textPrimary" gutterBottom><span className="themeName">{theme.name}: </span></Typography>
                             <div className="colorBlocks">
                               <div
                                 className="colorBlock"
@@ -704,7 +788,7 @@ function WebPlayback(props) {
                         backgroundColor: "transparent",
                         outline: "none",
                         borderStyle: "none",
-                        color: current_theme.palette.secondary.main,
+                        color: current_theme.palette.secondary.dark,
                         fontSize: "2.5rem",
                       }}/></button>
                   </div>
