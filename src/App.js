@@ -10,9 +10,10 @@ function App() {
   useEffect(() => {
 
     async function getToken() {
-      const response = await fetch('/auth/token');
+      const response = await fetch('https://spotify-web-player-server-5f57396ce647.herokuapp.com/auth/token');
       const json = await response.json();
       setToken(json.access_token);
+      console.log("token grabbed!");
     }
 
     getToken();
@@ -21,7 +22,7 @@ function App() {
 
   return (
     <>
-        { (token === '') ? <Login/> : <WebPlayback token={token} /> }
+        { !token ? <Login/> : <WebPlayback token={token} /> }
     </>
   );
 }
