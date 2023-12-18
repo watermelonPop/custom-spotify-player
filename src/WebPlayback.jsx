@@ -19,18 +19,6 @@ import CloseIcon from '@mui/icons-material/Close';
 import HistoryIcon from '@mui/icons-material/History';
 import SettingsIcon from '@mui/icons-material/Settings';
 import RefreshIcon from '@mui/icons-material/Refresh';
-import Cookies from 'js-cookie';
-
-const expirationDate = new Date();
-expirationDate.setFullYear(expirationDate.getFullYear() + 10);
-
-const setCookie = (name, value) => {
-  Cookies.set(name, value, { expires: expirationDate });
-};
-
-const getCookie = (name) => {
-  return Cookies.get(name);
-};
 
 const track = {
   name: "",
@@ -56,13 +44,14 @@ function WebPlayback(props) {
   const [is_active, setActive] = useState(false);
   const [player, setPlayer] = useState(undefined);
   const [current_track, setTrack] = useState(track);
-  const [current_theme, setTheme] = useState(getCookie('theme') || defaultTheme);
+  const [current_theme, setTheme] = useState(defaultTheme);
   const [volume, setVolume] = useState(0); // State to store the volume
   const [currentPosition, setCurrentPosition] = useState(0); // State to store the current position
   const [isQueueModalOpen, setQueueModalOpen] = useState(false);
   const [isHistoryModalOpen, setHistoryModalOpen] = useState(false);
   const [isSettingsModalOpen, setSettingsModalOpen] = useState(false);
   const [isRefreshModalOpen, setRefreshModalOpen] = useState(false);
+  const [isCustomModalOpen, setCustomModalOpen] = useState(false);
   const [nextTracks, setNextTracks] = useState([]);
   const [prevTracks, setPrevTracks] = useState([]);
   const themes = [defaultTheme, strawberryTheme, pjTheme, tteokTheme, ambTheme, earthTheme];
@@ -177,6 +166,16 @@ function WebPlayback(props) {
     setHistoryModalOpen(false);
   };
 
+  const handleCustomModalOpen = () => {
+    setCustomModalOpen(true);
+    handleSettingsModalClose();
+  };
+  
+  const handleCustomModalClose = () => {
+    setCustomModalOpen(false);
+    handleSettingsModalOpen();
+  };
+
   const handleSettingsModalOpen = () => {
     setSettingsModalOpen(true);
   };
@@ -197,7 +196,6 @@ function WebPlayback(props) {
     console.log('Changing theme to:', newTheme);
     setTheme(newTheme);
     console.log('Current theme state:', current_theme);
-    setCookie('theme', newTheme);
   };
 
   // Function to set player name in local storage
@@ -783,7 +781,31 @@ function WebPlayback(props) {
                           </div>
                         ))}
                       </div>
+                      <button onClick={handleCustomModalOpen}>+ create theme</button>
                     </div>
+                  </div>
+                </div>
+              </Modal>
+
+              <Modal open={isCustomModalOpen} onClose={handleCustomModalClose}>
+                <div>
+                  <div className="queueDiv" style={{ background: current_theme.palette.background.default,
+                    fontSize: "1.7rem",
+                    opacity: "100%",
+                    position: "relative", }}>
+                    <ColorPicker label="Primary Color" color={black} />
+                    <ColorPicker label="Secondary Color" color={white} />
+                    
+                    <div>
+                      <Typography component="h3" variant="h3" color="textSecondary" className="centerAligned" gutterBottom>
+                        Font
+                      </Typography>
+                      <select>
+                        <option value="Arial">Arial</option>
+                      </select>
+                    </div>
+
+                    <button >Apply</button>
                   </div>
                 </div>
               </Modal>
