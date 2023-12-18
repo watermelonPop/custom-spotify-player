@@ -232,7 +232,7 @@ function WebPlayback(props) {
   if (!is_active) {
     return (
       <>
-        <ThemeProvider theme={current_theme}>
+        <ThemeProvider theme={current_theme || defaultTheme}>
           <div className="container">
             <div className="main-wrapper">
               <Typography
@@ -250,7 +250,7 @@ function WebPlayback(props) {
   } else {
     return (
       <>
-      <ThemeProvider theme={current_theme}>
+      <ThemeProvider theme={current_theme || defaultTheme}>
         <div className="outerOuter" style={{ backgroundColor: current_theme.palette.background.dark }}>
           <div className='settingsDiv'>
           <Button
