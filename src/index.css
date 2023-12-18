@@ -120,10 +120,7 @@ code {
   justify-content: center;
   align-items: center;
   margin: 0 auto;
-  position: fixed; /* Change from absolute to fixed */
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: fixed; 
   padding: 2rem;
   overflow-x: hidden;
   overflow-y: auto;
