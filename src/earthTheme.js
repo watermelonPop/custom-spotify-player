@@ -1,63 +1,63 @@
 import { createTheme, responsiveFontSizes } from '@mui/material';
-import "@fontsource/gamja-flower";
+import '@fontsource/montserrat';
 
 const theme = responsiveFontSizes(
   createTheme({
-    name: "tteok-theme",
+    name: "earth-theme",
     spacing: 4,
     typography: {
-        fontFamily: 'Gamja Flower',
+        fontFamily: 'Montserrat',
         borderRadius: "0rem",
       h1: {
         fontSize: '3.0rem',
-        fontFamily: 'Gamja Flower',
+        fontFamily: 'Montserrat',
         textAlign: 'left',
         fontWeight: "bold",
       },
       h2: {
         fontSize: '2.5rem',
-        fontFamily: 'Gamja Flower',
+        fontFamily: 'Montserrat',
         fontStyle: 'bold',
         textAlign: 'left',
         fontWeight: "bold",
       },
       h3: {
         fontSize: '2.0rem',
-        fontFamily: 'Gamja Flower',
+        fontFamily: 'Montserrat',
         textAlign: 'left',
         fontWeight: "bold",
       },
       h4: {
         fontSize: '1.5rem',
-        fontFamily: 'Gamja Flower',
+        fontFamily: 'Montserrat',
         textAlign: 'left',
         fontWeight: "bold",
       },
       body1: {
         fontSize: '1.3rem',
-        fontFamily: 'Gamja Flower',
+        fontFamily: 'Montserrat',
         textAlign: 'justify',
         fontWeight: "bold",
       },
       subtitle1:{
         fontSize: '1.0rem',
-        fontFamily: 'Gamja Flower',
+        fontFamily: 'Montserrat',
         textAlign: 'justify',
         fontWeight: "bold",
       }
     },
     palette: {
       background: {
-        default: '#D8E2DC',
-        dark: '#FFE5D9',
-        light: '#FFCAD4',
+        default: '#121212',
+        dark: '#000000',
+        light: '#FFFFFF',
       },
       primary: {
-        main: '#FFCAD4', //PINK
+        main: '#1FB954',
       },
       secondary: {
-        main: '#F4ACB7', //RED
-        dark: '#9D8189', //DARK
+        main: '#62D089',
+        dark: '#457F59',
       },
       error: {
         main: '#F52735', // red
@@ -72,8 +72,8 @@ const theme = responsiveFontSizes(
         main: '#09FE00', // green
       },
       text: {
-        primary: '#000000', 
-        secondary: '#9D8189', 
+        primary: '#FFFFFF', 
+        secondary: '#9FA0A1', 
       },
     },
   })
