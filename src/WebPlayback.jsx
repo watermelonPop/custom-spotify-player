@@ -19,6 +19,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import HistoryIcon from '@mui/icons-material/History';
 import SettingsIcon from '@mui/icons-material/Settings';
 import RefreshIcon from '@mui/icons-material/Refresh';
+import ColorPicker from "./ColorPicker";
 
 const track = {
   name: "",
@@ -793,8 +794,8 @@ function WebPlayback(props) {
                     fontSize: "1.7rem",
                     opacity: "100%",
                     position: "relative", }}>
-                    <ColorPicker label="Primary Color" color={black} />
-                    <ColorPicker label="Secondary Color" color={white} />
+                    <ColorPicker label="Primary Color" color={black} theme={current_theme} />
+                    <ColorPicker label="Secondary Color" color={white} theme={current_theme} />
                     
                     <div>
                       <Typography component="h3" variant="h3" color="textSecondary" className="centerAligned" gutterBottom>
