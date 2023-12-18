@@ -1,38 +1,49 @@
 import { createTheme, responsiveFontSizes } from '@mui/material';
-import "@fontsource/gamja-flower";
+import '@fontsource/courier-prime';
 
 const theme = responsiveFontSizes(
   createTheme({
     name: "strawberry-theme",
     spacing: 4,
     typography: {
-      fontFamily: "Gamja Flower",
-      borderRadius: "1rem",
+      fontFamily: 'Courier Prime',
+      borderRadius: "0rem",
       h1: {
-        fontSize: '4rem',
-        fontFamily: 'Gamja Flower', 
+        fontSize: '3.0rem',
+        fontFamily: 'Courier Prime',
         textAlign: 'left',
+        fontWeight: "bold",
       },
       h2: {
-        fontSize: '3.5rem',
-        fontFamily: 'Gamja Flower', 
+        fontSize: '2.5rem',
+        fontFamily: 'Courier Prime',
         fontStyle: 'bold',
         textAlign: 'left',
+        fontWeight: "bold",
       },
       h3: {
-        fontSize: '3.0rem',
-        fontFamily: 'Gamja Flower', 
+        fontSize: '2.0rem',
+        fontFamily: 'Courier Prime',
         textAlign: 'left',
+        fontWeight: "bold",
+      },
+      h4: {
+        fontSize: '1.5rem',
+        fontFamily: 'Courier Prime',
+        textAlign: 'left',
+        fontWeight: "bold",
       },
       body1: {
-        fontSize: '2.3rem',
-        fontFamily: 'Gamja Flower', 
+        fontSize: '1.3rem',
+        fontFamily: 'Courier Prime',
         textAlign: 'justify',
+        fontWeight: "bold",
       },
       subtitle1:{
-        fontSize: '1.8rem',
-        fontFamily: 'Gamja Flower', 
+        fontSize: '1.0rem',
+        fontFamily: 'Courier Prime',
         textAlign: 'justify',
+        fontWeight: "bold",
       }
     },
     palette: {

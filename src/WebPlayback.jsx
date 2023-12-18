@@ -674,7 +674,7 @@ function WebPlayback(props) {
                         }}
                       />
                     </Button>
-                    <div style={{marginTop: "3rem", height: "80%", overflowX: "hidden", overflowY: "auto"}}>
+                    <div style={{marginTop: "3rem", maxHeight: "60%", overflowX: "hidden", overflowY: "auto"}}>
                       <Typography
                         component="h3"
                         variant="h3"
