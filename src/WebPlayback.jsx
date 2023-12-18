@@ -390,6 +390,7 @@ function WebPlayback(props) {
                         color: current_theme.palette.secondary.main,
                         fontSize: "1.8rem",
                         marginRight: "7vw",
+                        textShadow: "-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black",
                       }}/></Button>
               </div>
                 <div className='ctrlBtns'>
@@ -409,6 +410,7 @@ function WebPlayback(props) {
                         color: current_theme.palette.primary.main,
                         fontSize: "2.5rem",
                         marginRight: "7vw",
+                        textShadow: "-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black",
                       }}/>
                   </button>
 
@@ -432,6 +434,7 @@ function WebPlayback(props) {
                         color: current_theme.palette.primary.main,
                         fontSize: "2.5rem",
                         marginRight: "7vw",
+                        textShadow: "-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black",
                       }}/>}
                 </button>
 
@@ -447,6 +450,7 @@ function WebPlayback(props) {
                         borderStyle: "none",
                         color: current_theme.palette.primary.main,
                         fontSize: "2.5rem",
+                        textShadow: "-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black",
                       }}/>
                 </button>
               </div>
@@ -457,6 +461,7 @@ function WebPlayback(props) {
                         borderStyle: "none",
                         color: current_theme.palette.secondary.main,
                         fontSize: "2.5rem",
+                        textShadow: "-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black",
                       }}><QueueMusicIcon/></Button>
                 <VolumeUpIcon style={{
                         backgroundColor: "transparent",
@@ -465,6 +470,7 @@ function WebPlayback(props) {
                         color: current_theme.palette.secondary.main,
                         fontSize: "1.7rem",
                         marginRight: "1vw",
+                        textShadow: "-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black",
                       }}/>
                 <input
                   id="volumeInput"
@@ -672,7 +678,7 @@ function WebPlayback(props) {
                         }}
                       />
                     </Button>
-                    <div style={{marginTop: "8rem"}}>
+                    <div style={{marginTop: "9rem"}}>
                       <Typography component="h1" variant="h1" color="textPrimary" textAlign="center" gutterBottom>
                         Settings
                       </Typography>

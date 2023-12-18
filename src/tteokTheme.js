@@ -13,6 +13,7 @@ const theme = responsiveFontSizes(
         fontFamily: 'Gamja Flower',
         textAlign: 'left',
         fontWeight: "bold",
+        textShadow: "-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black",
       },
       h2: {
         fontSize: '2.5rem',
@@ -20,30 +21,35 @@ const theme = responsiveFontSizes(
         fontStyle: 'bold',
         textAlign: 'left',
         fontWeight: "bold",
+        textShadow: "-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black",
       },
       h3: {
         fontSize: '2.0rem',
         fontFamily: 'Gamja Flower',
         textAlign: 'left',
         fontWeight: "bold",
+        textShadow: "-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black",
       },
       h4: {
         fontSize: '1.5rem',
         fontFamily: 'Gamja Flower',
         textAlign: 'left',
         fontWeight: "bold",
+        textShadow: "-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black",
       },
       body1: {
         fontSize: '1.3rem',
         fontFamily: 'Gamja Flower',
         textAlign: 'justify',
         fontWeight: "bold",
+        textShadow: "-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black",
       },
       subtitle1:{
         fontSize: '1.0rem',
         fontFamily: 'Gamja Flower',
         textAlign: 'justify',
         fontWeight: "bold",
+        textShadow: "-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black",
       }
     },
     palette: {
