@@ -19,6 +19,18 @@ import CloseIcon from '@mui/icons-material/Close';
 import HistoryIcon from '@mui/icons-material/History';
 import SettingsIcon from '@mui/icons-material/Settings';
 import RefreshIcon from '@mui/icons-material/Refresh';
+import Cookies from 'js-cookie';
+
+const expirationDate = new Date();
+expirationDate.setFullYear(expirationDate.getFullYear() + 10);
+
+const setCookie = (name, value) => {
+  Cookies.set(name, value, { expires: expirationDate });
+};
+
+const getCookie = (name) => {
+  return Cookies.get(name);
+};
 
 const track = {
   name: "",
@@ -44,7 +56,7 @@ function WebPlayback(props) {
   const [is_active, setActive] = useState(false);
   const [player, setPlayer] = useState(undefined);
   const [current_track, setTrack] = useState(track);
-  const [current_theme, setTheme] = useState(defaultTheme);
+  const [current_theme, setTheme] = useState(useState(getCookie('theme') || defaultTheme));
   const [volume, setVolume] = useState(0); // State to store the volume
   const [currentPosition, setCurrentPosition] = useState(0); // State to store the current position
   const [isQueueModalOpen, setQueueModalOpen] = useState(false);
@@ -185,6 +197,7 @@ function WebPlayback(props) {
     console.log('Changing theme to:', newTheme);
     setTheme(newTheme);
     console.log('Current theme state:', current_theme);
+    setCookie('theme', newTheme);
   };
 
   // Function to set player name in local storage

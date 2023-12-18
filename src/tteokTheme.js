@@ -50,7 +50,7 @@ const theme = responsiveFontSizes(
       background: {
         default: '#D8E2DC',
         dark: '#FFE5D9',
-        light: '#FFCAD4',
+        light: '#9D8189',
       },
       primary: {
         main: '#FFCAD4', //PINK
