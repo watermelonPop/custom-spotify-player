@@ -24,26 +24,33 @@ const ColorPicker = ({ label, color, theme, onChange }) => {
 
   return (
         <ThemeProvider theme={theme || defaultTheme}>
-                <div>
-                <Typography component="subtitle1" variant="subtitle1" color="textSecondary" className="centerAligned" gutterBottom>
-                        {label}
-                </Typography>
-                <div
-                        style={{
-                        backgroundColor: color,
-                        width: '30px',
-                        height: '30px',
-                        borderRadius: '50%',
-                        cursor: 'pointer',
-                        }}
-                        onClick={handleColorPickerOpen}
-                />
+                <div style={{display: flex}}>
+                        <Typography component="subtitle1" variant="subtitle1" color="textSecondary" className="centerAligned" gutterBottom>
+                                {label}
+                        </Typography>
+                        <div
+                                style={{
+                                backgroundColor: color,
+                                width: '30px',
+                                height: '30px',
+                                cursor: 'pointer',
+                                borderStyle: "solid",
+                                borderWidth: "5px",
+                                borderColor: "white",
+                                }}
+                                onClick={handleColorPickerOpen}
+                        />
+                </div>
                 <Modal open={isColorPickerOpen} onClose={handleColorPickerClose}>
-                        <div>
-                        <SketchPicker color={color} onChangeComplete={handleChangeComplete} />
+                        <div style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                height: '100%',
+                                }}>
+                                <SketchPicker color={color} onChangeComplete={handleChangeComplete} />
                         </div>
                 </Modal>
-                </div>
         </ThemeProvider>
   );
 };

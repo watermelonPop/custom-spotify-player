@@ -57,6 +57,7 @@ function WebPlayback(props) {
   const [prevTracks, setPrevTracks] = useState([]);
   const themes = [defaultTheme, strawberryTheme, pjTheme, tteokTheme, ambTheme, earthTheme];
   const [playerName, setPlayerName] = useState("Custom Spotify Player");
+  const fonts = ["Montserrat", "Courier Prime", "Vidaloka", "Gamja Flower"];
 
   //const [selectedTheme, setSelectedTheme] = useState(defaultTheme);
 
@@ -782,7 +783,22 @@ function WebPlayback(props) {
                           </div>
                         ))}
                       </div>
-                      <button onClick={handleCustomModalOpen}>+ create theme</button>
+                      <div style={{textAlign: "center", alignItems: "center"}}>
+                        <button onClick={handleCustomModalOpen} style={{
+                            backgroundColor: current_theme.palette.background.light,
+                            color: current_theme.palette.primary.main,
+                            borderStyle: "solid",
+                            borderColor: current_theme.palette.background.light,
+                            borderRadius: "0.5rem",
+                            borderWidth: "0.25rem",
+                            fontFamily: current_theme.typography.fontFamily,
+                            fontSize: current_theme.typography.subtitle1.fontSize,
+                            fontWeight: "bold",
+                            padding: "0.5rem",
+                            cursor: "pointer",
+                            textAlign: "center",
+                          }}>+ create theme</button>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -794,19 +810,61 @@ function WebPlayback(props) {
                     fontSize: "1.7rem",
                     opacity: "100%",
                     position: "relative", }}>
-                    <ColorPicker label="Primary Color" color="#000000" theme={current_theme} />
-                    <ColorPicker label="Secondary Color" color="#ffffff" theme={current_theme} />
-                    
-                    <div>
-                      <Typography component="h3" variant="h3" color="textSecondary" className="centerAligned" gutterBottom>
-                        Font
+                      <Typography component="h1" variant="h1" color="textPrimary" textAlign="center" gutterBottom>
+                        Customize Theme
                       </Typography>
-                      <select>
-                        <option value="Arial">Arial</option>
-                      </select>
-                    </div>
+                      <div style={{marginTop: "2rem"}}>
+                        <Typography component="h3" variant="h3" color="textSecondary" className="centerAligned" gutterBottom>
+                            Colors
+                        </Typography>
+                        <ColorPicker label="Primary Background Color" color="#000000" theme={current_theme} />
+                        <ColorPicker label="Secondary Background Color" color="#ffffff" theme={current_theme} />
+                        <ColorPicker label="Play Buttons Color" color="#ffffff" theme={current_theme} />
+                        <ColorPicker label="Primary Buttons Color" color="#ffffff" theme={current_theme} />
+                        <ColorPicker label="Touch Bar Color" color="#ffffff" theme={current_theme} />
+                        <ColorPicker label="Primary Text Color" color="#ffffff" theme={current_theme} />
+                        <ColorPicker label="Secondary Text Color" color="#ffffff" theme={current_theme} />
+                      </div>
+                      <div style={{marginTop: "2rem"}}>
+                        <Typography component="h3" variant="h3" color="textSecondary" className="centerAligned" gutterBottom>
+                          Font
+                        </Typography>
+                        <select style={{
+                          backgroundColor: "transparent",
+                          background: "transparent",
+                          color: current_theme.palette.text.primary,
+                          borderStyle: "solid",
+                          borderColor: current_theme.palette.background.light,
+                          borderRadius: "0.5rem",
+                          borderWidth: "0.25rem",
+                          fontFamily: current_theme.typography.fontFamily,
+                          fontSize: current_theme.typography.subtitle1.fontSize,
+                          fontWeight: "bold",
+                          padding: "0.5rem",
+                          margin: "0.5rem",
+                        }}>
+                          {fonts.map((font, index) => (
+                            <option key={index} value={font}>
+                              {font}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
 
-                    <button >Apply</button>
+                    <button style={{
+                            backgroundColor: current_theme.palette.background.light,
+                            color: current_theme.palette.primary.main,
+                            borderStyle: "solid",
+                            borderColor: current_theme.palette.background.light,
+                            borderRadius: "0.5rem",
+                            borderWidth: "0.25rem",
+                            fontFamily: current_theme.typography.fontFamily,
+                            fontSize: current_theme.typography.subtitle1.fontSize,
+                            fontWeight: "bold",
+                            padding: "0.5rem",
+                            cursor: "pointer",
+                            textAlign: "center",
+                          }}>Apply</button>
                   </div>
                 </div>
               </Modal>
