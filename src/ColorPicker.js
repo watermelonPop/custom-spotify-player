@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ThemeProvider } from "@mui/material";
 import { SketchPicker } from 'react-color';
 import defaultTheme from "./defaultTheme";
 import { Typography } from '@mui/material';
