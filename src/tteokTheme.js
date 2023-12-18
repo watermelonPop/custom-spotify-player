@@ -7,7 +7,7 @@ const theme = responsiveFontSizes(
     spacing: 4,
     typography: {
         fontFamily: 'Gamja Flower',
-        borderRadius: "0rem",
+        borderRadius: "1rem",
       h1: {
         fontSize: '3.0rem',
         fontFamily: 'Gamja Flower',

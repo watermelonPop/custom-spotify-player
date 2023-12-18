@@ -24,7 +24,7 @@ code {
 .pageDisplay {
   width: 100%;
   padding: 5%;
-  max-width: fit-content;
+  min-width: fit-content;
 }
 
 .bottomContols {
@@ -120,10 +120,10 @@ code {
   justify-content: center;
   align-items: center;
   margin: 0 auto;
-  position: absolute; /* Change from relative to absolute */
+  position: fixed; /* Change from absolute to fixed */
   top: 50%;
-  left: 50%; /* Add left property */
-  transform: translate(-50%, -50%); /* Center the modal both horizontally and vertically */
+  left: 50%;
+  transform: translate(-50%, -50%);
   padding: 2rem;
   overflow-x: hidden;
   overflow-y: auto;

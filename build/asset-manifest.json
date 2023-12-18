@@ -1,9 +1,10 @@
 {
   "files": {
-    "main.css": "/static/css/main.924da18f.css",
-    "main.js": "/static/js/main.7e718714.js",
+    "main.css": "/static/css/main.94edaf62.css",
+    "main.js": "/static/js/main.2dc84d12.js",
     "static/media/gamja-flower-37-400-normal.woff2": "/static/media/gamja-flower-37-400-normal.2d8b37267ed7a052dd59.woff2",
     "static/media/gamja-flower-36-400-normal.woff2": "/static/media/gamja-flower-36-400-normal.fbfd162608716c0cb748.woff2",
+    "static/media/vidaloka-latin-400-normal.woff2": "/static/media/vidaloka-latin-400-normal.6a951dd59e97e60990ce.woff2",
     "static/media/gamja-flower-20-400-normal.woff2": "/static/media/gamja-flower-20-400-normal.ae3c2b3bd27e33848c7a.woff2",
     "static/media/gamja-flower-49-400-normal.woff2": "/static/media/gamja-flower-49-400-normal.48dc4c004bccbf2389ce.woff2",
     "static/media/gamja-flower-6-400-normal.woff2": "/static/media/gamja-flower-6-400-normal.e3feaf71bee09adbba05.woff2",
@@ -80,6 +81,7 @@
     "static/media/gamja-flower-8-400-normal.woff2": "/static/media/gamja-flower-8-400-normal.9751469e5f22fa5ca259.woff2",
     "static/media/gamja-flower-64-400-normal.woff2": "/static/media/gamja-flower-64-400-normal.fc0a2bbe0d34d28dc13a.woff2",
     "static/media/gamja-flower-94-400-normal.woff2": "/static/media/gamja-flower-94-400-normal.0bf5f92b74c05beb668f.woff2",
+    "static/media/vidaloka-latin-400-normal.woff": "/static/media/vidaloka-latin-400-normal.408fc8763c873f15d45b.woff",
     "static/media/gamja-flower-36-400-normal.woff": "/static/media/gamja-flower-36-400-normal.4081a340ce2186713ba0.woff",
     "static/media/montserrat-latin-400-normal.woff": "/static/media/montserrat-latin-400-normal.b48c3d9a8c0a49c1c7b4.woff",
     "static/media/gamja-flower-103-400-normal.woff2": "/static/media/gamja-flower-103-400-normal.b035b21017a067adf106.woff2",
@@ -87,6 +89,7 @@
     "static/media/gamja-flower-9-400-normal.woff": "/static/media/gamja-flower-9-400-normal.2b27ddbaf98afadd9ef1.woff",
     "static/media/montserrat-latin-ext-400-normal.woff": "/static/media/montserrat-latin-ext-400-normal.cf42d14e809c6fdc0929.woff",
     "static/media/gamja-flower-latin-400-normal.woff2": "/static/media/gamja-flower-latin-400-normal.b5c47b8c2696d7ed552a.woff2",
+    "static/media/courier-prime-latin-400-normal.woff2": "/static/media/courier-prime-latin-400-normal.9828a27d46cfbc788c63.woff2",
     "static/media/gamja-flower-6-400-normal.woff": "/static/media/gamja-flower-6-400-normal.41dee9d42585639dfdf7.woff",
     "static/media/gamja-flower-39-400-normal.woff": "/static/media/gamja-flower-39-400-normal.e57c9f123ebf263bc2b6.woff",
     "static/media/gamja-flower-49-400-normal.woff": "/static/media/gamja-flower-49-400-normal.be7f001a2c42244035f2.woff",
@@ -153,6 +156,7 @@
     "static/media/gamja-flower-44-400-normal.woff": "/static/media/gamja-flower-44-400-normal.58568bb3f667d0ba3d9f.woff",
     "static/media/gamja-flower-55-400-normal.woff": "/static/media/gamja-flower-55-400-normal.790af98802e6ccc63e6e.woff",
     "static/media/gamja-flower-0-400-normal.woff2": "/static/media/gamja-flower-0-400-normal.0b18ee4efa9f19e97f70.woff2",
+    "static/media/courier-prime-latin-400-normal.woff": "/static/media/courier-prime-latin-400-normal.1d155ce17f82c7375483.woff",
     "static/media/gamja-flower-22-400-normal.woff": "/static/media/gamja-flower-22-400-normal.c45e28e65c15f116d83f.woff",
     "static/media/gamja-flower-latin-400-normal.woff": "/static/media/gamja-flower-latin-400-normal.5231853ceef4ae8e57f5.woff",
     "static/media/gamja-flower-54-400-normal.woff": "/static/media/gamja-flower-54-400-normal.5e3c58bc98904108be85.woff",
@@ -170,6 +174,7 @@
     "static/media/gamja-flower-51-400-normal.woff": "/static/media/gamja-flower-51-400-normal.0102ff791910b22562b5.woff",
     "static/media/montserrat-cyrillic-ext-400-normal.woff": "/static/media/montserrat-cyrillic-ext-400-normal.183f43730b586802d1a0.woff",
     "static/media/gamja-flower-28-400-normal.woff": "/static/media/gamja-flower-28-400-normal.f90d79d758747b60473a.woff",
+    "static/media/courier-prime-latin-ext-400-normal.woff2": "/static/media/courier-prime-latin-ext-400-normal.5f815ad51fabfda18bb0.woff2",
     "static/media/gamja-flower-18-400-normal.woff": "/static/media/gamja-flower-18-400-normal.4f5703fe4b8b84c012be.woff",
     "static/media/gamja-flower-95-400-normal.woff": "/static/media/gamja-flower-95-400-normal.342443924a36d2078c04.woff",
     "static/media/gamja-flower-31-400-normal.woff": "/static/media/gamja-flower-31-400-normal.15ff7ac8c99ab7bf001a.woff",
@@ -185,6 +190,7 @@
     "static/media/gamja-flower-0-400-normal.woff": "/static/media/gamja-flower-0-400-normal.8a1d4b917a6f7bafe9f5.woff",
     "static/media/gamja-flower-97-400-normal.woff2": "/static/media/gamja-flower-97-400-normal.993d4c1f31d04f4b1bef.woff2",
     "static/media/montserrat-cyrillic-ext-400-normal.woff2": "/static/media/montserrat-cyrillic-ext-400-normal.32618c7b62b4ab3c0aff.woff2",
+    "static/media/courier-prime-latin-ext-400-normal.woff": "/static/media/courier-prime-latin-ext-400-normal.8cafd33ca5a5ca88061d.woff",
     "static/media/gamja-flower-98-400-normal.woff": "/static/media/gamja-flower-98-400-normal.3fe8edae1fd21d3ddf1c.woff",
     "static/media/montserrat-cyrillic-400-normal.woff2": "/static/media/montserrat-cyrillic-400-normal.4f7a9c3142f9879900c9.woff2",
     "static/media/gamja-flower-97-400-normal.woff": "/static/media/gamja-flower-97-400-normal.321f302fdf6efb0e67f4.woff",
@@ -199,11 +205,11 @@
     "static/media/gamja-flower-93-400-normal.woff2": "/static/media/gamja-flower-93-400-normal.7d32ce7a265192c85517.woff2",
     "static/media/gamja-flower-93-400-normal.woff": "/static/media/gamja-flower-93-400-normal.b3f78f57af8d003a9159.woff",
     "index.html": "/index.html",
-    "main.924da18f.css.map": "/static/css/main.924da18f.css.map",
-    "main.7e718714.js.map": "/static/js/main.7e718714.js.map"
+    "main.94edaf62.css.map": "/static/css/main.94edaf62.css.map",
+    "main.2dc84d12.js.map": "/static/js/main.2dc84d12.js.map"
   },
   "entrypoints": [
-    "static/css/main.924da18f.css",
-    "static/js/main.7e718714.js"
+    "static/css/main.94edaf62.css",
+    "static/js/main.2dc84d12.js"
   ]
 }
