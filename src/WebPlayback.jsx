@@ -390,7 +390,7 @@ function WebPlayback(props) {
                         color: current_theme.palette.secondary.main,
                         fontSize: "1.8rem",
                         marginRight: "7vw",
-                        textShadow: "-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black",
+                        filter: "drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))",
                       }}/></Button>
               </div>
                 <div className='ctrlBtns'>
@@ -410,7 +410,7 @@ function WebPlayback(props) {
                         color: current_theme.palette.primary.main,
                         fontSize: "2.5rem",
                         marginRight: "7vw",
-                        textShadow: "-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black",
+                        filter: "drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))",
                       }}/>
                   </button>
 
@@ -427,6 +427,7 @@ function WebPlayback(props) {
                         color: current_theme.palette.primary.main,
                         fontSize: "2.5rem",
                         marginRight: "7vw",
+                        filter: "drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))",
                       }}/> : <PauseIcon style={{
                         backgroundColor: "transparent",
                         outline: "none",
@@ -434,7 +435,7 @@ function WebPlayback(props) {
                         color: current_theme.palette.primary.main,
                         fontSize: "2.5rem",
                         marginRight: "7vw",
-                        textShadow: "-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black",
+                        filter: "drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))",
                       }}/>}
                 </button>
 
@@ -450,7 +451,7 @@ function WebPlayback(props) {
                         borderStyle: "none",
                         color: current_theme.palette.primary.main,
                         fontSize: "2.5rem",
-                        textShadow: "-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black",
+                        filter: "drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))",
                       }}/>
                 </button>
               </div>
@@ -461,7 +462,7 @@ function WebPlayback(props) {
                         borderStyle: "none",
                         color: current_theme.palette.secondary.main,
                         fontSize: "2.5rem",
-                        textShadow: "-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black",
+                        filter: "drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))",
                       }}><QueueMusicIcon/></Button>
                 <VolumeUpIcon style={{
                         backgroundColor: "transparent",
@@ -470,7 +471,7 @@ function WebPlayback(props) {
                         color: current_theme.palette.secondary.main,
                         fontSize: "1.7rem",
                         marginRight: "1vw",
-                        textShadow: "-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black",
+                        filter: "drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))",
                       }}/>
                 <input
                   id="volumeInput"
@@ -535,6 +536,7 @@ function WebPlayback(props) {
                           color: current_theme.palette.secondary.main,
                           fontSize: "1.7rem",
                           marginRight: "1vw",
+                          filter: "drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))",
                         }}
                       />
                     </Button>
@@ -609,6 +611,7 @@ function WebPlayback(props) {
                           color: current_theme.palette.secondary.main,
                           fontSize: "1.7rem",
                           marginRight: "1vw",
+                          filter: "drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))",
                         }}
                       />
                     </Button>
@@ -675,10 +678,11 @@ function WebPlayback(props) {
                           color: current_theme.palette.secondary.main,
                           fontSize: "1.7rem",
                           marginRight: "1vw",
+                          filter: "drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))",
                         }}
                       />
                     </Button>
-                    <div style={{marginTop: "9rem"}}>
+                    <div style={{marginTop: "10rem"}}>
                       <Typography component="h1" variant="h1" color="textPrimary" textAlign="center" gutterBottom>
                         Settings
                       </Typography>
@@ -687,6 +691,7 @@ function WebPlayback(props) {
                         variant="h3"
                         color="textSecondary"
                         className="centerAligned"
+                        style={{marginTop: "2rem"}}
                         gutterBottom
                       >General</Typography>
                       <div className='labelInputDiv'>

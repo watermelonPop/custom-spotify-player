@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.94edaf62.css",
-    "main.js": "/static/js/main.2dc84d12.js",
+    "main.css": "/static/css/main.b018a9ba.css",
+    "main.js": "/static/js/main.ab9aa650.js",
     "static/media/gamja-flower-37-400-normal.woff2": "/static/media/gamja-flower-37-400-normal.2d8b37267ed7a052dd59.woff2",
     "static/media/gamja-flower-36-400-normal.woff2": "/static/media/gamja-flower-36-400-normal.fbfd162608716c0cb748.woff2",
     "static/media/vidaloka-latin-400-normal.woff2": "/static/media/vidaloka-latin-400-normal.6a951dd59e97e60990ce.woff2",
@@ -205,11 +205,11 @@
     "static/media/gamja-flower-93-400-normal.woff2": "/static/media/gamja-flower-93-400-normal.7d32ce7a265192c85517.woff2",
     "static/media/gamja-flower-93-400-normal.woff": "/static/media/gamja-flower-93-400-normal.b3f78f57af8d003a9159.woff",
     "index.html": "/index.html",
-    "main.94edaf62.css.map": "/static/css/main.94edaf62.css.map",
-    "main.2dc84d12.js.map": "/static/js/main.2dc84d12.js.map"
+    "main.b018a9ba.css.map": "/static/css/main.b018a9ba.css.map",
+    "main.ab9aa650.js.map": "/static/js/main.ab9aa650.js.map"
   },
   "entrypoints": [
-    "static/css/main.94edaf62.css",
-    "static/js/main.2dc84d12.js"
+    "static/css/main.b018a9ba.css",
+    "static/js/main.ab9aa650.js"
   ]
 }
