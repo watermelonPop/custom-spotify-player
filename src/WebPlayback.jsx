@@ -648,9 +648,6 @@ function WebPlayback(props) {
                     position: "relative",
                      // Add margin to create space between the title and tracks
                   }}>
-                    <Typography component="h1" variant="h1" color="textPrimary" gutterBottom>
-                      Settings
-                    </Typography>
                     <Button
                       className="ctrlBtn"
                       onClick={handleSettingsModalClose}
@@ -676,6 +673,9 @@ function WebPlayback(props) {
                       />
                     </Button>
                     <div style={{marginTop: "3rem"}}>
+                      <Typography component="h1" variant="h1" color="textPrimary" gutterBottom>
+                        Settings
+                      </Typography>
                       <Typography
                         component="h3"
                         variant="h3"
