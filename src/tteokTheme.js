@@ -3,7 +3,7 @@ import "@fontsource/gamja-flower";
 
 const theme = responsiveFontSizes(
   createTheme({
-    name: "strawberry-theme",
+    name: "tteok-theme",
     spacing: 4,
     typography: {
       fontFamily: "Gamja Flower",

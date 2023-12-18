@@ -4,6 +4,7 @@ import defaultTheme from "./defaultTheme";
 import strawberryTheme from "./strawberryTheme";
 import pjTheme from "./pjTheme";
 import tteokTheme from "./tteokTheme";
+import ambTheme from "./ambTheme";
 import { Typography } from '@mui/material';
 import { Button } from '@mui/material';
 import { Modal } from '@mui/material';
@@ -51,7 +52,7 @@ function WebPlayback(props) {
   const [isRefreshModalOpen, setRefreshModalOpen] = useState(false);
   const [nextTracks, setNextTracks] = useState([]);
   const [prevTracks, setPrevTracks] = useState([]);
-  const themes = [defaultTheme, strawberryTheme, pjTheme, tteokTheme];
+  const themes = [defaultTheme, strawberryTheme, pjTheme, tteokTheme, ambTheme];
   const [playerName, setPlayerName] = useState("Custom Spotify Player");
 
   //const [selectedTheme, setSelectedTheme] = useState(defaultTheme);
@@ -673,7 +674,7 @@ function WebPlayback(props) {
                         }}
                       />
                     </Button>
-                    <div style={{marginTop: "3rem", height: "80%", overflow: "auto"}}>
+                    <div style={{marginTop: "3rem", height: "80%", overflowX: "hidden", overflowY: "auto"}}>
                       <Typography
                         component="h3"
                         variant="h3"
