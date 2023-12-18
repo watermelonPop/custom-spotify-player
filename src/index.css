@@ -120,9 +120,10 @@ code {
   justify-content: center;
   align-items: center;
   margin: 0 auto;
-  position: relative;
+  position: absolute; /* Change from relative to absolute */
   top: 50%;
-  transform: translateY(+5%);
+  left: 50%; /* Add left property */
+  transform: translate(-50%, -50%); /* Center the modal both horizontally and vertically */
   padding: 2rem;
   overflow-x: hidden;
   overflow-y: auto;
