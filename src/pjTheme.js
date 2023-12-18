@@ -7,7 +7,7 @@ const theme = responsiveFontSizes(
     spacing: 4,
     typography: {
         fontFamily: 'Vidaloka',
-        borderRadius: "0rem",
+        borderRadius: "1rem",
       h1: {
         fontSize: '3.0rem',
         fontFamily: 'Vidaloka',
@@ -56,8 +56,8 @@ const theme = responsiveFontSizes(
         main: '#000000',
       },
       secondary: {
-        main: '#D1DOA3', //light green
-        dark: '#294936', //dark green
+        main: '#294936', //light green
+        dark: '#000000', //dark green
       },
       error: {
         main: '#F52735', // red

@@ -24,7 +24,7 @@ code {
 .pageDisplay {
   width: 100%;
   padding: 5%;
-  max-width: fit-content;
+  min-width: fit-content;
 }
 
 .bottomContols {
