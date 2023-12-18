@@ -42,11 +42,11 @@ const theme = responsiveFontSizes(
         light: '#000000',
       },
       primary: {
-        main: '#a4d18d',
+        main: '#a4d18d', //light green
       },
       secondary: {
-        main: '#fef8e6',
-        dark: '#00563b',
+        main: '#fef8e6', //cream
+        dark: '#00563b', //dark green
       },
       error: {
         main: '#F52735', // red
