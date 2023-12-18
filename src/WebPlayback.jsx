@@ -56,7 +56,7 @@ function WebPlayback(props) {
   const [is_active, setActive] = useState(false);
   const [player, setPlayer] = useState(undefined);
   const [current_track, setTrack] = useState(track);
-  const [current_theme, setTheme] = useState(useState(getCookie('theme') || defaultTheme));
+  const [current_theme, setTheme] = useState(getCookie('theme') || defaultTheme);
   const [volume, setVolume] = useState(0); // State to store the volume
   const [currentPosition, setCurrentPosition] = useState(0); // State to store the current position
   const [isQueueModalOpen, setQueueModalOpen] = useState(false);
