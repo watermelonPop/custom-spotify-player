@@ -794,8 +794,8 @@ function WebPlayback(props) {
                     fontSize: "1.7rem",
                     opacity: "100%",
                     position: "relative", }}>
-                    <ColorPicker label="Primary Color" color={black} theme={current_theme} />
-                    <ColorPicker label="Secondary Color" color={white} theme={current_theme} />
+                    <ColorPicker label="Primary Color" color="#000000" theme={current_theme} />
+                    <ColorPicker label="Secondary Color" color="#ffffff" theme={current_theme} />
                     
                     <div>
                       <Typography component="h3" variant="h3" color="textSecondary" className="centerAligned" gutterBottom>
