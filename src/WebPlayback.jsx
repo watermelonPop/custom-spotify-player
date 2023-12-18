@@ -672,7 +672,7 @@ function WebPlayback(props) {
                         }}
                       />
                     </Button>
-                    <div>
+                    <div style={{marginTop: "8rem"}}>
                       <Typography component="h1" variant="h1" color="textPrimary" textAlign="center" gutterBottom>
                         Settings
                       </Typography>
