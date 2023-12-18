@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.924da18f.css",
-    "main.js": "/static/js/main.20886510.js",
+    "main.js": "/static/js/main.7e718714.js",
     "static/media/gamja-flower-37-400-normal.woff2": "/static/media/gamja-flower-37-400-normal.2d8b37267ed7a052dd59.woff2",
     "static/media/gamja-flower-36-400-normal.woff2": "/static/media/gamja-flower-36-400-normal.fbfd162608716c0cb748.woff2",
     "static/media/gamja-flower-20-400-normal.woff2": "/static/media/gamja-flower-20-400-normal.ae3c2b3bd27e33848c7a.woff2",
@@ -200,10 +200,10 @@
     "static/media/gamja-flower-93-400-normal.woff": "/static/media/gamja-flower-93-400-normal.b3f78f57af8d003a9159.woff",
     "index.html": "/index.html",
     "main.924da18f.css.map": "/static/css/main.924da18f.css.map",
-    "main.20886510.js.map": "/static/js/main.20886510.js.map"
+    "main.7e718714.js.map": "/static/js/main.7e718714.js.map"
   },
   "entrypoints": [
     "static/css/main.924da18f.css",
-    "static/js/main.20886510.js"
+    "static/js/main.7e718714.js"
   ]
 }

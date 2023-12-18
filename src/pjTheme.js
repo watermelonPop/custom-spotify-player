@@ -57,7 +57,7 @@ const theme = responsiveFontSizes(
       },
       secondary: {
         main: '#294936', //green
-        dark: '#721B10', //red
+        dark: '#000000', //black
       },
       error: {
         main: '#F52735', // red
