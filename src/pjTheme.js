@@ -1,47 +1,47 @@
 import { createTheme, responsiveFontSizes } from '@mui/material';
-import '@fontsource/montserrat';
+import '@fontsource/vidaloka';
 
 const theme = responsiveFontSizes(
   createTheme({
     name: "pj-theme",
     spacing: 4,
     typography: {
-        fontFamily: 'Montserrat',
+        fontFamily: 'Vidaloka',
         borderRadius: "0rem",
       h1: {
         fontSize: '3.0rem',
-        fontFamily: 'Montserrat',
+        fontFamily: 'Vidaloka',
         textAlign: 'left',
         fontWeight: "bold",
       },
       h2: {
         fontSize: '2.5rem',
-        fontFamily: 'Montserrat',
+        fontFamily: 'Vidaloka',
         fontStyle: 'bold',
         textAlign: 'left',
         fontWeight: "bold",
       },
       h3: {
         fontSize: '2.0rem',
-        fontFamily: 'Montserrat',
+        fontFamily: 'Vidaloka',
         textAlign: 'left',
         fontWeight: "bold",
       },
       h4: {
         fontSize: '1.5rem',
-        fontFamily: 'Montserrat',
+        fontFamily: 'Vidaloka',
         textAlign: 'left',
         fontWeight: "bold",
       },
       body1: {
         fontSize: '1.3rem',
-        fontFamily: 'Montserrat',
+        fontFamily: 'Vidaloka',
         textAlign: 'justify',
         fontWeight: "bold",
       },
       subtitle1:{
         fontSize: '1.0rem',
-        fontFamily: 'Montserrat',
+        fontFamily: 'Vidaloka',
         textAlign: 'justify',
         fontWeight: "bold",
       }
