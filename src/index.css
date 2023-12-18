@@ -114,7 +114,7 @@ code {
 
 .queueDiv {
   width: 80%;
-  height: 90vh;
+  height: 80vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -124,6 +124,7 @@ code {
   padding: 2rem;
   overflow-x: hidden;
   overflow-y: auto;
+  margin-top: 3rem;
 }
 
 .outerOuter{
