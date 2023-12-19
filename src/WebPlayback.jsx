@@ -835,10 +835,11 @@ function WebPlayback(props) {
                         }}
                       />
                     </Button>
+                      <div style={{marginTop: "10rem"}}>
                       <Typography component="h1" variant="h1" color="textPrimary" textAlign="center" gutterBottom>
                         Customize Theme
                       </Typography>
-                      <div style={{marginTop: "2rem"}}>
+                      <div style={{marginTop: "2rem", width: "100%",}}>
                         <Typography component="h3" variant="h3" color="textSecondary" className="centerAligned" gutterBottom>
                             Colors
                         </Typography>
@@ -890,6 +891,7 @@ function WebPlayback(props) {
                             cursor: "pointer",
                             textAlign: "center",
                           }}>Apply</button>
+                  </div>
                   </div>
                 </div>
               </Modal>
