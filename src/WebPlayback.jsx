@@ -969,7 +969,7 @@ function WebPlayback(props) {
                           <Typography component="body1" variant="body1" color="textSecondary" className="centerAligned" gutterBottom>
                             Secondary Background Color:
                           </Typography>
-                          <ColorPicker color={selectedColors.secondaryBg} colors={["#000000", "#ffffff"]} onChange={(color) => setSelectedColors({ ...selectedColors, secondaryBg: color.hex })} />
+                          <ColorPicker variant="predefined" color={selectedColors.secondaryBg} colors={["#000000", "#ffffff"]} onChange={(color) => setSelectedColors({ ...selectedColors, secondaryBg: color.hex })} />
                         </div>
                         <div className='customDiv'>
                           <Typography component="body1" variant="body1" color="textSecondary" className="centerAligned" gutterBottom>
@@ -993,7 +993,7 @@ function WebPlayback(props) {
                           <Typography component="body1" variant="body1" color="textSecondary" className="centerAligned" gutterBottom>
                             Primary Text Color:
                           </Typography>
-                          <ColorPicker variant="predefined" color={color} colors={["#000000", "#ffffff"]} onChange={(color) => setSelectedColors({ ...selectedColors, primaryTxt: color.hex })} />
+                          <ColorPicker variant="predefined" color={selectedColors.primaryTxt} colors={["#000000", "#ffffff"]} onChange={(color) => setSelectedColors({ ...selectedColors, primaryTxt: color.hex })} />
                         </div>
                         <div className='customDiv'>
                           <Typography component="body1" variant="body1" color="textSecondary" className="centerAligned" gutterBottom>
