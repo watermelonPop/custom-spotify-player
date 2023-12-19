@@ -851,7 +851,7 @@ function WebPlayback(props) {
                         <ColorPicker label="Primary Text Color" color="#ffffff" theme={current_theme} />
                         <ColorPicker label="Secondary Text Color" color="#ffffff" theme={current_theme} />
                       </div>
-                      <div style={{marginTop: "2rem", width: "100%"}}>
+                      <div style={{marginTop: "2rem", width: "100%", textAlign: "center"}}>
                         <Typography component="h3" variant="h3" color="textSecondary" className="centerAligned" gutterBottom>
                           Font
                         </Typography>
@@ -876,7 +876,7 @@ function WebPlayback(props) {
                           ))}
                         </select>
                       </div>
-                      <div style={{marginTop: "0.5rem", width: "100%"}}>
+                      <div style={{marginTop: "0.5rem", width: "100%", textAlign: "center" }}>
                         <button style={{
                                 backgroundColor: current_theme.palette.background.light,
                                 color: current_theme.palette.primary.main,
