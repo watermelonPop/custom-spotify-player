@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { ThemeProvider } from "@mui/material";
+import { createTheme, responsiveFontSizes } from '@mui/material';
+import '@fontsource/montserrat';
+import "@fontsource/gamja-flower";
+import '@fontsource/courier-prime';
+import '@fontsource/vidaloka';
 import defaultTheme from "./defaultTheme";
 import strawberryTheme from "./strawberryTheme";
 import pjTheme from "./pjTheme";
 import tteokTheme from "./tteokTheme";
 import ambTheme from "./ambTheme";
 import earthTheme from "./earthTheme";
+import customTheme from "./customTheme";
 import { Typography } from '@mui/material';
 import { Button } from '@mui/material';
 import { Modal } from '@mui/material';
@@ -55,11 +61,20 @@ function WebPlayback(props) {
   const [isCustomModalOpen, setCustomModalOpen] = useState(false);
   const [nextTracks, setNextTracks] = useState([]);
   const [prevTracks, setPrevTracks] = useState([]);
-  const themes = [defaultTheme, strawberryTheme, pjTheme, tteokTheme, ambTheme, earthTheme];
+  const themes = [defaultTheme, strawberryTheme, pjTheme, tteokTheme, ambTheme, earthTheme, customTheme];
   const [playerName, setPlayerName] = useState("Custom Spotify Player");
   const fonts = ["Montserrat", "Courier Prime", "Vidaloka", "Gamja Flower"];
-
-  //const [selectedTheme, setSelectedTheme] = useState(defaultTheme);
+  const [selectedFont, setSelectedFont] = useState(fonts[0]);
+  const [selectedColors, setSelectedColors] = useState({
+    primaryBg: defaultTheme.palette.background.default,
+    secondaryBg: defaultTheme.palette.background.dark,
+    playBtns: defaultTheme.palette.primary.main,
+    primaryBtns: defaultTheme.palette.secondary.main,
+    touchBar: defaultTheme.palette.secondary.dark,
+    primaryTxt: defaultTheme.palette.text.primary,
+    secondaryTxt: defaultTheme.palette.text.secondary
+  });
+  const [hasRoundedCorners, setHasRoundedCorners] = useState(false);
 
 
 
@@ -227,6 +242,103 @@ function WebPlayback(props) {
   const handleRefresh = () => {
     window.location.reload();
   };
+
+  const handleRoundedCornersChange = (event) => {
+    setHasRoundedCorners(event.target.checked);
+  };
+
+  const handleApplySettings = () => {
+    // Create a new custom theme based on the default theme
+    const fontW = "normal";
+    if(selectedFont == 'Montserrat'){
+      fontW = "bold";
+    }
+
+    const borderR = "0rem";
+    if(hasRoundedCorners){
+      borderR = "1rem"
+    }
+
+    customTheme = responsiveFontSizes(
+      createTheme({
+        name: "custom-theme",
+        spacing: 4,
+        typography: {
+            fontFamily: selectedFont,
+            borderRadius: borderR,
+          h1: {
+            fontSize: '3.0rem',
+            fontFamily: selectedFont,
+            textAlign: 'left',
+            fontWeight: fontW,
+          },
+          h2: {
+            fontSize: '2.5rem',
+            fontFamily: selectedFont,
+            fontStyle: 'bold',
+            textAlign: 'left',
+            fontWeight: fontW,
+          },
+          h3: {
+            fontSize: '2.0rem',
+            fontFamily: selectedFont,
+            textAlign: 'left',
+            fontWeight: fontW,
+          },
+          h4: {
+            fontSize: '1.5rem',
+            fontFamily: selectedFont,
+            textAlign: 'left',
+            fontWeight: fontW,
+          },
+          body1: {
+            fontSize: '1.3rem',
+            fontFamily: selectedFont,
+            textAlign: 'justify',
+            fontWeight: fontW,
+          },
+          subtitle1:{
+            fontSize: '1.0rem',
+            fontFamily: selectedFont,
+            textAlign: 'justify',
+            fontWeight: fontW,
+          }
+        },
+        palette: {
+          background: {
+            default: selectedColors.primaryBg,
+            dark: selectedColors.secondaryBg,
+            light: '#FFFFFF',
+          },
+          primary: {
+            main: selectedColors.playBtns,
+          },
+          secondary: {
+            main: selectedColors.primaryBtns,
+            dark: selectedColors.touchBar,
+          },
+          error: {
+            main: '#F52735', // red
+          },
+          warning: {
+            main: '#F52735', // orange
+          },
+          info: {
+            main: '#2C3A6C', // gray
+          },
+          success: {
+            main: '#09FE00', // green
+          },
+          text: {
+            primary: selectedColors.primaryTxt, 
+            secondary: selectedColors.secondaryTxt, 
+          },
+        },
+      })
+    );
+  }
+    
+
   
 
   if (!is_active) {
@@ -843,13 +955,13 @@ function WebPlayback(props) {
                         <Typography component="h3" variant="h3" color="textSecondary" className="centerAligned" gutterBottom>
                             Colors
                         </Typography>
-                        <ColorPicker label="Primary Background Color" color="#000000" theme={current_theme} />
-                        <ColorPicker label="Secondary Background Color" color="#ffffff" theme={current_theme} />
-                        <ColorPicker label="Play Buttons Color" color="#ffffff" theme={current_theme} />
-                        <ColorPicker label="Primary Buttons Color" color="#ffffff" theme={current_theme} />
-                        <ColorPicker label="Touch Bar Color" color="#ffffff" theme={current_theme} />
-                        <ColorPicker label="Primary Text Color" color="#ffffff" theme={current_theme} />
-                        <ColorPicker label="Secondary Text Color" color="#ffffff" theme={current_theme} />
+                        <ColorPicker label="Primary Background Color" color="#000000" theme={current_theme} onChange={(color) => setSelectedColors({ ...selectedColors, primaryBg: color.hex })}/>
+                        <ColorPicker label="Secondary Background Color" color="#ffffff" theme={current_theme} onChange={(color) => setSelectedColors({ ...selectedColors, secondaryBg: color.hex })}/>
+                        <ColorPicker label="Play Buttons Color" color="#ffffff" theme={current_theme} onChange={(color) => setSelectedColors({ ...selectedColors, playBtns: color.hex })}/>
+                        <ColorPicker label="Primary Buttons Color" color="#ffffff" theme={current_theme} onChange={(color) => setSelectedColors({ ...selectedColors, primaryBtns: color.hex })}/>
+                        <ColorPicker label="Touch Bar Color" color="#ffffff" theme={current_theme} onChange={(color) => setSelectedColors({ ...selectedColors, touchBar: color.hex })}/>
+                        <ColorPicker label="Primary Text Color" color="#ffffff" theme={current_theme} onChange={(color) => setSelectedColors({ ...selectedColors, primaryTxt: color.hex })}/>
+                        <ColorPicker label="Secondary Text Color" color="#ffffff" theme={current_theme} onChange={(color) => setSelectedColors({ ...selectedColors, secondaryTxt: color.hex })}/>
                       </div>
                       <div style={{marginTop: "2rem", width: "100%", textAlign: "center"}}>
                         <Typography component="h3" variant="h3" color="textSecondary" className="centerAligned" gutterBottom>
@@ -868,13 +980,25 @@ function WebPlayback(props) {
                           fontWeight: "bold",
                           padding: "0.5rem",
                           margin: "0.5rem",
-                        }}>
+                        }} value={selectedFont} onChange={(e) => setSelectedFont(e.target.value)}>
                           {fonts.map((font, index) => (
                             <option key={index} value={font}>
                               {font}
                             </option>
                           ))}
                         </select>
+                      </div>
+                      <div style={{marginTop: "2rem", width: "100%", textAlign: "center"}}>
+                        <Typography component="h3" variant="h3" color="textSecondary" className="centerAligned" gutterBottom>
+                          Corners
+                        </Typography>
+                        <div style={{display: "flex"}}>
+                          <input type="checkbox" id="roundedCorners" name="roundedCorners" value="roundedCorners" onChange={handleRoundedCornersChange}
+        checked={hasRoundedCorners}></input>
+                          <Typography component="body1" variant="body1" color="textSecondary" className="centerAligned" gutterBottom>
+                            Rounded Corners
+                          </Typography>
+                        </div>
                       </div>
                       <div style={{marginTop: "0.5rem", width: "100%", textAlign: "center" }}>
                         <button style={{
@@ -890,7 +1014,7 @@ function WebPlayback(props) {
                                 padding: "0.5rem",
                                 cursor: "pointer",
                                 textAlign: "center",
-                              }}>Apply</button>
+                              }} onClick={handleApplySettings}>Apply</button>
                       </div>
                   </div>
                   </div>
