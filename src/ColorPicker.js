@@ -50,7 +50,7 @@ const ColorPicker = ({ label, color, theme, onChange }) => {
             justifyContent: 'center',
             height: '100%',
           }}>
-            <SketchPicker color={color} onChangeComplete={handleChangeComplete} />
+            <SketchPicker key={color} color={color} onChangeComplete={handleChangeComplete} />
             <Button onClick={handleColorPickerClose}>Close</Button>
           </div>
         </Modal>

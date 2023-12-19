@@ -811,7 +811,7 @@ function WebPlayback(props) {
                         }}
                       />
                     </Button>
-                    <div style={{marginTop: "14rem"}}>
+                    <div style={{marginTop: "15rem"}}>
                       <Typography component="h1" variant="h1" color="textPrimary" textAlign="center" gutterBottom>
                         Settings
                       </Typography>
@@ -951,7 +951,7 @@ function WebPlayback(props) {
                         }}
                       />
                     </Button>
-                      <div style={{marginTop: "13rem"}}>
+                      <div style={{marginTop: "15rem"}}>
                       <Typography component="h1" variant="h1" color="textPrimary" textAlign="center" gutterBottom>
                         Customize Theme
                       </Typography>
@@ -999,7 +999,7 @@ function WebPlayback(props) {
                         <div style={{display: "flex"}}>
                           <input type="checkbox" id="roundedCorners" name="roundedCorners" value="roundedCorners" onChange={handleRoundedCornersChange}
         checked={hasRoundedCorners}></input>
-                          <span class="checkmark"></span>
+                          <span className="checkmark"></span>
                           <Typography component="body1" variant="body1" color="textSecondary" className="centerAligned" gutterBottom>
                             Rounded Corners
                           </Typography>
