@@ -204,57 +204,43 @@ code {
   user-select: none;
 }
 
-/* Hide the browser's default checkbox */
-.checkboxContain input {
-  opacity: 0;
+
+
+.customCheckbox {
+  position: relative;
   cursor: pointer;
-  position: absolute;
-  height: 0;
-  width: 0;
+  padding-left: 25px;
 }
 
-/* Create a custom checkbox */
 .checkmark {
   position: absolute;
   top: 0;
   left: 0;
-  height: 25px;
-  width: 25px;
+  height: 20px;
+  width: 20px;
   background-color: #eee;
-  border: 1px solid #ccc; /* Add a border for better visibility */
 }
 
-/* On mouse-over, add a grey background color */
-.checkboxContain:hover .checkmark {
-  background-color: #ccc;
+.customCheckbox input[type="checkbox"]:checked + .checkmark {
+  background-color: #2196f3;
 }
 
-/* When the checkbox is checked, add a blue background */
-.checkboxContain input:checked ~ .checkmark {
-  background-color: #2196F3;
-}
-
-/* Style the checkmark/indicator */
 .checkmark:after {
   content: "";
   position: absolute;
   display: none;
 }
 
-/* Show the checkmark when checked */
-.checkboxContain input:checked ~ .checkmark:after {
+.customCheckbox input[type="checkbox"]:checked + .checkmark:after {
   display: block;
 }
 
-/* Style the checkmark/indicator */
-.checkboxContain .checkmark:after {
-  content: "";
-  position: absolute;
-  left: 9px;
-  top: 5px;
+.customCheckbox .checkmark:after {
+  left: 7px;
+  top: 3px;
   width: 5px;
   height: 10px;
   border: solid white;
-  border-width: 0 3px 3px 0;
+  border-width: 0 2px 2px 0;
   transform: rotate(45deg);
 }

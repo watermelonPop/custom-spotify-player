@@ -15,6 +15,7 @@ import customTheme from "./customTheme";
 import { Typography } from '@mui/material';
 import { Button } from '@mui/material';
 import { Modal } from '@mui/material';
+import { ColorPicker } from 'mui-color';
 import PauseIcon from '@mui/icons-material/Pause';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
@@ -25,7 +26,6 @@ import CloseIcon from '@mui/icons-material/Close';
 import HistoryIcon from '@mui/icons-material/History';
 import SettingsIcon from '@mui/icons-material/Settings';
 import RefreshIcon from '@mui/icons-material/Refresh';
-import ColorPicker from "./ColorPicker";
 
 const track = {
   name: "",
@@ -811,7 +811,7 @@ function WebPlayback(props) {
                         }}
                       />
                     </Button>
-                    <div style={{marginTop: "15rem"}}>
+                    <div style={{marginTop: "18rem"}}>
                       <Typography component="h1" variant="h1" color="textPrimary" textAlign="center" gutterBottom>
                         Settings
                       </Typography>
@@ -951,7 +951,7 @@ function WebPlayback(props) {
                         }}
                       />
                     </Button>
-                      <div style={{marginTop: "15rem"}}>
+                      <div style={{marginTop: "18rem"}}>
                       <Typography component="h1" variant="h1" color="textPrimary" textAlign="center" gutterBottom>
                         Customize Theme
                       </Typography>
@@ -959,13 +959,48 @@ function WebPlayback(props) {
                         <Typography component="h3" variant="h3" color="textSecondary" className="centerAligned" gutterBottom>
                             Colors
                         </Typography>
-                        <ColorPicker label="Primary Background Color" color="#000000" theme={current_theme} onChange={(color) => setSelectedColors({ ...selectedColors, primaryBg: color.hex })}/>
-                        <ColorPicker label="Secondary Background Color" color="#ffffff" theme={current_theme} onChange={(color) => setSelectedColors({ ...selectedColors, secondaryBg: color.hex })}/>
-                        <ColorPicker label="Play Buttons Color" color="#ffffff" theme={current_theme} onChange={(color) => setSelectedColors({ ...selectedColors, playBtns: color.hex })}/>
-                        <ColorPicker label="Primary Buttons Color" color="#ffffff" theme={current_theme} onChange={(color) => setSelectedColors({ ...selectedColors, primaryBtns: color.hex })}/>
-                        <ColorPicker label="Touch Bar Color" color="#ffffff" theme={current_theme} onChange={(color) => setSelectedColors({ ...selectedColors, touchBar: color.hex })}/>
-                        <ColorPicker label="Primary Text Color" color="#ffffff" theme={current_theme} onChange={(color) => setSelectedColors({ ...selectedColors, primaryTxt: color.hex })}/>
-                        <ColorPicker label="Secondary Text Color" color="#ffffff" theme={current_theme} onChange={(color) => setSelectedColors({ ...selectedColors, secondaryTxt: color.hex })}/>
+                        <div className='customDiv'>
+                          <Typography component="body1" variant="body1" color="textSecondary" className="centerAligned" gutterBottom>
+                            Primary Background Color:
+                          </Typography>
+                          <ColorPicker defaultValue={selectedColors.primaryBg} onChange={(color) => setSelectedColors({ ...selectedColors, primaryBg: color.hex })} />
+                        </div>
+                        <div className='customDiv'>
+                          <Typography component="body1" variant="body1" color="textSecondary" className="centerAligned" gutterBottom>
+                            Secondary Background Color:
+                          </Typography>
+                          <ColorPicker defaultValue={selectedColors.secondaryBg} onChange={(color) => setSelectedColors({ ...selectedColors, secondaryBg: color.hex })} />
+                        </div>
+                        <div className='customDiv'>
+                          <Typography component="body1" variant="body1" color="textSecondary" className="centerAligned" gutterBottom>
+                            Play Buttons Color:
+                          </Typography>
+                          <ColorPicker defaultValue={selectedColors.playBtns} onChange={(color) => setSelectedColors({ ...selectedColors, playBtns: color.hex })} />
+                        </div>
+                        <div className='customDiv'>
+                          <Typography component="body1" variant="body1" color="textSecondary" className="centerAligned" gutterBottom>
+                            Primary Buttons Color:
+                          </Typography>
+                          <ColorPicker defaultValue={selectedColors.primaryBtns} onChange={(color) => setSelectedColors({ ...selectedColors, primaryBtns: color.hex })} />
+                        </div>
+                        <div className='customDiv'>
+                          <Typography component="body1" variant="body1" color="textSecondary" className="centerAligned" gutterBottom>
+                            Touch Bar Color:
+                          </Typography>
+                          <ColorPicker defaultValue={selectedColors.touchBar} onChange={(color) => setSelectedColors({ ...selectedColors, touchBar: color.hex })} />
+                        </div>
+                        <div className='customDiv'>
+                          <Typography component="body1" variant="body1" color="textSecondary" className="centerAligned" gutterBottom>
+                            Primary Text Color:
+                          </Typography>
+                          <ColorPicker defaultValue={selectedColors.primaryTxt} onChange={(color) => setSelectedColors({ ...selectedColors, primaryTxt: color.hex })} />
+                        </div>
+                        <div className='customDiv'>
+                          <Typography component="body1" variant="body1" color="textSecondary" className="centerAligned" gutterBottom>
+                            Secondary Text Color:
+                          </Typography>
+                          <ColorPicker defaultValue={selectedColors.secondaryTxt} onChange={(color) => setSelectedColors({ ...selectedColors, secondaryTxt: color.hex })} />
+                        </div> 
                       </div>
                       <div style={{marginTop: "2rem", width: "100%", textAlign: "center"}}>
                         <Typography component="h3" variant="h3" color="textSecondary" className="centerAligned" gutterBottom>
@@ -996,11 +1031,26 @@ function WebPlayback(props) {
                         <Typography component="h3" variant="h3" color="textSecondary" className="centerAligned" gutterBottom>
                           Corners
                         </Typography>
-                        <div style={{display: "flex"}}>
-                          <input type="checkbox" id="roundedCorners" name="roundedCorners" value="roundedCorners" onChange={handleRoundedCornersChange}
-        checked={hasRoundedCorners}></input>
-                          <span className="checkmark"></span>
-                          <Typography component="body1" variant="body1" color="textSecondary" className="centerAligned" gutterBottom>
+                        <div style={{ display: "flex", alignItems: "center" }}>
+                          <label htmlFor="roundedCorners" className="customCheckbox">
+                            <input
+                              type="checkbox"
+                              id="roundedCorners"
+                              name="roundedCorners"
+                              value="roundedCorners"
+                              onChange={handleRoundedCornersChange}
+                              checked={hasRoundedCorners}
+                              style={{ display: "none" }}
+                            />
+                            <span className="checkmark"></span>
+                          </label>
+                          <Typography
+                            component="body1"
+                            variant="body1"
+                            color="textSecondary"
+                            className="centerAligned"
+                            gutterBottom
+                          >
                             Rounded Corners
                           </Typography>
                         </div>
