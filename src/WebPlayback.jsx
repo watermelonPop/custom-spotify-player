@@ -268,6 +268,7 @@ function WebPlayback(props) {
 
   const handleApplySettings = () => {
     // Create a new custom theme based on the default theme
+    console.log("applying custom settings");
     let fontW = "normal";
     if (selectedFont === 'Montserrat') {
       fontW = "bold";
@@ -357,7 +358,14 @@ function WebPlayback(props) {
       })
     );
 
+    console.log("custom theme created");
+
     themes[themes.length - 1] = updatedTheme;
+
+    console.log("custom theme updated");
+
+    handleCustomModalClose();
+
   }
     
 
@@ -970,7 +978,7 @@ function WebPlayback(props) {
                         }}
                       />
                     </Button>
-                      <div style={{marginTop: "21rem"}}>
+                      <div style={{marginTop: "25rem"}}>
                       <Typography component="h1" variant="h1" color="textPrimary" textAlign="center" gutterBottom>
                         Customize Theme
                       </Typography>

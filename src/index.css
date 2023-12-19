@@ -147,12 +147,9 @@ code {
 }
 
 .customDiv{
-  display: flex;
   align-items: center;
   width: 100%;
   margin: 0 auto;
-  padding: 1rem;
-  margin-bottom: 1rem;
   justify-content: space-between;
 }
 
