@@ -249,15 +249,16 @@ function WebPlayback(props) {
 
   const handleApplySettings = () => {
     // Create a new custom theme based on the default theme
-    const fontW = "normal";
-    if(selectedFont == 'Montserrat'){
+    let fontW = "normal";
+    if (selectedFont === 'Montserrat') {
       fontW = "bold";
     }
 
-    const borderR = "0rem";
-    if(hasRoundedCorners){
-      borderR = "1rem"
+    let borderR = "0rem";
+    if (hasRoundedCorners) {
+      borderR = "1rem";
     }
+
 
     customTheme = responsiveFontSizes(
       createTheme({

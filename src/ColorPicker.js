@@ -30,15 +30,18 @@ const ColorPicker = ({ label, color, theme, onChange }) => {
                         </Typography>
                         <div
                                 style={{
-                                backgroundColor: color,
-                                width: '30px',
-                                height: '30px',
-                                cursor: 'pointer',
-                                borderStyle: "solid",
-                                borderWidth: "5px",
-                                borderColor: "white",
+                                        backgroundColor: color,
+                                        width: '30px',
+                                        height: '30px',
+                                        cursor: 'pointer',
+                                        borderStyle: "solid",
+                                        borderWidth: "5px",
+                                        borderColor: "white",
                                 }}
-                                onClick={handleColorPickerOpen}
+                                onClick={(e) => {
+                                        e.stopPropagation(); // Stop the event from propagating to parent elements
+                                        handleColorPickerOpen();
+                                }}
                         />
                 </div>
                 <Modal open={isColorPickerOpen} onClose={handleColorPickerClose}>
