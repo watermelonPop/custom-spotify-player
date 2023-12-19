@@ -193,8 +193,6 @@ code {
   padding: 0.5rem;
 }
 
-
-/* Customize the label (the container) */
 .checkboxContain {
   position: relative;
   padding-left: 35px;
@@ -204,8 +202,6 @@ code {
   user-select: none;
 }
 
-
-
 .customCheckbox {
   position: relative;
   cursor: pointer;
@@ -214,7 +210,8 @@ code {
 
 .checkmark {
   position: absolute;
-  top: 0;
+  top: 50%;
+  transform: translateY(-50%);
   left: 0;
   height: 20px;
   width: 20px;
@@ -236,11 +233,15 @@ code {
 }
 
 .customCheckbox .checkmark:after {
-  left: 7px;
+  left: 6px;
   top: 3px;
   width: 5px;
   height: 10px;
   border: solid white;
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
+}
+
+.MuiInputBase-input{
+  width: fit-content;
 }
