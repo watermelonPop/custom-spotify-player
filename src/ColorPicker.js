@@ -25,7 +25,7 @@ const ColorPicker = ({ label, color, theme, onChange }) => {
   return (
         <ThemeProvider theme={theme || defaultTheme}>
                 <div className='customDiv'>
-                        <Typography component="subtitle1" variant="subtitle1" color="textSecondary" className="centerAligned" gutterBottom>
+                        <Typography component="body1" variant="body1" color="textSecondary" className="centerAligned" gutterBottom>
                                 {label}: 
                         </Typography>
                         <div

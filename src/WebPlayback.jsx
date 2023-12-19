@@ -695,7 +695,7 @@ function WebPlayback(props) {
                         }}
                       />
                     </Button>
-                    <div style={{marginTop: "10rem"}}>
+                    <div style={{marginTop: "11rem"}}>
                       <Typography component="h1" variant="h1" color="textPrimary" textAlign="center" gutterBottom>
                         Settings
                       </Typography>
@@ -851,7 +851,7 @@ function WebPlayback(props) {
                         <ColorPicker label="Primary Text Color" color="#ffffff" theme={current_theme} />
                         <ColorPicker label="Secondary Text Color" color="#ffffff" theme={current_theme} />
                       </div>
-                      <div style={{marginTop: "2rem"}}>
+                      <div style={{marginTop: "2rem", width: "100%"}}>
                         <Typography component="h3" variant="h3" color="textSecondary" className="centerAligned" gutterBottom>
                           Font
                         </Typography>
@@ -876,21 +876,22 @@ function WebPlayback(props) {
                           ))}
                         </select>
                       </div>
-
-                    <button style={{
-                            backgroundColor: current_theme.palette.background.light,
-                            color: current_theme.palette.primary.main,
-                            borderStyle: "solid",
-                            borderColor: current_theme.palette.background.light,
-                            borderRadius: "0.5rem",
-                            borderWidth: "0.25rem",
-                            fontFamily: current_theme.typography.fontFamily,
-                            fontSize: current_theme.typography.subtitle1.fontSize,
-                            fontWeight: "bold",
-                            padding: "0.5rem",
-                            cursor: "pointer",
-                            textAlign: "center",
-                          }}>Apply</button>
+                      <div style={{marginTop: "0.5rem", width: "100%"}}>
+                        <button style={{
+                                backgroundColor: current_theme.palette.background.light,
+                                color: current_theme.palette.primary.main,
+                                borderStyle: "solid",
+                                borderColor: current_theme.palette.background.light,
+                                borderRadius: "0.5rem",
+                                borderWidth: "0.25rem",
+                                fontFamily: current_theme.typography.fontFamily,
+                                fontSize: current_theme.typography.subtitle1.fontSize,
+                                fontWeight: "bold",
+                                padding: "0.5rem",
+                                cursor: "pointer",
+                                textAlign: "center",
+                              }}>Apply</button>
+                      </div>
                   </div>
                   </div>
                 </div>
