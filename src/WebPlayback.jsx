@@ -260,7 +260,7 @@ function WebPlayback(props) {
     }
 
 
-    customTheme = responsiveFontSizes(
+    let updatedTheme = responsiveFontSizes(
       createTheme({
         name: "custom-theme",
         spacing: 4,
@@ -337,6 +337,8 @@ function WebPlayback(props) {
         },
       })
     );
+
+    themes[themes.length - 1] = updatedTheme;
   }
     
 
@@ -387,6 +389,7 @@ function WebPlayback(props) {
                           color: current_theme.palette.secondary.main,
                           fontSize: "1.7rem",
                           marginRight: "1vw",
+                          filter: "drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))",
                         }}
                       />
                     </Button>
@@ -808,7 +811,7 @@ function WebPlayback(props) {
                         }}
                       />
                     </Button>
-                    <div style={{marginTop: "11rem"}}>
+                    <div style={{marginTop: "14rem"}}>
                       <Typography component="h1" variant="h1" color="textPrimary" textAlign="center" gutterBottom>
                         Settings
                       </Typography>
@@ -948,7 +951,7 @@ function WebPlayback(props) {
                         }}
                       />
                     </Button>
-                      <div style={{marginTop: "10rem"}}>
+                      <div style={{marginTop: "13rem"}}>
                       <Typography component="h1" variant="h1" color="textPrimary" textAlign="center" gutterBottom>
                         Customize Theme
                       </Typography>
@@ -989,13 +992,14 @@ function WebPlayback(props) {
                           ))}
                         </select>
                       </div>
-                      <div style={{marginTop: "2rem", width: "100%", textAlign: "center"}}>
+                      <div className='checkboxContain' style={{marginTop: "2rem", width: "100%", textAlign: "center"}}>
                         <Typography component="h3" variant="h3" color="textSecondary" className="centerAligned" gutterBottom>
                           Corners
                         </Typography>
                         <div style={{display: "flex"}}>
                           <input type="checkbox" id="roundedCorners" name="roundedCorners" value="roundedCorners" onChange={handleRoundedCornersChange}
         checked={hasRoundedCorners}></input>
+                          <span class="checkmark"></span>
                           <Typography component="body1" variant="body1" color="textSecondary" className="centerAligned" gutterBottom>
                             Rounded Corners
                           </Typography>
