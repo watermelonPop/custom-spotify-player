@@ -810,6 +810,31 @@ function WebPlayback(props) {
                     fontSize: "1.7rem",
                     opacity: "100%",
                     position: "relative", }}>
+                      <Button
+                      className="ctrlBtn"
+                      onClick={handleCustomModalClose}
+                      style={{
+                        WebkitAppearance: "none",
+                        height: "0.5rem",
+                        borderRadius: "0.25rem",
+                        background: "transparent",
+                        position: "absolute",
+                        top: "2rem",
+                        right: "0.5rem",
+                      }}
+                    >
+                      <CloseIcon
+                        style={{
+                          backgroundColor: "transparent",
+                          outline: "none",
+                          borderStyle: "none",
+                          color: current_theme.palette.secondary.main,
+                          fontSize: "1.7rem",
+                          marginRight: "1vw",
+                          filter: "drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))",
+                        }}
+                      />
+                    </Button>
                       <Typography component="h1" variant="h1" color="textPrimary" textAlign="center" gutterBottom>
                         Customize Theme
                       </Typography>
