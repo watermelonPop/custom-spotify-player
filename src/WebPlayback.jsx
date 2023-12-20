@@ -61,7 +61,7 @@ function WebPlayback(props) {
   const [isCustomModalOpen, setCustomModalOpen] = useState(false);
   const [nextTracks, setNextTracks] = useState([]);
   const [prevTracks, setPrevTracks] = useState([]);
-  const themes = [defaultTheme, strawberryTheme, pjTheme, tteokTheme, ambTheme, earthTheme, customTheme];
+  const [themes, setThemes] = useState([defaultTheme, strawberryTheme, pjTheme, tteokTheme, ambTheme, earthTheme, customTheme]);
   const [playerName, setPlayerName] = useState("Custom Spotify Player");
   const fonts = ["Montserrat", "Courier Prime", "Vidaloka", "Gamja Flower"];
   const [selectedFont, setSelectedFont] = useState(fonts[0]);
@@ -291,7 +291,7 @@ function WebPlayback(props) {
 
     let updatedTheme = responsiveFontSizes(
       createTheme({
-        name: "custom-theme",
+        name: "new-custom-theme",
         spacing: 4,
         typography: {
             fontFamily: selectedFont,
@@ -369,14 +369,27 @@ function WebPlayback(props) {
       })
     );
 
+    setSelectedColors({
+      primaryBg: selectedColors.primaryBg,
+      secondaryBg: selectedColors.secondaryBg,
+      playBtns: selectedColors.playBtns,
+      primaryBtns: selectedColors.primaryBtns,
+      touchBar: selectedColors.touchBar,
+      primaryTxt: selectedColors.primaryTxt,
+      secondaryTxt: selectedColors.secondaryTxt
+    });
+
     console.log("custom theme created");
 
-    themes[themes.length - 1] = updatedTheme;
+    const updatedThemes = [...themes];
+    updatedThemes[updatedThemes.length - 1] = updatedTheme;
+
+    setThemes(updatedThemes);
 
     console.log("custom theme updated");
 
-    handleCustomModalClose();
 
+    handleCustomModalClose();
   }
     
 
@@ -989,7 +1002,7 @@ function WebPlayback(props) {
                         }}
                       />
                     </Button>
-                      <div style={{marginTop: "2rem"}}>
+                      <div style={{marginTop: "12rem"}}>
                       <Typography component="h1" variant="h1" color="textPrimary" textAlign="center" gutterBottom>
                         Customize Theme
                       </Typography>
