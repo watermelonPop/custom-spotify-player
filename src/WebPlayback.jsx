@@ -1005,7 +1005,7 @@ function WebPlayback(props) {
                         }}
                       />
                     </Button>
-                      <div style={{marginTop: "17rem"}}>
+                      <div style={{marginTop: "17rem", paddingTop: "5rem"}}>
                       <Typography component="h1" variant="h1" color="textPrimary" textAlign="center" gutterBottom>
                         Customize Theme
                       </Typography>
@@ -1017,43 +1017,43 @@ function WebPlayback(props) {
                           <Typography component="body1" variant="body1" color="textSecondary" className="centerAligned" gutterBottom>
                             Primary Background Color:
                           </Typography>
-                          <ColorPicker variant="free" color={selectedColors.primaryBg} onChange={(color) => handleColorChange('primaryBg', color.hex)}  />
+                          <ColorPicker variant="free" color={selectedColors.primaryBg} onChange={(color) => handleColorChange('primaryBg', color)}  />
                         </div>
                         <div className='customDiv'>
                           <Typography component="body1" variant="body1" color="textSecondary" className="centerAligned" gutterBottom>
                             Secondary Background Color:
                           </Typography>
-                          <ColorPicker variant="free" color={selectedColors.secondaryBg} onChange={(color) => handleColorChange('secondaryBg', color.hex)} />
+                          <ColorPicker variant="free" color={selectedColors.secondaryBg} onChange={(color) => handleColorChange('secondaryBg', color)} />
                         </div>
                         <div className='customDiv'>
                           <Typography component="body1" variant="body1" color="textSecondary" className="centerAligned" gutterBottom>
                             Play Buttons Color:
                           </Typography>
-                          <ColorPicker variant="free" color={selectedColors.playBtns} onChange={(color) => handleColorChange('playBtns', color.hex)} />
+                          <ColorPicker variant="free" color={selectedColors.playBtns} onChange={(color) => handleColorChange('playBtns', color)} />
                         </div>
                         <div className='customDiv'>
                           <Typography component="body1" variant="body1" color="textSecondary" className="centerAligned" gutterBottom>
                             Primary Buttons Color:
                           </Typography>
-                          <ColorPicker variant="free" color={selectedColors.primaryBtns} onChange={(color) => handleColorChange('primaryBtns', color.hex)} />
+                          <ColorPicker variant="free" color={selectedColors.primaryBtns} onChange={(color) => handleColorChange('primaryBtns', color)} />
                         </div>
                         <div className='customDiv'>
                           <Typography component="body1" variant="body1" color="textSecondary" className="centerAligned" gutterBottom>
                             Touch Bar Color:
                           </Typography>
-                          <ColorPicker variant="free" color={selectedColors.touchBar} onChange={(color) => handleColorChange('touchBar', color.hex)} />
+                          <ColorPicker variant="free" color={selectedColors.touchBar} onChange={(color) => handleColorChange('touchBar', color)} />
                         </div>
                         <div className='customDiv'>
                           <Typography component="body1" variant="body1" color="textSecondary" className="centerAligned" gutterBottom>
                             Primary Text Color:
                           </Typography>
-                          <ColorPicker variant="free" color={selectedColors.primaryTxt} onChange={(color) => handleColorChange('primaryTxt', color.hex)} />
+                          <ColorPicker variant="free" color={selectedColors.primaryTxt} onChange={(color) => handleColorChange('primaryTxt', color)} />
                         </div>
                         <div className='customDiv'>
                           <Typography component="body1" variant="body1" color="textSecondary" className="centerAligned" gutterBottom>
                             Secondary Text Color:
                           </Typography>
-                          <ColorPicker variant="free" color={selectedColors.secondaryTxt} onChange={(color) => handleColorChange('secondaryTxt', color.hex)} width="100%"/>
+                          <ColorPicker variant="free" color={selectedColors.secondaryTxt} onChange={(color) => handleColorChange('secondaryTxt', color)} width="100%"/>
                         </div> 
                       </div>
                       <div style={{marginTop: "2rem", width: "100%", textAlign: "center"}}>
