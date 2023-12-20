@@ -48,6 +48,7 @@ const theme = responsiveFontSizes(
     },
     palette: {
       background: {
+        main: '#f0465b',
         default: '#f0465b',
         dark: '#f6838c',
         light: '#000000',
@@ -72,6 +73,7 @@ const theme = responsiveFontSizes(
         main: '#09FE00', // green
       },
       text: {
+        main: '#000000', 
         primary: '#000000', 
         secondary: '#fef8e6', 
       },

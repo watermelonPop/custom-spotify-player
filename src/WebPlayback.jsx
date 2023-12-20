@@ -277,59 +277,59 @@ function WebPlayback(props) {
         name: "custom-theme",
         spacing: 4,
         typography: {
-            fontFamily: selectedFont,
+            fontFamily: String(selectedFont),
             borderRadius: borderR,
           h1: {
             fontSize: '3.0rem',
-            fontFamily: selectedFont,
+            fontFamily: String(selectedFont),
             textAlign: 'left',
             fontWeight: fontW,
           },
           h2: {
             fontSize: '2.5rem',
-            fontFamily: selectedFont,
+            fontFamily: String(selectedFont),
             fontStyle: 'bold',
             textAlign: 'left',
             fontWeight: fontW,
           },
           h3: {
             fontSize: '2.0rem',
-            fontFamily: selectedFont,
+            fontFamily: String(selectedFont),
             textAlign: 'left',
             fontWeight: fontW,
           },
           h4: {
             fontSize: '1.5rem',
-            fontFamily: selectedFont,
+            fontFamily: String(selectedFont),
             textAlign: 'left',
             fontWeight: fontW,
           },
           body1: {
             fontSize: '1.3rem',
-            fontFamily: selectedFont,
+            fontFamily: String(selectedFont),
             textAlign: 'justify',
             fontWeight: fontW,
           },
           subtitle1:{
             fontSize: '1.0rem',
-            fontFamily: selectedFont,
+            fontFamily: String(selectedFont),
             textAlign: 'justify',
             fontWeight: fontW,
           }
         },
         palette: {
           background: {
-            main: selectedColors.primaryBg,
-            default: selectedColors.primaryBg,
-            dark: selectedColors.secondaryBg,
+            main: String(selectedColors.primaryBg),
+            default: String(selectedColors.primaryBg),
+            dark: String(selectedColors.secondaryBg),
             light: '#FFFFFF',
           },
           primary: {
-            main: selectedColors.playBtns,
+            main: String(selectedColors.playBtns),
           },
           secondary: {
-            main: selectedColors.primaryBtns,
-            dark: selectedColors.touchBar,
+            main: String(selectedColors.primaryBtns),
+            dark: String(selectedColors.touchBar),
           },
           error: {
             main: '#F52735', // red
@@ -344,9 +344,9 @@ function WebPlayback(props) {
             main: '#09FE00', // green
           },
           text: {
-            main: selectedColors.primaryTxt,
-            primary: selectedColors.primaryTxt, 
-            secondary: selectedColors.secondaryTxt, 
+            main: String(selectedColors.primaryTxt),
+            primary: String(selectedColors.primaryTxt), 
+            secondary: String(selectedColors.secondaryTxt), 
           },
         },
       })
@@ -972,7 +972,7 @@ function WebPlayback(props) {
                         }}
                       />
                     </Button>
-                      <div style={{marginTop: "25rem"}}>
+                      <div style={{marginTop: "30rem"}}>
                       <Typography component="h1" variant="h1" color="textPrimary" textAlign="center" gutterBottom>
                         Customize Theme
                       </Typography>
