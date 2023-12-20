@@ -865,7 +865,7 @@ function WebPlayback(props) {
                         }}
                       />
                     </Button>
-                    <div style={{marginTop: "18rem"}}>
+                    <div>
                       <Typography component="h1" variant="h1" color="textPrimary" textAlign="center" gutterBottom>
                         Settings
                       </Typography>
@@ -1005,7 +1005,7 @@ function WebPlayback(props) {
                         }}
                       />
                     </Button>
-                      <div style={{marginTop: "30vh"}}>
+                      <div>
                       <Typography component="h1" variant="h1" color="textPrimary" textAlign="center" gutterBottom>
                         Customize Theme
                       </Typography>
