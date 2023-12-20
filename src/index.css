@@ -119,12 +119,16 @@ code {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 0 auto;
+  margin: auto;
   position: fixed; 
   padding: 2rem;
   overflow-x: hidden;
-  overflow-y: auto;
-  margin-top: 3rem;
+  overflow-y: scroll;
+  max-height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 .outerOuter{

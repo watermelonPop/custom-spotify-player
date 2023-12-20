@@ -974,7 +974,7 @@ function WebPlayback(props) {
                 </div>
               </Modal>
 
-              <Modal open={isCustomModalOpen} onClose={handleCustomModalClose}>
+              <Modal open={isCustomModalOpen} onClose={handleCustomModalClose} style={{maxHeight: "100%"}}>
                 <div>
                   <div className="queueDiv" style={{ background: current_theme.palette.background.default,
                     fontSize: "1.7rem",
