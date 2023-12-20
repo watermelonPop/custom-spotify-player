@@ -287,6 +287,9 @@ function WebPlayback(props) {
       secondaryTxt: isValidColor(selectedColors.secondaryTxt) ? selectedColors.secondaryTxt : '#2196f3',
     };
 
+    console.log("type: " + typeof(selectedColors.primaryBg));
+    console.log("value: " + selectedColors.primaryBg);
+
 
 
     let updatedTheme = responsiveFontSizes(
@@ -370,13 +373,13 @@ function WebPlayback(props) {
     );
 
     setSelectedColors({
-      primaryBg: selectedColors.primaryBg,
-      secondaryBg: selectedColors.secondaryBg,
-      playBtns: selectedColors.playBtns,
-      primaryBtns: selectedColors.primaryBtns,
-      touchBar: selectedColors.touchBar,
-      primaryTxt: selectedColors.primaryTxt,
-      secondaryTxt: selectedColors.secondaryTxt
+      primaryBg: selectedColorsValidated.primaryBg,
+      secondaryBg: selectedColorsValidated.secondaryBg,
+      playBtns: selectedColorsValidated.playBtns,
+      primaryBtns: selectedColorsValidated.primaryBtns,
+      touchBar: selectedColorsValidated.touchBar,
+      primaryTxt: selectedColorsValidated.primaryTxt,
+      secondaryTxt: selectedColorsValidated.secondaryTxt
     });
 
     console.log("custom theme created");
@@ -1002,7 +1005,7 @@ function WebPlayback(props) {
                         }}
                       />
                     </Button>
-                      <div style={{marginTop: "12rem"}}>
+                      <div style={{marginTop: "22rem"}}>
                       <Typography component="h1" variant="h1" color="textPrimary" textAlign="center" gutterBottom>
                         Customize Theme
                       </Typography>
