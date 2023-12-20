@@ -271,65 +271,82 @@ function WebPlayback(props) {
       borderR = "1rem";
     }
 
+    // Function to check if a color value is valid
+    const isValidColor = (color) => {
+      return /^#([A-Fa-f0-9]{3}){1,2}$|^rgb\((\d{1,3},\s*){2}\d{1,3}\)$|^rgba\((\d{1,3},\s*){3}(1|0?\.\d+)\)$|^hsl\(\d{1,3},\s*\d{1,3}%,\s*\d{1,3}%\)$|^hsla\(\d{1,3},\s*\d{1,3}%,\s*\d{1,3}%,\s*(1|0?\.\d+)\)$|^color\(\w+\)$/i.test(color);
+    };
+
+    // Validate the selected colors
+    const selectedColorsValidated = {
+      primaryBg: isValidColor(selectedColors.primaryBg) ? selectedColors.primaryBg : '#2196f3',
+      secondaryBg: isValidColor(selectedColors.secondaryBg) ? selectedColors.secondaryBg : '#2196f3',
+      playBtns: isValidColor(selectedColors.playBtns) ? selectedColors.playBtns : '#2196f3',
+      primaryBtns: isValidColor(selectedColors.primaryBtns) ? selectedColors.primaryBtns : '#2196f3',
+      touchBar: isValidColor(selectedColors.touchBar) ? selectedColors.touchBar : '#2196f3',
+      primaryTxt: isValidColor(selectedColors.primaryTxt) ? selectedColors.primaryTxt : '#2196f3',
+      secondaryTxt: isValidColor(selectedColors.secondaryTxt) ? selectedColors.secondaryTxt : '#2196f3',
+    };
+
+
 
     let updatedTheme = responsiveFontSizes(
       createTheme({
         name: "custom-theme",
         spacing: 4,
         typography: {
-            fontFamily: String(selectedFont),
+            fontFamily: selectedFont,
             borderRadius: borderR,
           h1: {
             fontSize: '3.0rem',
-            fontFamily: String(selectedFont),
+            fontFamily: selectedFont,
             textAlign: 'left',
             fontWeight: fontW,
           },
           h2: {
             fontSize: '2.5rem',
-            fontFamily: String(selectedFont),
+            fontFamily: selectedFont,
             fontStyle: 'bold',
             textAlign: 'left',
             fontWeight: fontW,
           },
           h3: {
             fontSize: '2.0rem',
-            fontFamily: String(selectedFont),
+            fontFamily: selectedFont,
             textAlign: 'left',
             fontWeight: fontW,
           },
           h4: {
             fontSize: '1.5rem',
-            fontFamily: String(selectedFont),
+            fontFamily: selectedFont,
             textAlign: 'left',
             fontWeight: fontW,
           },
           body1: {
             fontSize: '1.3rem',
-            fontFamily: String(selectedFont),
+            fontFamily: selectedFont,
             textAlign: 'justify',
             fontWeight: fontW,
           },
           subtitle1:{
             fontSize: '1.0rem',
-            fontFamily: String(selectedFont),
+            fontFamily: selectedFont,
             textAlign: 'justify',
             fontWeight: fontW,
           }
         },
         palette: {
           background: {
-            main: String(selectedColors.primaryBg),
-            default: String(selectedColors.primaryBg),
-            dark: String(selectedColors.secondaryBg),
+            main: selectedColorsValidated.primaryBg,
+            default: selectedColorsValidated.primaryBg,
+            dark: selectedColorsValidated.secondaryBg,
             light: '#FFFFFF',
           },
           primary: {
-            main: String(selectedColors.playBtns),
+            main: selectedColorsValidated.playBtns,
           },
           secondary: {
-            main: String(selectedColors.primaryBtns),
-            dark: String(selectedColors.touchBar),
+            main: selectedColorsValidated.primaryBtns,
+            dark: selectedColorsValidated.touchBar,
           },
           error: {
             main: '#F52735', // red
@@ -344,9 +361,9 @@ function WebPlayback(props) {
             main: '#09FE00', // green
           },
           text: {
-            main: String(selectedColors.primaryTxt),
-            primary: String(selectedColors.primaryTxt), 
-            secondary: String(selectedColors.secondaryTxt), 
+            main: selectedColorsValidated.primaryTxt,
+            primary: selectedColorsValidated.primaryTxt, 
+            secondary: selectedColorsValidated.secondaryTxt, 
           },
         },
       })
@@ -972,7 +989,7 @@ function WebPlayback(props) {
                         }}
                       />
                     </Button>
-                      <div style={{marginTop: "30rem"}}>
+                      <div style={{marginTop: "2rem"}}>
                       <Typography component="h1" variant="h1" color="textPrimary" textAlign="center" gutterBottom>
                         Customize Theme
                       </Typography>
