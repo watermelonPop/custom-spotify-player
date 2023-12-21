@@ -5,6 +5,8 @@ import '@fontsource/montserrat';
 import "@fontsource/gamja-flower";
 import '@fontsource/courier-prime';
 import '@fontsource/vidaloka';
+import '@fontsource-variable/nunito';
+import '@fontsource-variable/oswald';
 import defaultTheme from "./defaultTheme";
 import strawberryTheme from "./strawberryTheme";
 import pjTheme from "./pjTheme";
@@ -12,6 +14,7 @@ import tteokTheme from "./tteokTheme";
 import ambTheme from "./ambTheme";
 import earthTheme from "./earthTheme";
 import customTheme from "./customTheme";
+import sunsetTheme from "./sunsetTheme";
 import { Typography } from '@mui/material';
 import { Button } from '@mui/material';
 import { Modal } from '@mui/material';
@@ -61,9 +64,9 @@ function WebPlayback(props) {
   const [isCustomModalOpen, setCustomModalOpen] = useState(false);
   const [nextTracks, setNextTracks] = useState([]);
   const [prevTracks, setPrevTracks] = useState([]);
-  const [themes, setThemes] = useState([defaultTheme, strawberryTheme, pjTheme, tteokTheme, ambTheme, earthTheme, customTheme]);
+  const [themes, setThemes] = useState([defaultTheme, strawberryTheme, pjTheme, tteokTheme, ambTheme, earthTheme, sunsetTheme, customTheme]);
   const [playerName, setPlayerName] = useState("Custom Spotify Player");
-  const fonts = ["Montserrat", "Courier Prime", "Vidaloka", "Gamja Flower"];
+  const fonts = ["Montserrat", "Courier Prime", "Vidaloka", "Gamja Flower", "Oswald Variable", "Nunito Variable"];
   const [selectedFont, setSelectedFont] = useState(fonts[0]);
   const [selectedColors, setSelectedColors] = useState({
     primaryBg: defaultTheme.palette.background.default,
@@ -289,8 +292,6 @@ function WebPlayback(props) {
 
     console.log("type: " + typeof(selectedColors.touchBar));
     console.log("value: " + selectedColors.touchBar);
-
-
 
     let updatedTheme = responsiveFontSizes(
       createTheme({
@@ -724,7 +725,7 @@ function WebPlayback(props) {
                         }}
                       />
                     </Button>
-                    <div style={{ display: "flex", flexDirection: "column", marginTop: "3rem", backgroundColor: "#F7A497", marginLeft: "4rem", marginRight: "4rem"}}>
+                    <div style={{ display: "flex", flexDirection: "column", marginTop: "3rem", marginLeft: "4rem", marginRight: "4rem"}}>
                       {nextTracks.map((track, index) => (
                         <div key={index} style={{ display: "flex", alignItems: "left", marginBottom: "1rem" }}>
                           <div className="imgSquare" style={{ width: "7rem", height: "7rem", marginRight: "2rem" }}>
@@ -800,7 +801,7 @@ function WebPlayback(props) {
                           }}
                         />
                       </Button>
-                      <div style={{ display: "flex", flexDirection: "column", marginTop: "3rem", backgroundColor: "#F7A497", marginLeft: "6rem", marginRight: "6rem"}}>
+                      <div style={{ display: "flex", flexDirection: "column", marginTop: "3rem", marginLeft: "6rem", marginRight: "6rem"}}>
                         {prevTracks.map((track, index) => (
                           <div key={index} style={{ display: "flex", alignItems: "left", marginBottom: "1rem", }}>
                             <div className="imgSquare" style={{ width: "7rem", height: "7rem", marginRight: "2rem" }}>

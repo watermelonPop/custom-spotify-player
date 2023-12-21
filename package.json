@@ -6,6 +6,8 @@
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "@fontsource-variable/nunito": "^5.0.17",
+    "@fontsource-variable/oswald": "^5.0.18",
     "@fontsource/courier-prime": "^5.0.18",
     "@fontsource/gamja-flower": "^5.0.17",
     "@fontsource/montserrat": "^5.0.16",

@@ -1,64 +1,64 @@
 import { createTheme, responsiveFontSizes } from '@mui/material';
-import '@fontsource/montserrat';
+import '@fontsource-variable/nunito';
 
 const theme = responsiveFontSizes(
   createTheme({
     name: "earth-theme",
     spacing: 4,
     typography: {
-        fontFamily: 'Montserrat',
+        fontFamily: 'Nunito Variable',
         borderRadius: "0rem",
       h1: {
         fontSize: '3.0rem',
-        fontFamily: 'Montserrat',
+        fontFamily: 'Nunito Variable',
         textAlign: 'left',
         fontWeight: "bold",
       },
       h2: {
         fontSize: '2.5rem',
-        fontFamily: 'Montserrat',
+        fontFamily: 'Nunito Variable',
         fontStyle: 'bold',
         textAlign: 'left',
         fontWeight: "bold",
       },
       h3: {
         fontSize: '2.0rem',
-        fontFamily: 'Montserrat',
+        fontFamily: 'Nunito Variable',
         textAlign: 'left',
         fontWeight: "bold",
       },
       h4: {
         fontSize: '1.5rem',
-        fontFamily: 'Montserrat',
+        fontFamily: 'Nunito Variable',
         textAlign: 'left',
         fontWeight: "bold",
       },
       body1: {
         fontSize: '1.3rem',
-        fontFamily: 'Montserrat',
+        fontFamily: 'Nunito Variable',
         textAlign: 'justify',
-        fontWeight: "bold",
+        fontWeight: "normal",
       },
       subtitle1:{
         fontSize: '1.0rem',
-        fontFamily: 'Montserrat',
+        fontFamily: 'Nunito Variable',
         textAlign: 'justify',
-        fontWeight: "bold",
+        fontWeight: "normal",
       }
     },
     palette: {
       background: {
-        main: '#121212',
-        default: '#121212',
-        dark: '#000000',
+        main: "#3F403F",
+        default: "#3F403F",
+        dark: "#475841",
         light: '#FFFFFF',
       },
       primary: {
-        main: '#1FB954',
+        main: "#9FB8AD",
       },
       secondary: {
-        main: '#62D089',
-        dark: '#457F59',
+        main: "#9FB8AD",
+        dark: "#CED0CE",
       },
       error: {
         main: '#F52735', // red
@@ -73,9 +73,9 @@ const theme = responsiveFontSizes(
         main: '#09FE00', // green
       },
       text: {
-        main: '#FFFFFF', 
-        primary: '#FFFFFF', 
-        secondary: '#9FA0A1', 
+        main: "#FFFFFF",
+        primary: "#FFFFFF", 
+        secondary: "#E6E8E6", 
       },
     },
   })
