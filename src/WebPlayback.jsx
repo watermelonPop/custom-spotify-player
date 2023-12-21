@@ -800,7 +800,7 @@ function WebPlayback(props) {
                           }}
                         />
                       </Button>
-                      <div style={{ display: "flex", flexDirection: "column", marginTop: "3rem", backgroundColor: "#F7A497", marginLeft: "4rem", marginRight: "4rem"}}>
+                      <div style={{ display: "flex", flexDirection: "column", marginTop: "3rem", backgroundColor: "#F7A497", marginLeft: "6rem", marginRight: "6rem"}}>
                         {prevTracks.map((track, index) => (
                           <div key={index} style={{ display: "flex", alignItems: "left", marginBottom: "1rem", }}>
                             <div className="imgSquare" style={{ width: "7rem", height: "7rem", marginRight: "2rem" }}>

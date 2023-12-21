@@ -148,11 +148,10 @@ code {
 
 .customDiv {
   align-items: center;
-  width: 80%;
+  width: fit-content;
   margin: 0 auto;
   justify-content: center;
   text-align: center;
-  background-color: aquamarine;
 }
 
 .customDiv > * {
@@ -244,4 +243,8 @@ code {
   border: solid white;
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
+}
+
+.queuedTrackInfo{
+  overflow: hidden;
 }
