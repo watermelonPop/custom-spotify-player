@@ -1140,8 +1140,7 @@ function WebPlayback(props) {
                           height: 20px;
                           width: 20px;
                           background-color: ${current_theme.palette.background.secondary};
-                          borderStyle: solid;
-                          border-color: ${current_theme.palette.text.secondary};
+                          border: 2px solid ${current_theme.palette.text.primary};
                         }
 
                         .customCheckbox input[type="checkbox"]:checked + .checkmark {
@@ -1164,7 +1163,7 @@ function WebPlayback(props) {
                           width: 5px;
                           height: 10px;
                           border-style: solid;
-                          border-color: ${current_theme.palette.text.secondary};
+                          border-color: ${current_theme.palette.text.primary};
                           border-width: 0 2px 2px 0;
                           transform: rotate(45deg);
                         }`
