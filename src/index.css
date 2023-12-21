@@ -115,18 +115,27 @@ code {
 .queueDiv {
   width: 80%;
   height: 85vh;
-  justify-content: center;
-  align-items: center;
+  display: table;
   margin: auto;
-  position: fixed; 
+  position: fixed;
   padding: 2rem;
   overflow-x: hidden;
   overflow-y: scroll;
   max-height: 100%;
   margin-top: 3rem;
-  text-align: center;
-  vertical-align: middle;
+}
 
+.queueDiv::before {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%;
+}
+
+.queueDiv > div {
+  display: inline-block;
+  vertical-align: middle;
+  text-align: left;
 }
 
 .outerOuter{
@@ -148,12 +157,17 @@ code {
   justify-content: space-between;
 }
 
-.customDiv{
+.customDiv {
+  display: flex;
   align-items: center;
   width: 100%;
   margin: 0 auto;
-  justify-content: space-between;
+  justify-content: center;
   text-align: center;
+}
+
+.customDiv > * {
+  margin: 0.5rem;
 }
 
 .themeName {
@@ -182,15 +196,15 @@ code {
   text-align: center !important;
 }
 
-.labelInputDiv{
+.labelInputDiv {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  vertical-align: middle;
+  justify-content: center;
   text-align: center;
 }
 
-.labelComp{
-  height: 100%;
+.labelComp {
   padding: 0.5rem;
 }
 
