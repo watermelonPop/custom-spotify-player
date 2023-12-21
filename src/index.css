@@ -147,7 +147,6 @@ code {
 }
 
 .customDiv {
-  display: flex;
   align-items: center;
   width: 100%;
   margin: 0 auto;
@@ -187,7 +186,6 @@ code {
 
 .labelInputDiv {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
