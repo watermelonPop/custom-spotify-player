@@ -724,9 +724,9 @@ function WebPlayback(props) {
                         }}
                       />
                     </Button>
-                    <div style={{ display: "flex", flexDirection: "column", marginTop: "3rem", backgroundColor: "#F7A497", marginLeft: "2rem", marginRight: "2rem"}}>
+                    <div style={{ display: "flex", flexDirection: "column", marginTop: "3rem", backgroundColor: "#F7A497", marginLeft: "4rem", marginRight: "4rem"}}>
                       {nextTracks.map((track, index) => (
-                        <div key={index} style={{ display: "flex", alignItems: "center", marginBottom: "1rem", marginLeft: "auto", marginRight: "auto" }}>
+                        <div key={index} style={{ display: "flex", alignItems: "left", marginBottom: "1rem" }}>
                           <div className="imgSquare" style={{ width: "7rem", height: "7rem", marginRight: "2rem" }}>
                             <img src={track.album.images[0].url} className="queuedCover" alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                           </div>
@@ -770,6 +770,7 @@ function WebPlayback(props) {
                         component="h1"
                         variant="h1"
                         color="textPrimary"
+                        textAlign="center"
                         gutterBottom
                       >
                         History
@@ -799,9 +800,9 @@ function WebPlayback(props) {
                           }}
                         />
                       </Button>
-                      <div style={{ display: "flex", flexDirection: "column", marginTop: "3rem", backgroundColor: "#F7A497", marginLeft: "2rem", marginRight: "2rem"}}>
+                      <div style={{ display: "flex", flexDirection: "column", marginTop: "3rem", backgroundColor: "#F7A497", marginLeft: "4rem", marginRight: "4rem"}}>
                         {prevTracks.map((track, index) => (
-                          <div key={index} style={{ display: "flex", alignItems: "center", marginBottom: "1rem", marginLeft: "auto", marginRight: "auto" }}>
+                          <div key={index} style={{ display: "flex", alignItems: "left", marginBottom: "1rem", }}>
                             <div className="imgSquare" style={{ width: "7rem", height: "7rem", marginRight: "2rem" }}>
                               <img src={track.album.images[0].url} className="queuedCover" alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                             </div>
@@ -1018,7 +1019,7 @@ function WebPlayback(props) {
                           <Typography component="body1" variant="body1" color="textSecondary" className="centerAligned" gutterBottom>
                             Primary Background Color:
                           </Typography>
-                          <ColorPicker variant="free" color={selectedColors.primaryBg} onChange={(color) => handleColorChange('primaryBg', color)}  />
+                          <ColorPicker variant="free" color={selectedColors.primaryBg} onChange={(color) => handleColorChange('primaryBg', color)} style={{textAlign: "center", alignItems: "center"}} />
                         </div>
                         <div className='customDiv'>
                           <Typography component="body1" variant="body1" color="textSecondary" className="centerAligned" gutterBottom>
