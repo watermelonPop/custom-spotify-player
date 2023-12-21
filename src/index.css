@@ -115,27 +115,17 @@ code {
 .queueDiv {
   width: 80%;
   height: 85vh;
-  display: table;
   margin: auto;
   position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   padding: 2rem;
   overflow-x: hidden;
   overflow-y: scroll;
   max-height: 100%;
   margin-top: 3rem;
-}
-
-.queueDiv::before {
-  content: "";
-  display: inline-block;
-  vertical-align: middle;
-  height: 100%;
-}
-
-.queueDiv > div {
-  display: inline-block;
-  vertical-align: middle;
-  text-align: left;
+  text-align: center;
 }
 
 .outerOuter{
@@ -206,6 +196,7 @@ code {
 
 .labelComp {
   padding: 0.5rem;
+  margin-bottom: 1rem; /* Add margin-bottom for spacing */
 }
 
 .checkboxContain {
