@@ -694,6 +694,7 @@ function WebPlayback(props) {
                       component="h1"
                       variant="h1"
                       color="textPrimary"
+                      textAlign="center"
                       gutterBottom
                     >
                       Queued Tracks
@@ -723,7 +724,7 @@ function WebPlayback(props) {
                         }}
                       />
                     </Button>
-                    <div style={{ display: "flex", flexDirection: "column", marginTop: "3rem", }}>
+                    <div style={{ display: "flex", flexDirection: "column", marginTop: "3rem", backgroundColor: "#F7A497"}}>
                       {nextTracks.map((track, index) => (
                         <div key={index} style={{ display: "flex", alignItems: "center", marginBottom: "1rem" }}>
                           <div className="imgSquare" style={{ width: "7rem", height: "7rem", marginRight: "2rem" }}>
@@ -765,67 +766,69 @@ function WebPlayback(props) {
                     position: "relative",
                      // Add margin to create space between the title and tracks
                   }}>
-                    <Typography
-                      component="h1"
-                      variant="h1"
-                      color="textPrimary"
-                      gutterBottom
-                    >
-                      History
-                    </Typography>
-                    <Button
-                      className="ctrlBtn"
-                      onClick={handleHistoryModalClose}
-                      style={{
-                        WebkitAppearance: "none",
-                        height: "0.5rem",
-                        borderRadius: "0.25rem",
-                        background: "transparent",
-                        position: "absolute",
-                        top: "2rem",
-                        right: "0.5rem",
-                      }}
-                    >
-                      <CloseIcon
+                    <div style={{width: "100%", textAlign: "center", verticalAlign: "middle"}}>
+                      <Typography
+                        component="h1"
+                        variant="h1"
+                        color="textPrimary"
+                        gutterBottom
+                      >
+                        History
+                      </Typography>
+                      <Button
+                        className="ctrlBtn"
+                        onClick={handleHistoryModalClose}
                         style={{
-                          backgroundColor: "transparent",
-                          outline: "none",
-                          borderStyle: "none",
-                          color: current_theme.palette.secondary.main,
-                          fontSize: "1.7rem",
-                          marginRight: "1vw",
-                          filter: "drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))",
+                          WebkitAppearance: "none",
+                          height: "0.5rem",
+                          borderRadius: "0.25rem",
+                          background: "transparent",
+                          position: "absolute",
+                          top: "2rem",
+                          right: "0.5rem",
                         }}
-                      />
-                    </Button>
-                    <div style={{ display: "flex", flexDirection: "column", marginTop: "3rem", }}>
-                      {prevTracks.map((track, index) => (
-                        <div key={index} style={{ display: "flex", alignItems: "center", marginBottom: "1rem" }}>
-                          <div className="imgSquare" style={{ width: "7rem", height: "7rem", marginRight: "2rem" }}>
-                            <img src={track.album.images[0].url} className="queuedCover" alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-                          </div>
-                          <div className="queuedTrackInfo">
-                            <Typography
-                                component="h3"
-                                variant="h3"
-                                color="textPrimary"
+                      >
+                        <CloseIcon
+                          style={{
+                            backgroundColor: "transparent",
+                            outline: "none",
+                            borderStyle: "none",
+                            color: current_theme.palette.secondary.main,
+                            fontSize: "1.7rem",
+                            marginRight: "1vw",
+                            filter: "drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))",
+                          }}
+                        />
+                      </Button>
+                      <div style={{ display: "flex", flexDirection: "column", marginTop: "3rem", }}>
+                        {prevTracks.map((track, index) => (
+                          <div key={index} style={{ display: "flex", alignItems: "center", marginBottom: "1rem" }}>
+                            <div className="imgSquare" style={{ width: "7rem", height: "7rem", marginRight: "2rem" }}>
+                              <img src={track.album.images[0].url} className="queuedCover" alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                            </div>
+                            <div className="queuedTrackInfo">
+                              <Typography
+                                  component="h3"
+                                  variant="h3"
+                                  color="textPrimary"
+                                  gutterBottom
+                                >{track.name}</Typography>
+                              <Typography
+                                component="h4"
+                                variant="h4"
+                                color="textSecondary"
                                 gutterBottom
-                              >{track.name}</Typography>
-                            <Typography
-                              component="h4"
-                              variant="h4"
-                              color="textSecondary"
-                              gutterBottom
-                            >{track.artists[0].name}</Typography>
-                            <Typography
-                              component="h4"
-                              variant="h4"
-                              color="textSecondary"
-                              gutterBottom
-                            >{track.album.name}</Typography>
+                              >{track.artists[0].name}</Typography>
+                              <Typography
+                                component="h4"
+                                variant="h4"
+                                color="textSecondary"
+                                gutterBottom
+                              >{track.album.name}</Typography>
+                            </div>
                           </div>
-                        </div>
-                      ))}
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>

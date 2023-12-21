@@ -115,17 +115,16 @@ code {
 .queueDiv {
   width: 80%;
   height: 85vh;
+  justify-content: center;
+  align-items: center;
   margin: auto;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: fixed; 
   padding: 2rem;
   overflow-x: hidden;
   overflow-y: scroll;
   max-height: 100%;
   margin-top: 3rem;
-  text-align: center;
+  border-radius: 10px;
 }
 
 .outerOuter{
