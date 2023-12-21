@@ -697,6 +697,7 @@ function WebPlayback(props) {
                       color="textPrimary"
                       textAlign="center"
                       marginBottom="6rem"
+                      marginTop="6rem"
                       gutterBottom
                     >
                       Queued Tracks
@@ -774,6 +775,7 @@ function WebPlayback(props) {
                         color="textPrimary"
                         textAlign="center"
                         marginBottom="6rem"
+                        marginTop="6rem"
                         gutterBottom
                       >
                         History
@@ -871,7 +873,7 @@ function WebPlayback(props) {
                       />
                     </Button>
                     <div>
-                      <Typography component="h1" variant="h1" color="textPrimary" textAlign="center" gutterBottom>
+                      <Typography component="h1" variant="h1" color="textPrimary" textAlign="center" marginTop="6rem" marginBottom="2rem" gutterBottom>
                         Settings
                       </Typography>
                       <Typography
