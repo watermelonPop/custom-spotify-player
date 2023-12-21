@@ -7,7 +7,7 @@ const theme = responsiveFontSizes(
     spacing: 4,
     typography: {
         fontFamily: 'Oswald Variable',
-        borderRadius: "0rem",
+        borderRadius: "1rem",
       h1: {
         fontSize: '3.0rem',
         fontFamily: 'Oswald Variable',

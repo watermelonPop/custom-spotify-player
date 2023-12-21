@@ -696,6 +696,7 @@ function WebPlayback(props) {
                       variant="h1"
                       color="textPrimary"
                       textAlign="center"
+                      marginBottom="6rem"
                       gutterBottom
                     >
                       Queued Tracks
@@ -772,6 +773,7 @@ function WebPlayback(props) {
                         variant="h1"
                         color="textPrimary"
                         textAlign="center"
+                        marginBottom="6rem"
                         gutterBottom
                       >
                         History
