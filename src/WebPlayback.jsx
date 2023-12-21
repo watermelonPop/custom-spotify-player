@@ -1013,7 +1013,7 @@ function WebPlayback(props) {
                       />
                     </Button>
                       <div>
-                      <Typography component="h1" variant="h1" color="textPrimary" textAlign="center" gutterBottom>
+                      <Typography component="h1" variant="h1" color="textPrimary" textAlign="center" marginTop="6rem" marginBottom="2rem" gutterBottom>
                         Customize Theme
                       </Typography>
                       <div style={{marginTop: "2rem", width: "100%", textAlign: "justify", justifyContent: "space-around"}}>
@@ -1116,6 +1116,60 @@ function WebPlayback(props) {
                           </Typography>
                         </div>
                       </div>
+                      <style>{
+                        `.checkboxContain {
+                          position: relative;
+                          padding-left: 35px;
+                          margin-bottom: 12px;
+                          cursor: pointer;
+                          font-size: 22px;
+                          user-select: none;
+                        }
+
+                        .customCheckbox {
+                          position: relative;
+                          cursor: pointer;
+                          padding-left: 25px;
+                        }
+
+                        .checkmark {
+                          position: absolute;
+                          top: 50%;
+                          transform: translateY(-50%);
+                          left: 0;
+                          height: 20px;
+                          width: 20px;
+                          background-color: ${current_theme.palette.background.secondary};
+                          borderStyle: solid;
+                          border-color: ${current_theme.palette.text.secondary};
+                        }
+
+                        .customCheckbox input[type="checkbox"]:checked + .checkmark {
+                          background-color: ${current_theme.palette.primary.main};
+                        }
+
+                        .checkmark:after {
+                          content: "";
+                          position: absolute;
+                          display: none;
+                        }
+
+                        .customCheckbox input[type="checkbox"]:checked + .checkmark:after {
+                          display: block;
+                        }
+
+                        .customCheckbox .checkmark:after {
+                          left: 6px;
+                          top: 3px;
+                          width: 5px;
+                          height: 10px;
+                          border-style: solid;
+                          border-color: ${current_theme.palette.text.secondary};
+                          border-width: 0 2px 2px 0;
+                          transform: rotate(45deg);
+                        }`
+                      }
+                      </style>
                       <div style={{marginTop: "0.5rem", width: "100%", textAlign: "center" }}>
                         <button style={{
                                 backgroundColor: current_theme.palette.background.light,
