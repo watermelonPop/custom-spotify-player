@@ -984,7 +984,7 @@ function WebPlayback(props) {
                           </div>
                         ))}
                       </div>
-                      <div style={{textAlign: "center", alignItems: "center"}}>
+                      <div style={{textAlign: "center", alignItems: "center", marginBottom: "6rem"}}>
                         <button onClick={handleCustomModalOpen} style={{
                             backgroundColor: current_theme.palette.background.light,
                             color: current_theme.palette.primary.main,
@@ -1238,6 +1238,7 @@ function WebPlayback(props) {
                       padding: "1rem",
                       marginTop: "1rem",
                       cursor: "pointer",
+                      marginBottom: "6rem",
                     }}><RefreshIcon style={{
                         backgroundColor: "transparent",
                         outline: "none",
