@@ -295,7 +295,7 @@ function WebPlayback(props) {
 
     let updatedTheme = responsiveFontSizes(
       createTheme({
-        name: "new-custom-theme",
+        name: "custom-theme",
         spacing: 4,
         typography: {
             fontFamily: selectedFont,
@@ -456,7 +456,6 @@ function WebPlayback(props) {
                 <div className="imgSquare">
                   <img src={current_track.album.images[0].url} className="playingCover" alt="" style={{ borderRadius: current_theme.typography.borderRadius }}/>
                 </div>
-
                 <div className="now-playing__side">
                   <div className="now-playing__name">
                     <Typography
@@ -729,10 +728,17 @@ function WebPlayback(props) {
                     </Button>
                     <div style={{ display: "flex", flexDirection: "column", marginTop: "3rem", marginLeft: "4rem", marginRight: "4rem"}}>
                       {nextTracks.map((track, index) => (
-                        <div key={index} style={{ display: "flex", alignItems: "left", marginBottom: "1rem" }}>
+                        <div key={index} style={{ display: "flex", alignItems: "left", marginBottom: "3rem" }}>
                           <div className="imgSquare" style={{ width: "7rem", height: "7rem", marginRight: "2rem" }}>
                             <img src={track.album.images[0].url} className="queuedCover" alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                           </div>
+                          <style>
+                            {`
+                              .queuedCover{
+                                border-radius: ${current_theme.typography.borderRadius === "1rem" ? "0.5rem" : "0rem"}
+                              }
+                            `}
+                          </style>
                           <div className="queuedTrackInfo">
                           <Typography
                               component="h3"
@@ -807,7 +813,7 @@ function WebPlayback(props) {
                       </Button>
                       <div style={{ display: "flex", flexDirection: "column", marginTop: "3rem", marginLeft: "6rem", marginRight: "6rem"}}>
                         {prevTracks.map((track, index) => (
-                          <div key={index} style={{ display: "flex", alignItems: "left", marginBottom: "1rem", }}>
+                          <div key={index} style={{ display: "flex", alignItems: "left", marginBottom: "3rem", }}>
                             <div className="imgSquare" style={{ width: "7rem", height: "7rem", marginRight: "2rem" }}>
                               <img src={track.album.images[0].url} className="queuedCover" alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                             </div>
@@ -872,7 +878,7 @@ function WebPlayback(props) {
                         }}
                       />
                     </Button>
-                    <div>
+                    <div marginBottom="6rem" >
                       <Typography component="h1" variant="h1" color="textPrimary" textAlign="center" marginTop="6rem" marginBottom="2rem" gutterBottom>
                         Settings
                       </Typography>
@@ -928,7 +934,7 @@ function WebPlayback(props) {
                     {`
                       .current_theme {
                         border-style: solid;
-                        border-radius: 0.5rem;
+                        border-radius: ${current_theme.typography.borderRadius === "1rem" ? "0.5rem" : "0rem"};
                         border-color: ${current_theme.palette.primary.main} ;
                         background-color: ${current_theme.palette.secondary.main} ;
                         color: ${current_theme.palette.text.primary};
@@ -947,13 +953,31 @@ function WebPlayback(props) {
                               <div
                                 className="colorBlock"
                                 style={{
+                                  backgroundColor: theme.palette.background.default,
+                                }}
+                              />
+                              <div
+                                className="colorBlock"
+                                style={{
+                                  backgroundColor: theme.palette.background.dark,
+                                }}
+                              />
+                              <div
+                                className="colorBlock"
+                                style={{
                                   backgroundColor: theme.palette.primary.main,
                                 }}
                               />
                               <div
                                 className="colorBlock"
                                 style={{
-                                  backgroundColor: theme.palette.background.default,
+                                  backgroundColor: theme.palette.secondary.main,
+                                }}
+                              />
+                              <div
+                                className="colorBlock"
+                                style={{
+                                  backgroundColor: theme.palette.secondary.dark,
                                 }}
                               />
                             </div>
@@ -1012,7 +1036,7 @@ function WebPlayback(props) {
                         }}
                       />
                     </Button>
-                      <div>
+                      <div marginBottom="6rem">
                       <Typography component="h1" variant="h1" color="textPrimary" textAlign="center" marginTop="6rem" marginBottom="2rem" gutterBottom>
                         Customize Theme
                       </Typography>
