@@ -1193,7 +1193,7 @@ function WebPlayback(props) {
                         }`
                       }
                       </style>
-                      <div style={{marginTop: "0.5rem", width: "100%", textAlign: "center" }}>
+                      <div style={{marginTop: "0.5rem", width: "100%", textAlign: "center", marginBottom: "6rem" }}>
                         <button style={{
                                 backgroundColor: current_theme.palette.background.light,
                                 color: current_theme.palette.primary.main,
@@ -1221,12 +1221,13 @@ function WebPlayback(props) {
                     fontSize: "1.7rem",
                     opacity: "100%",
                     position: "relative",
+                    textAlign: "center",
                      // Add margin to create space between the title and tracks
                   }}>
-                    <Typography component="h1" variant="h1" color="textPrimary" gutterBottom>
+                    <Typography component="h1" variant="h1" color="textPrimary" textAlign="center" marginTop="6rem" gutterBottom>
                       Refresh!
                     </Typography>
-                    <Typography component="h3" variant="h3" color="textSecondary" gutterBottom>
+                    <Typography component="h3" variant="h3" color="textSecondary" textAlign="center" gutterBottom>
                       Refresh the page to see changes!
                     </Typography>
                     <button onClick={handleRefresh} style={{
@@ -1238,7 +1239,7 @@ function WebPlayback(props) {
                       padding: "1rem",
                       marginTop: "1rem",
                       cursor: "pointer",
-                      marginBottom: "6rem",
+                      textAlign: "center",
                     }}><RefreshIcon style={{
                         backgroundColor: "transparent",
                         outline: "none",
