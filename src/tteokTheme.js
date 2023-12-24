@@ -77,6 +77,9 @@ const theme = responsiveFontSizes(
         primary: '#000000', 
         secondary: '#9D8189', 
       },
+      transitions: {
+        create: () => 'all 0.3s ease', // Add your desired transition here
+      },
     },
   })
 );
