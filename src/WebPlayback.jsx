@@ -396,6 +396,9 @@ function WebPlayback(props) {
             primary: selectedColorsValidated.primaryTxt, 
             secondary: selectedColorsValidated.secondaryTxt, 
           },
+          transitions: {
+            create: () => 'none', // Add your desired transition here
+          },
         },
       })
     );
