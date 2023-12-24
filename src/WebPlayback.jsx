@@ -316,6 +316,7 @@ function WebPlayback(props) {
   }
 
   const getColorsFromLocalStorage = () => {
+    console.log('Executing getColorsFromLocalStorage');
     try {
       let cpb = localStorage.getItem('customPrimaryBg') || defaultTheme.palette.background.default;
       let csb = localStorage.getItem('customSecondaryBg') || defaultTheme.palette.background.dark;
