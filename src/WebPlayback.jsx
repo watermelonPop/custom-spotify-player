@@ -511,13 +511,14 @@ function WebPlayback(props) {
     return (
       <>
         <ThemeProvider theme={current_theme || defaultTheme}>
-          <div className="container">
+          <div className="container" style={{backgroundColor: current_theme.palette.background.main}}>
             <div className="main-wrapper">
               <Typography
                 component="h2"
                 variant="h2"
                 align="center"
                 color="textPrimary"
+                verticalAlign="middle"
                 gutterBottom
               > Instance not active. Transfer your playback using your Spotify app </Typography>
             </div>
