@@ -7,6 +7,7 @@ import '@fontsource/courier-prime';
 import '@fontsource/vidaloka';
 import '@fontsource-variable/nunito';
 import '@fontsource-variable/oswald';
+import '@fontsource/spectral';
 import defaultTheme from "./defaultTheme";
 import strawberryTheme from "./strawberryTheme";
 import pjTheme from "./pjTheme";
@@ -66,7 +67,7 @@ function WebPlayback(props) {
   const [prevTracks, setPrevTracks] = useState([]);
   const [themes, setThemes] = useState([defaultTheme, strawberryTheme, pjTheme, tteokTheme, ambTheme, earthTheme, sunsetTheme, customTheme]);
   const [playerName, setPlayerName] = useState("Custom Spotify Player");
-  const fonts = ["Montserrat", "Courier Prime", "Vidaloka", "Gamja Flower", "Oswald Variable", "Nunito Variable"];
+  const fonts = ["Montserrat", "Courier Prime", "Vidaloka", "Gamja Flower", "Oswald Variable", "Nunito Variable", 'Spectral'];
   const [selectedFont, setSelectedFont] = useState(fonts[0]);
   const [selectedColors, setSelectedColors] = useState({
     primaryBg: defaultTheme.palette.background.default,
@@ -139,11 +140,17 @@ function WebPlayback(props) {
       let chosenTheme = themes[storedThemeIndex];
       setTheme(chosenTheme);
 
-      const storedCustomTheme = JSON.parse(getCustomFromLocalStorage());
-      const updatedThemes = [...themes];
-      updatedThemes[updatedThemes.length - 1] = storedCustomTheme;
-      setThemes(updatedThemes);
+      const storedCustomFont = getFontFromLocalStorage();
+      setSelectedFont(storedCustomFont);
 
+      const storedCustomColors = JSON.parse(getColorsFromLocalStorage());
+      setSelectedColors(storedCustomColors);
+
+      const storedRoundedCorners = !!getCornersFromLocalStorage();
+      setHasRoundedCorners(storedRoundedCorners);
+
+      handleApplySettings();
+      
       player.connect();
     };
   }, []);
@@ -221,14 +228,6 @@ function WebPlayback(props) {
     setRefreshModalOpen(false);
   };
 
-  const setCustomInLocalStorage = (newCustomTheme) => {
-    localStorage.setItem('customTheme', JSON.stringify(newCustomTheme));
-  };
-
-  const getCustomFromLocalStorage = () => {
-    return localStorage.getItem('customTheme') || JSON.stringify(customTheme);
-  };
-
   const handleThemeChange = (newTheme) => {
     let ind = themes.indexOf(newTheme);
     setThemeInLocalStorage(ind.toString());
@@ -275,10 +274,17 @@ function WebPlayback(props) {
       [key]: color,
     }));
 
+    setColorsInLocalStorage(JSON.stringify(selectedColors));
+
     if (!keepOpen) {
       // Handle closing the color picker if needed
     }
   };
+
+  const handleFontChange = (newFont) => {
+    setSelectedFont(newFont);
+    setFontInLocalStorage(newFont);
+  }
 
   const handleRefresh = () => {
     window.location.reload();
@@ -286,7 +292,42 @@ function WebPlayback(props) {
 
   const handleRoundedCornersChange = (event) => {
     setHasRoundedCorners(event.target.checked);
+    setCornersInLocalStorage(hasRoundedCorners.toString());
   };
+
+  const getFontFromLocalStorage = () => {
+    return localStorage.getItem('customFont') || customTheme.typography.fontFamily;
+  }
+
+  const setFontInLocalStorage = (newFont) => {
+    localStorage.setItem('customFont', newFont);
+  }
+
+  const getColorsFromLocalStorage = () => {
+    let defaultColors = {
+      primaryBg: defaultTheme.palette.background.default,
+      secondaryBg: defaultTheme.palette.background.dark,
+      playBtns: defaultTheme.palette.primary.main,
+      primaryBtns: defaultTheme.palette.secondary.main,
+      touchBar: defaultTheme.palette.secondary.dark,
+      primaryTxt: defaultTheme.palette.text.primary,
+      secondaryTxt: defaultTheme.palette.text.secondary
+    };
+    defaultColors = JSON.stringify(defaultColors);
+    return localStorage.getItem('customColors') || defaultColors;
+  }
+
+  const setColorsInLocalStorage = (newColors) => {
+    localStorage.setItem('customColors', newColors);
+  }
+
+  const getCornersFromLocalStorage = () => {
+    return localStorage.getItem('customCorners') || customTheme.typography.borderRadius;
+  }
+
+  const setCornersInLocalStorage = (newCorners) => {
+    localStorage.setItem('customCorners', newCorners);
+  }
 
   const handleApplySettings = () => {
     // Create a new custom theme based on the default theme
@@ -421,8 +462,6 @@ function WebPlayback(props) {
     setThemes(updatedThemes);
 
     console.log("custom theme updated");
-
-    setCustomInLocalStorage(updatedTheme);
 
     handleCustomModalClose();
   }
@@ -1135,7 +1174,7 @@ function WebPlayback(props) {
                           fontWeight: "bold",
                           padding: "0.5rem",
                           margin: "0.5rem",
-                        }} value={selectedFont} onChange={(e) => setSelectedFont(e.target.value)}>
+                        }} value={selectedFont} onChange={(e) => handleFontChange(e.target.value)}>
                           {fonts.map((font, index) => (
                             <option key={index} value={font}>
                               {font}
