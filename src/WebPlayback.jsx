@@ -397,7 +397,7 @@ function WebPlayback(props) {
             secondary: selectedColorsValidated.secondaryTxt, 
           },
           transitions: {
-            create: () => 'none', // Add your desired transition here
+            create: () => 'all 0.3s ease', // Add your desired transition here
           },
         },
       })
