@@ -218,7 +218,7 @@ function WebPlayback(props) {
 
   const handleThemeChange = (newTheme) => {
     let ind = themes.indexOf(newTheme);
-    setPlayerNameInLocalStorage(ind.toString());
+    setThemeInLocalStorage(ind.toString());
     console.log('Changing theme to:', newTheme);
     setTheme(newTheme);
     console.log('Current theme state:', current_theme);
