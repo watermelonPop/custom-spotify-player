@@ -395,9 +395,9 @@ function WebPlayback(props) {
       primaryTxt: isValidColor(selectedColors.primaryTxt) ? selectedColors.primaryTxt : '#2196f3',
       secondaryTxt: isValidColor(selectedColors.secondaryTxt) ? selectedColors.secondaryTxt : '#2196f3',
     };
-
-    console.log("type: " + typeof(selectedColors.touchBar));
-    console.log("value: " + selectedColors.touchBar);
+    console.log("raw value: " + selectedColors.primaryBg)
+    console.log("type: " + typeof(selectedColorsValidated.primaryBg));
+    console.log("value: " + selectedColorsValidated.primaryBg);
 
     let updatedTheme = responsiveFontSizes(
       createTheme({
