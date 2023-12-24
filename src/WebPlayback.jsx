@@ -511,7 +511,7 @@ function WebPlayback(props) {
     return (
       <>
         <ThemeProvider theme={current_theme || defaultTheme}>
-          <div className="container" style={{backgroundColor: current_theme.palette.background.main}}>
+          <div className="container" style={{backgroundColor: current_theme.palette.background.main, height: "100%"}}>
             <div className="main-wrapper">
               <Typography
                 component="h2"
