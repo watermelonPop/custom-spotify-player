@@ -135,6 +135,10 @@ function WebPlayback(props) {
         setPlayerName(storedPlayerName);
       });
 
+      const storedThemeIndex = getThemeFromLocalStorage().toString();
+      let chosenTheme = themes[storedThemeIndex];
+      setTheme(chosenTheme);
+
       player.connect();
     };
   }, []);
@@ -213,9 +217,19 @@ function WebPlayback(props) {
   };
 
   const handleThemeChange = (newTheme) => {
+    let ind = themes.indexOf(newTheme);
+    setPlayerNameInLocalStorage(ind.toString());
     console.log('Changing theme to:', newTheme);
     setTheme(newTheme);
     console.log('Current theme state:', current_theme);
+  };
+
+  const setThemeInLocalStorage = (newInd) => {
+    localStorage.setItem('currentTheme', newInd.toString());
+  };
+
+  const getThemeFromLocalStorage = () => {
+    return localStorage.getItem('currentTheme') || "0";
   };
 
   // Function to set player name in local storage

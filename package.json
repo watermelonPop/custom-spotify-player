@@ -33,8 +33,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "server": "node server",
-    "dev": "run-p server start"
+    "dev": "npm start"
   },
   "browserslist": {
     "production": [
