@@ -316,30 +316,43 @@ function WebPlayback(props) {
   }
 
   const getColorsFromLocalStorage = () => {
-
-    let cpb = localStorage.getItem('customPrimaryBg') || defaultTheme.palette.background.default;
-    let csb = localStorage.getItem('customSecondaryBg') || defaultTheme.palette.background.dark;
-    let cPBtns = localStorage.getItem('customPlayBtns') || defaultTheme.palette.primary.main;
-    let pBtns = localStorage.getItem('customPrimaryBtns') || defaultTheme.palette.secondary.main;
-    let tb = localStorage.getItem('customTouchBar') || defaultTheme.palette.secondary.dark;
-    let pt = localStorage.getItem('customPrimaryTxt') || defaultTheme.palette.text.primary;
-    let st = localStorage.getItem('customSecondaryTxt') || defaultTheme.palette.text.secondary;
-
-    console.log('Stored customPrimaryBg:', cpb);
-
-    let newColors = {
-      primaryBg: cpb,
-      secondaryBg: csb,
-      playBtns: cPBtns,
-      primaryBtns: pBtns,
-      touchBar: tb,
-      primaryTxt: pt,
-      secondaryTxt: st
-    };
-    console.log('Returning colors:', newColors);
-    
-    return newColors;
-  }
+    try {
+      let cpb = localStorage.getItem('customPrimaryBg') || defaultTheme.palette.background.default;
+      let csb = localStorage.getItem('customSecondaryBg') || defaultTheme.palette.background.dark;
+      let cPBtns = localStorage.getItem('customPlayBtns') || defaultTheme.palette.primary.main;
+      let pBtns = localStorage.getItem('customPrimaryBtns') || defaultTheme.palette.secondary.main;
+      let tb = localStorage.getItem('customTouchBar') || defaultTheme.palette.secondary.dark;
+      let pt = localStorage.getItem('customPrimaryTxt') || defaultTheme.palette.text.primary;
+      let st = localStorage.getItem('customSecondaryTxt') || defaultTheme.palette.text.secondary;
+  
+      console.log('Stored customPrimaryBg:', cpb);
+  
+      let newColors = {
+        primaryBg: cpb,
+        secondaryBg: csb,
+        playBtns: cPBtns,
+        primaryBtns: pBtns,
+        touchBar: tb,
+        primaryTxt: pt,
+        secondaryTxt: st
+      };
+      console.log('Returning colors:', newColors);
+  
+      return newColors;
+    } catch (error) {
+      console.error('Error in getColorsFromLocalStorage:', error);
+      // Return a default value or handle the error as needed
+      return {
+        primaryBg: defaultTheme.palette.background.default,
+        secondaryBg: defaultTheme.palette.background.dark,
+        playBtns: defaultTheme.palette.primary.main,
+        primaryBtns: defaultTheme.palette.secondary.main,
+        touchBar: defaultTheme.palette.secondary.dark,
+        primaryTxt: defaultTheme.palette.text.primary,
+        secondaryTxt: defaultTheme.palette.text.secondary
+      };
+    }
+  };
 
   const setColorInLocalStorage = (key, newColor) => {
     localStorage.setItem(key, newColor.toString());
