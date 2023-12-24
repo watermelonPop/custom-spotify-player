@@ -325,6 +325,8 @@ function WebPlayback(props) {
     let pt = localStorage.getItem('customPrimaryTxt') || defaultTheme.palette.text.primary;
     let st = localStorage.getItem('customSecondaryTxt') || defaultTheme.palette.text.secondary;
 
+    console.log('Stored customPrimaryBg:', cpb);
+
     let newColors = {
       primaryBg: cpb,
       secondaryBg: csb,
@@ -334,12 +336,13 @@ function WebPlayback(props) {
       primaryTxt: pt,
       secondaryTxt: st
     };
+    console.log('Returning colors:', newColors);
     
     return newColors;
   }
 
   const setColorInLocalStorage = (key, newColor) => {
-    localStorage.setItem(key, newColor);
+    localStorage.setItem(key, newColor.toString());
   }
 
   const getCornersFromLocalStorage = () => {
