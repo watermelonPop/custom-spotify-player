@@ -139,6 +139,11 @@ function WebPlayback(props) {
       let chosenTheme = themes[storedThemeIndex];
       setTheme(chosenTheme);
 
+      const storedCustomTheme = JSON.parse(getCustomFromLocalStorage());
+      const updatedThemes = [...themes];
+      updatedThemes[updatedThemes.length - 1] = storedCustomTheme;
+      setThemes(updatedThemes);
+
       player.connect();
     };
   }, []);
@@ -214,6 +219,14 @@ function WebPlayback(props) {
   
   const handleRefreshModalClose = () => {
     setRefreshModalOpen(false);
+  };
+
+  const setCustomInLocalStorage = (newCustomTheme) => {
+    localStorage.setItem('customTheme', JSON.stringify(newCustomTheme));
+  };
+
+  const getCustomFromLocalStorage = () => {
+    return localStorage.getItem('customTheme') || JSON.stringify(customTheme);
   };
 
   const handleThemeChange = (newTheme) => {
@@ -406,6 +419,7 @@ function WebPlayback(props) {
 
     console.log("custom theme updated");
 
+    setCustomInLocalStorage(updatedTheme);
 
     handleCustomModalClose();
   }
