@@ -29,6 +29,8 @@ import CloseIcon from '@mui/icons-material/Close';
 import HistoryIcon from '@mui/icons-material/History';
 import SettingsIcon from '@mui/icons-material/Settings';
 import RefreshIcon from '@mui/icons-material/Refresh';
+import { useSelector, useDispatch } from "react-redux";
+import { asyncSetTheme } from "./themeSlice";
 
 const track = {
   name: "",
@@ -54,7 +56,6 @@ function WebPlayback(props) {
   const [is_active, setActive] = useState(false);
   const [player, setPlayer] = useState(undefined);
   const [current_track, setTrack] = useState(track);
-  const [current_theme, setTheme] = useState(defaultTheme);
   const [volume, setVolume] = useState(0); // State to store the volume
   const [currentPosition, setCurrentPosition] = useState(0); // State to store the current position
   const [isQueueModalOpen, setQueueModalOpen] = useState(false);
@@ -78,6 +79,8 @@ function WebPlayback(props) {
     secondaryTxt: defaultTheme.palette.text.secondary
   });
   const [hasRoundedCorners, setHasRoundedCorners] = useState(false);
+  const dispatch = useDispatch();
+  const currentTheme = useSelector((state) => state.theme.currentTheme);
 
 
 
@@ -213,9 +216,10 @@ function WebPlayback(props) {
   };
 
   const handleThemeChange = (newTheme) => {
+    console.log("previous theme: " + currentTheme);
     console.log('Changing theme to:', newTheme);
-    setTheme(newTheme);
-    console.log('Current theme state:', current_theme);
+    dispatch(asyncToggleTheme()); // Dispatch the setTheme action
+    console.log('Current theme state:', currentTheme);
   };
 
   // Function to set player name in local storage
@@ -388,7 +392,7 @@ function WebPlayback(props) {
     const updatedThemes = [...themes];
     updatedThemes[updatedThemes.length - 1] = updatedTheme;
 
-    setThemes(updatedThemes);
+    dispatch(asyncToggleTheme());
 
     console.log("custom theme updated");
 
@@ -402,7 +406,7 @@ function WebPlayback(props) {
   if (!is_active) {
     return (
       <>
-        <ThemeProvider theme={current_theme || defaultTheme}>
+        <ThemeProvider theme={currentTheme}>
           <div className="container">
             <div className="main-wrapper">
               <Typography
@@ -420,8 +424,8 @@ function WebPlayback(props) {
   } else {
     return (
       <>
-      <ThemeProvider theme={current_theme || defaultTheme}>
-        <div className="outerOuter" style={{ backgroundColor: current_theme.palette.background.dark }}>
+      <ThemeProvider theme={currentTheme}>
+        <div className="outerOuter" style={{ backgroundColor: currentTheme.palette.background.dark }}>
           <div className='settingsDiv'>
           <Button
                       className="ctrlBtn"
@@ -441,7 +445,7 @@ function WebPlayback(props) {
                           backgroundColor: "transparent",
                           outline: "none",
                           borderStyle: "none",
-                          color: current_theme.palette.secondary.main,
+                          color: currentTheme.palette.secondary.main,
                           fontSize: "1.7rem",
                           marginRight: "1vw",
                           filter: "drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))",
@@ -449,12 +453,12 @@ function WebPlayback(props) {
                       />
                     </Button>
           </div>
-          <div className='outerBorder' style={{ backgroundColor: current_theme.palette.background.dark }}>
-            <div className="pageDisplay" style={{ backgroundColor: current_theme.palette.background.default,
-             borderRadius: current_theme.typography.borderRadius }}>
+          <div className='outerBorder' style={{ backgroundColor: currentTheme.palette.background.dark }}>
+            <div className="pageDisplay" style={{ backgroundColor: currentTheme.palette.background.default,
+             borderRadius: currentTheme.typography.borderRadius }}>
               <div className="songDisplay">
                 <div className="imgSquare">
-                  <img src={current_track.album.images[0].url} className="playingCover" alt="" style={{ borderRadius: current_theme.typography.borderRadius }}/>
+                  <img src={current_track.album.images[0].url} className="playingCover" alt="" style={{ borderRadius: currentTheme.typography.borderRadius }}/>
                 </div>
                 <div className="now-playing__side">
                   <div className="now-playing__name">
@@ -510,14 +514,14 @@ function WebPlayback(props) {
                       {`
                       #trackTime::-webkit-slider-runnable-track {
                         height: 0.5rem;
-                        background: ${current_theme.palette.primary.main};
+                        background: ${currentTheme.palette.primary.main};
                         border-radius: 0.25rem;
                         background-image: linear-gradient(
                           to right,
-                          ${current_theme.palette.secondary.dark} 0%,
-                          ${current_theme.palette.secondary.dark} ${(currentPosition / current_track.duration_ms) * 100}%,
-                          ${current_theme.palette.secondary.main} ${(currentPosition / current_track.duration_ms) * 100}%,
-                          ${current_theme.palette.secondary.main} 100%
+                          ${currentTheme.palette.secondary.dark} 0%,
+                          ${currentTheme.palette.secondary.dark} ${(currentPosition / current_track.duration_ms) * 100}%,
+                          ${currentTheme.palette.secondary.main} ${(currentPosition / current_track.duration_ms) * 100}%,
+                          ${currentTheme.palette.secondary.main} 100%
                         );
                       }
 
@@ -526,7 +530,7 @@ function WebPlayback(props) {
                         appearance: none;
                         width: 1rem;
                         height: 1rem;
-                        background: ${current_theme.palette.secondary.dark};
+                        background: ${currentTheme.palette.secondary.dark};
                         border-radius: 50%;
                         cursor: pointer;
                         transform: translateY(-25%);
@@ -534,14 +538,14 @@ function WebPlayback(props) {
 
                       input#volumeInput::-webkit-slider-runnable-track {
                         height: 0.5rem;
-                        background: ${current_theme.palette.primary.main};
+                        background: ${currentTheme.palette.primary.main};
                         border-radius: 0.25rem;
                         background-image: linear-gradient(
                           to right,
-                          ${current_theme.palette.secondary.dark} 0%,
-                          ${current_theme.palette.secondary.dark} ${(volume / 1) * 100}%,
-                          ${current_theme.palette.secondary.main} ${(volume / 1) * 100}%,
-                          ${current_theme.palette.secondary.main} 100%
+                          ${currentTheme.palette.secondary.dark} 0%,
+                          ${currentTheme.palette.secondary.dark} ${(volume / 1) * 100}%,
+                          ${currentTheme.palette.secondary.main} ${(volume / 1) * 100}%,
+                          ${currentTheme.palette.secondary.main} 100%
                         );
                       }
                     
@@ -550,7 +554,7 @@ function WebPlayback(props) {
                         appearance: none;
                         width: 1rem;
                         height: 1rem;
-                        background: ${current_theme.palette.secondary.dark};
+                        background: ${currentTheme.palette.secondary.dark};
                         border-radius: 50%;
                         cursor: pointer;
                         transform: translateY(-25%);
@@ -564,13 +568,13 @@ function WebPlayback(props) {
                         backgroundColor: "transparent",
                         outline: "none",
                         borderStyle: "none",
-                        color: current_theme.palette.secondary.main,
+                        color: currentTheme.palette.secondary.main,
                         fontSize: "2.5rem",
                       }}><HistoryIcon style={{
                         backgroundColor: "transparent",
                         outline: "none",
                         borderStyle: "none",
-                        color: current_theme.palette.secondary.main,
+                        color: currentTheme.palette.secondary.main,
                         fontSize: "1.8rem",
                         marginRight: "7vw",
                         filter: "drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))",
@@ -590,7 +594,7 @@ function WebPlayback(props) {
                         backgroundColor: "transparent",
                         outline: "none",
                         borderStyle: "none",
-                        color: current_theme.palette.primary.main,
+                        color: currentTheme.palette.primary.main,
                         fontSize: "2.5rem",
                         marginRight: "7vw",
                         filter: "drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))",
@@ -607,7 +611,7 @@ function WebPlayback(props) {
                         backgroundColor: "transparent",
                         outline: "none",
                         borderStyle: "none",
-                        color: current_theme.palette.primary.main,
+                        color: currentTheme.palette.primary.main,
                         fontSize: "2.5rem",
                         marginRight: "7vw",
                         filter: "drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))",
@@ -615,7 +619,7 @@ function WebPlayback(props) {
                         backgroundColor: "transparent",
                         outline: "none",
                         borderStyle: "none",
-                        color: current_theme.palette.primary.main,
+                        color: currentTheme.palette.primary.main,
                         fontSize: "2.5rem",
                         marginRight: "7vw",
                         filter: "drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))",
@@ -632,7 +636,7 @@ function WebPlayback(props) {
                         backgroundColor: "transparent",
                         outline: "none",
                         borderStyle: "none",
-                        color: current_theme.palette.primary.main,
+                        color: currentTheme.palette.primary.main,
                         fontSize: "2.5rem",
                         filter: "drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))",
                       }}/>
@@ -643,7 +647,7 @@ function WebPlayback(props) {
                         backgroundColor: "transparent",
                         outline: "none",
                         borderStyle: "none",
-                        color: current_theme.palette.secondary.main,
+                        color: currentTheme.palette.secondary.main,
                         fontSize: "2.5rem",
                         filter: "drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))",
                       }}><QueueMusicIcon/></Button>
@@ -651,7 +655,7 @@ function WebPlayback(props) {
                         backgroundColor: "transparent",
                         outline: "none",
                         borderStyle: "none",
-                        color: current_theme.palette.secondary.main,
+                        color: currentTheme.palette.secondary.main,
                         fontSize: "1.7rem",
                         marginRight: "1vw",
                         filter: "drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))",
@@ -676,7 +680,7 @@ function WebPlayback(props) {
               <style>
                 {`
                   .queueDiv{
-                    border-radius: ${current_theme.typography.borderRadius};
+                    border-radius: ${currentTheme.typography.borderRadius};
                   }
                 `}
               </style>
@@ -684,7 +688,7 @@ function WebPlayback(props) {
               <Modal open={isQueueModalOpen} onClose={handleQueueModalClose}>
                 <div>
                   <div className="queueDiv" style={{
-                    background: current_theme.palette.background.default,
+                    background: currentTheme.palette.background.default,
                     fontSize: "1.7rem",
                     opacity: "100%",
                     position: "relative",
@@ -719,7 +723,7 @@ function WebPlayback(props) {
                           backgroundColor: "transparent",
                           outline: "none",
                           borderStyle: "none",
-                          color: current_theme.palette.secondary.main,
+                          color: currentTheme.palette.secondary.main,
                           fontSize: "1.7rem",
                           marginRight: "1vw",
                           filter: "drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))",
@@ -735,7 +739,7 @@ function WebPlayback(props) {
                           <style>
                             {`
                               .queuedCover{
-                                border-radius: ${current_theme.typography.borderRadius === "1rem" ? "0.5rem" : "0rem"}
+                                border-radius: ${currentTheme.typography.borderRadius === "1rem" ? "0.5rem" : "0rem"}
                               }
                             `}
                           </style>
@@ -769,7 +773,7 @@ function WebPlayback(props) {
               <Modal open={isHistoryModalOpen} onClose={handleHistoryModalClose}>
                 <div>
                   <div className="queueDiv" style={{
-                    background: current_theme.palette.background.default,
+                    background: currentTheme.palette.background.default,
                     fontSize: "1.7rem",
                     opacity: "100%",
                     position: "relative",
@@ -804,7 +808,7 @@ function WebPlayback(props) {
                             backgroundColor: "transparent",
                             outline: "none",
                             borderStyle: "none",
-                            color: current_theme.palette.secondary.main,
+                            color: currentTheme.palette.secondary.main,
                             fontSize: "1.7rem",
                             marginRight: "1vw",
                             filter: "drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))",
@@ -847,7 +851,7 @@ function WebPlayback(props) {
               <Modal open={isSettingsModalOpen} onClose={handleSettingsModalClose}>
                 <div>
                   <div className="queueDiv" style={{
-                    background: current_theme.palette.background.default,
+                    background: currentTheme.palette.background.default,
                     fontSize: "1.7rem",
                     opacity: "100%",
                     position: "relative",
@@ -871,7 +875,7 @@ function WebPlayback(props) {
                           backgroundColor: "transparent",
                           outline: "none",
                           borderStyle: "none",
-                          color: current_theme.palette.secondary.main,
+                          color: currentTheme.palette.secondary.main,
                           fontSize: "1.7rem",
                           marginRight: "1vw",
                           filter: "drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))",
@@ -895,27 +899,27 @@ function WebPlayback(props) {
                         <input type="text" id="playerName" value={playerName} onChange={(e) => setPlayerName(e.target.value)} style={{
                           backgroundColor: "transparent",
                           background: "transparent",
-                          color: current_theme.palette.text.primary,
+                          color: currentTheme.palette.text.primary,
                           borderStyle: "solid",
-                          borderColor: current_theme.palette.background.light,
+                          borderColor: currentTheme.palette.background.light,
                           borderRadius: "0.5rem",
                           borderWidth: "0.25rem",
-                          fontFamily: current_theme.typography.fontFamily,
-                          fontSize: current_theme.typography.subtitle1.fontSize,
+                          fontFamily: currentTheme.typography.fontFamily,
+                          fontSize: currentTheme.typography.subtitle1.fontSize,
                           fontWeight: "bold",
                           padding: "0.5rem",
                           margin: "0.5rem",
                           outline: "none",
                         }}/>
                         <button onClick={() => handlePlayerNameChange(playerName)} style={{
-                          backgroundColor: current_theme.palette.background.light,
-                          color: current_theme.palette.primary.main,
+                          backgroundColor: currentTheme.palette.background.light,
+                          color: currentTheme.palette.primary.main,
                           borderStyle: "solid",
-                          borderColor: current_theme.palette.background.light,
+                          borderColor: currentTheme.palette.background.light,
                           borderRadius: "0.5rem",
                           borderWidth: "0.25rem",
-                          fontFamily: current_theme.typography.fontFamily,
-                          fontSize: current_theme.typography.subtitle1.fontSize,
+                          fontFamily: currentTheme.typography.fontFamily,
+                          fontSize: currentTheme.typography.subtitle1.fontSize,
                           fontWeight: "bold",
                           padding: "0.5rem",
                           cursor: "pointer",
@@ -932,19 +936,19 @@ function WebPlayback(props) {
                     >Themes</Typography>
                     <style>
                     {`
-                      .current_theme {
+                      .currentTheme {
                         border-style: solid;
-                        border-radius: ${current_theme.typography.borderRadius === "1rem" ? "0.5rem" : "0rem"};
-                        border-color: ${current_theme.palette.primary.main} ;
-                        background-color: ${current_theme.palette.secondary.main} ;
-                        color: ${current_theme.palette.text.primary};
+                        border-radius: ${currentTheme.typography.borderRadius === "1rem" ? "0.5rem" : "0rem"};
+                        border-color: ${currentTheme.palette.primary.main} ;
+                        background-color: ${currentTheme.palette.secondary.main} ;
+                        color: ${currentTheme.palette.text.primary};
                       }
                     `}
                     </style>
                       <div className="outerThemeDiv" style={{ marginTop: "1.5rem" }}>
                         {themes.map((theme) => (
                           <div
-                            className={`themeDiv ${theme === current_theme ? "current_theme" : ""}`}
+                            className={`themeDiv ${theme === currentTheme ? "currentTheme" : ""}`}
                             key={theme.name}
                             onClick={() => handleThemeChange(theme)}
                           >
@@ -986,14 +990,14 @@ function WebPlayback(props) {
                       </div>
                       <div style={{textAlign: "center", alignItems: "center", marginBottom: "6rem"}}>
                         <button onClick={handleCustomModalOpen} style={{
-                            backgroundColor: current_theme.palette.background.light,
-                            color: current_theme.palette.primary.main,
+                            backgroundColor: currentTheme.palette.background.light,
+                            color: currentTheme.palette.primary.main,
                             borderStyle: "solid",
-                            borderColor: current_theme.palette.background.light,
+                            borderColor: currentTheme.palette.background.light,
                             borderRadius: "0.5rem",
                             borderWidth: "0.25rem",
-                            fontFamily: current_theme.typography.fontFamily,
-                            fontSize: current_theme.typography.subtitle1.fontSize,
+                            fontFamily: currentTheme.typography.fontFamily,
+                            fontSize: currentTheme.typography.subtitle1.fontSize,
                             fontWeight: "bold",
                             padding: "0.5rem",
                             cursor: "pointer",
@@ -1007,7 +1011,7 @@ function WebPlayback(props) {
 
               <Modal open={isCustomModalOpen} onClose={handleCustomModalClose} style={{maxHeight: "100%"}}>
                 <div>
-                  <div className="queueDiv" style={{ background: current_theme.palette.background.default,
+                  <div className="queueDiv" style={{ background: currentTheme.palette.background.default,
                     fontSize: "1.7rem",
                     opacity: "100%",
                     position: "relative", }}>
@@ -1029,7 +1033,7 @@ function WebPlayback(props) {
                           backgroundColor: "transparent",
                           outline: "none",
                           borderStyle: "none",
-                          color: current_theme.palette.secondary.main,
+                          color: currentTheme.palette.secondary.main,
                           fontSize: "1.7rem",
                           marginRight: "1vw",
                           filter: "drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))",
@@ -1094,13 +1098,13 @@ function WebPlayback(props) {
                         <select style={{
                           backgroundColor: "transparent",
                           background: "transparent",
-                          color: current_theme.palette.text.primary,
+                          color: currentTheme.palette.text.primary,
                           borderStyle: "solid",
-                          borderColor: current_theme.palette.background.light,
+                          borderColor: currentTheme.palette.background.light,
                           borderRadius: "0.5rem",
                           borderWidth: "0.25rem",
-                          fontFamily: current_theme.typography.fontFamily,
-                          fontSize: current_theme.typography.subtitle1.fontSize,
+                          fontFamily: currentTheme.typography.fontFamily,
+                          fontSize: currentTheme.typography.subtitle1.fontSize,
                           fontWeight: "bold",
                           padding: "0.5rem",
                           margin: "0.5rem",
@@ -1163,12 +1167,12 @@ function WebPlayback(props) {
                           left: 0;
                           height: 20px;
                           width: 20px;
-                          background-color: ${current_theme.palette.background.secondary};
-                          border: 2px solid ${current_theme.palette.text.primary};
+                          background-color: ${currentTheme.palette.background.secondary};
+                          border: 2px solid ${currentTheme.palette.text.primary};
                         }
 
                         .customCheckbox input[type="checkbox"]:checked + .checkmark {
-                          background-color: ${current_theme.palette.primary.main};
+                          background-color: ${currentTheme.palette.primary.main};
                         }
 
                         .checkmark:after {
@@ -1187,7 +1191,7 @@ function WebPlayback(props) {
                           width: 5px;
                           height: 10px;
                           border-style: solid;
-                          border-color: ${current_theme.palette.text.primary};
+                          border-color: ${currentTheme.palette.text.primary};
                           border-width: 0 2px 2px 0;
                           transform: rotate(45deg);
                         }`
@@ -1195,14 +1199,14 @@ function WebPlayback(props) {
                       </style>
                       <div style={{marginTop: "0.5rem", width: "100%", textAlign: "center", marginBottom: "6rem" }}>
                         <button style={{
-                                backgroundColor: current_theme.palette.background.light,
-                                color: current_theme.palette.primary.main,
+                                backgroundColor: currentTheme.palette.background.light,
+                                color: currentTheme.palette.primary.main,
                                 borderStyle: "solid",
-                                borderColor: current_theme.palette.background.light,
+                                borderColor: currentTheme.palette.background.light,
                                 borderRadius: "0.5rem",
                                 borderWidth: "0.25rem",
-                                fontFamily: current_theme.typography.fontFamily,
-                                fontSize: current_theme.typography.subtitle1.fontSize,
+                                fontFamily: currentTheme.typography.fontFamily,
+                                fontSize: currentTheme.typography.subtitle1.fontSize,
                                 fontWeight: "bold",
                                 padding: "0.5rem",
                                 cursor: "pointer",
@@ -1217,7 +1221,7 @@ function WebPlayback(props) {
               <Modal open={isRefreshModalOpen} onClose={handleRefreshModalClose}>
                 <div>
                   <div className="queueDiv" style={{
-                    background: current_theme.palette.background.default,
+                    background: currentTheme.palette.background.default,
                     fontSize: "1.7rem",
                     opacity: "100%",
                     position: "relative",
@@ -1244,7 +1248,7 @@ function WebPlayback(props) {
                         backgroundColor: "transparent",
                         outline: "none",
                         borderStyle: "none",
-                        color: current_theme.palette.secondary.dark,
+                        color: currentTheme.palette.secondary.dark,
                         fontSize: "2.5rem",
                       }}/></button>
                   </div>
