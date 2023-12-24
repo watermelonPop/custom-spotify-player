@@ -156,156 +156,6 @@ function WebPlayback(props) {
   }, []);
 
   useEffect(() => {
-    const handleApplySettings = () => {
-      // Create a new custom theme based on the default theme
-      console.log("applying custom settings");
-      let fontW = "normal";
-      if (selectedFont === 'Montserrat') {
-        fontW = "bold";
-      }
-
-      let borderR = "0rem";
-      if (hasRoundedCorners) {
-        borderR = "1rem";
-      }
-
-      // Function to check if a color value is valid
-      const isValidColor = (color) => {
-        return /^#([A-Fa-f0-9]{3}){1,2}$|^rgb\((\d{1,3},\s*){2}\d{1,3}\)$|^rgba\((\d{1,3},\s*){3}(1|0?\.\d+)\)$|^hsl\(\d{1,3},\s*\d{1,3}%,\s*\d{1,3}%\)$|^hsla\(\d{1,3},\s*\d{1,3}%,\s*\d{1,3}%,\s*(1|0?\.\d+)\)$|^color\(\w+\)$/i.test(color);
-      };
-
-      // Validate the selected colors
-      const selectedColorsValidated = {
-        primaryBg: isValidColor(selectedColors.primaryBg) ? selectedColors.primaryBg : '#2196f3',
-        secondaryBg: isValidColor(selectedColors.secondaryBg) ? selectedColors.secondaryBg : '#2196f3',
-        playBtns: isValidColor(selectedColors.playBtns) ? selectedColors.playBtns : '#2196f3',
-        primaryBtns: isValidColor(selectedColors.primaryBtns) ? selectedColors.primaryBtns : '#2196f3',
-        touchBar: isValidColor(selectedColors.touchBar) ? selectedColors.touchBar : '#2196f3',
-        primaryTxt: isValidColor(selectedColors.primaryTxt) ? selectedColors.primaryTxt : '#2196f3',
-        secondaryTxt: isValidColor(selectedColors.secondaryTxt) ? selectedColors.secondaryTxt : '#2196f3',
-      };
-      console.log("raw value: " + selectedColors.primaryBg)
-      console.log("type: " + typeof(selectedColorsValidated.primaryBg));
-      console.log("value: " + selectedColorsValidated.primaryBg);
-
-      let updatedTheme = responsiveFontSizes(
-        createTheme({
-          name: "custom-theme",
-          spacing: 4,
-          typography: {
-              fontFamily: selectedFont,
-              borderRadius: borderR,
-            h1: {
-              fontSize: '3.0rem',
-              fontFamily: selectedFont,
-              textAlign: 'left',
-              fontWeight: fontW,
-            },
-            h2: {
-              fontSize: '2.5rem',
-              fontFamily: selectedFont,
-              fontStyle: 'bold',
-              textAlign: 'left',
-              fontWeight: fontW,
-            },
-            h3: {
-              fontSize: '2.0rem',
-              fontFamily: selectedFont,
-              textAlign: 'left',
-              fontWeight: fontW,
-            },
-            h4: {
-              fontSize: '1.5rem',
-              fontFamily: selectedFont,
-              textAlign: 'left',
-              fontWeight: fontW,
-            },
-            body1: {
-              fontSize: '1.3rem',
-              fontFamily: selectedFont,
-              textAlign: 'justify',
-              fontWeight: fontW,
-            },
-            subtitle1:{
-              fontSize: '1.0rem',
-              fontFamily: selectedFont,
-              textAlign: 'justify',
-              fontWeight: fontW,
-            }
-          },
-          palette: {
-            background: {
-              main: selectedColorsValidated.primaryBg,
-              default: selectedColorsValidated.primaryBg,
-              dark: selectedColorsValidated.secondaryBg,
-              light: '#FFFFFF',
-            },
-            primary: {
-              main: selectedColorsValidated.playBtns,
-            },
-            secondary: {
-              main: selectedColorsValidated.primaryBtns,
-              dark: selectedColorsValidated.touchBar,
-            },
-            error: {
-              main: '#F52735', // red
-            },
-            warning: {
-              main: '#F52735', // orange
-            },
-            info: {
-              main: '#2C3A6C', // gray
-            },
-            success: {
-              main: '#09FE00', // green
-            },
-            text: {
-              main: selectedColorsValidated.primaryTxt,
-              primary: selectedColorsValidated.primaryTxt, 
-              secondary: selectedColorsValidated.secondaryTxt, 
-            },
-            transitions: {
-              create: () => 'all 0.3s ease', // Add your desired transition here
-            },
-          },
-        })
-      );
-
-      setSelectedColors({
-        primaryBg: selectedColorsValidated.primaryBg,
-        secondaryBg: selectedColorsValidated.secondaryBg,
-        playBtns: selectedColorsValidated.playBtns,
-        primaryBtns: selectedColorsValidated.primaryBtns,
-        touchBar: selectedColorsValidated.touchBar,
-        primaryTxt: selectedColorsValidated.primaryTxt,
-        secondaryTxt: selectedColorsValidated.secondaryTxt
-      });
-
-      console.log("custom theme created");
-
-      const updatedThemes = [...themes];
-      updatedThemes[updatedThemes.length - 1] = updatedTheme;
-
-      setThemes(updatedThemes);
-
-      console.log("custom theme updated");
-
-      handleCustomModalClose();
-    }
-    const areSettingsReady = selectedFont && Object.values(selectedColors).every(color => color !== undefined) && hasRoundedCorners !== undefined;
-
-    if (areSettingsReady) {
-      handleApplySettings();
-    }
-
-    return () => {
-      // ... (your existing cleanup code)
-    };
-  }, [selectedFont, selectedColors, hasRoundedCorners]);
-
-
-
-  useEffect(() => {
     let interval;
 
     if (!is_paused && is_active) {
@@ -515,6 +365,143 @@ function WebPlayback(props) {
 
   const setCornersInLocalStorage = (newCorners) => {
     localStorage.setItem('customCorners', newCorners);
+  }
+
+  const handleApplySettings = () => {
+    // Create a new custom theme based on the default theme
+    console.log("applying custom settings");
+    let fontW = "normal";
+    if (selectedFont === 'Montserrat') {
+      fontW = "bold";
+    }
+
+    let borderR = "0rem";
+    if (hasRoundedCorners) {
+      borderR = "1rem";
+    }
+
+    // Function to check if a color value is valid
+    const isValidColor = (color) => {
+      return /^#([A-Fa-f0-9]{3}){1,2}$|^rgb\((\d{1,3},\s*){2}\d{1,3}\)$|^rgba\((\d{1,3},\s*){3}(1|0?\.\d+)\)$|^hsl\(\d{1,3},\s*\d{1,3}%,\s*\d{1,3}%\)$|^hsla\(\d{1,3},\s*\d{1,3}%,\s*\d{1,3}%,\s*(1|0?\.\d+)\)$|^color\(\w+\)$/i.test(color);
+    };
+
+    // Validate the selected colors
+    const selectedColorsValidated = {
+      primaryBg: isValidColor(selectedColors.primaryBg) ? selectedColors.primaryBg : '#2196f3',
+      secondaryBg: isValidColor(selectedColors.secondaryBg) ? selectedColors.secondaryBg : '#2196f3',
+      playBtns: isValidColor(selectedColors.playBtns) ? selectedColors.playBtns : '#2196f3',
+      primaryBtns: isValidColor(selectedColors.primaryBtns) ? selectedColors.primaryBtns : '#2196f3',
+      touchBar: isValidColor(selectedColors.touchBar) ? selectedColors.touchBar : '#2196f3',
+      primaryTxt: isValidColor(selectedColors.primaryTxt) ? selectedColors.primaryTxt : '#2196f3',
+      secondaryTxt: isValidColor(selectedColors.secondaryTxt) ? selectedColors.secondaryTxt : '#2196f3',
+    };
+    console.log("raw value: " + selectedColors.primaryBg);
+    console.log("type: " + typeof(selectedColorsValidated.primaryBg));
+    console.log("value: " + selectedColorsValidated.touchBar);
+
+    let updatedTheme = responsiveFontSizes(
+      createTheme({
+        name: "custom-theme",
+        spacing: 4,
+        typography: {
+            fontFamily: selectedFont,
+            borderRadius: borderR,
+          h1: {
+            fontSize: '3.0rem',
+            fontFamily: selectedFont,
+            textAlign: 'left',
+            fontWeight: fontW,
+          },
+          h2: {
+            fontSize: '2.5rem',
+            fontFamily: selectedFont,
+            fontStyle: 'bold',
+            textAlign: 'left',
+            fontWeight: fontW,
+          },
+          h3: {
+            fontSize: '2.0rem',
+            fontFamily: selectedFont,
+            textAlign: 'left',
+            fontWeight: fontW,
+          },
+          h4: {
+            fontSize: '1.5rem',
+            fontFamily: selectedFont,
+            textAlign: 'left',
+            fontWeight: fontW,
+          },
+          body1: {
+            fontSize: '1.3rem',
+            fontFamily: selectedFont,
+            textAlign: 'justify',
+            fontWeight: fontW,
+          },
+          subtitle1:{
+            fontSize: '1.0rem',
+            fontFamily: selectedFont,
+            textAlign: 'justify',
+            fontWeight: fontW,
+          }
+        },
+        palette: {
+          background: {
+            main: selectedColorsValidated.primaryBg,
+            default: selectedColorsValidated.primaryBg,
+            dark: selectedColorsValidated.secondaryBg,
+            light: '#FFFFFF',
+          },
+          primary: {
+            main: selectedColorsValidated.playBtns,
+          },
+          secondary: {
+            main: selectedColorsValidated.primaryBtns,
+            dark: selectedColorsValidated.touchBar,
+          },
+          error: {
+            main: '#F52735', // red
+          },
+          warning: {
+            main: '#F52735', // orange
+          },
+          info: {
+            main: '#2C3A6C', // gray
+          },
+          success: {
+            main: '#09FE00', // green
+          },
+          text: {
+            main: selectedColorsValidated.primaryTxt,
+            primary: selectedColorsValidated.primaryTxt, 
+            secondary: selectedColorsValidated.secondaryTxt, 
+          },
+          transitions: {
+            create: () => 'all 0.3s ease', // Add your desired transition here
+          },
+        },
+      })
+    );
+
+    setSelectedColors({
+      primaryBg: selectedColorsValidated.primaryBg,
+      secondaryBg: selectedColorsValidated.secondaryBg,
+      playBtns: selectedColorsValidated.playBtns,
+      primaryBtns: selectedColorsValidated.primaryBtns,
+      touchBar: selectedColorsValidated.touchBar,
+      primaryTxt: selectedColorsValidated.primaryTxt,
+      secondaryTxt: selectedColorsValidated.secondaryTxt
+    });
+
+    console.log("custom theme created");
+
+    const updatedThemes = [...themes];
+    updatedThemes[updatedThemes.length - 1] = updatedTheme;
+
+    setThemes(updatedThemes);
+
+    console.log("custom theme updated");
+
+    handleCustomModalClose();
   }
     
 
