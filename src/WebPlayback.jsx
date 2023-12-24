@@ -143,7 +143,7 @@ function WebPlayback(props) {
       const storedCustomFont = getFontFromLocalStorage();
       setSelectedFont(storedCustomFont);
 
-      const storedCustomColors = JSON.parse(getColorsFromLocalStorage());
+      const storedCustomColors = getColorsFromLocalStorage();
       setSelectedColors(storedCustomColors);
 
       const storedRoundedCorners = !!getCornersFromLocalStorage();
@@ -274,7 +274,19 @@ function WebPlayback(props) {
       [key]: color,
     }));
 
-    setColorsInLocalStorage(JSON.stringify(selectedColors));
+    let keyList = {
+      primaryBg: 'customPrimaryBg',
+      secondaryBg: 'customSecondaryBg',
+      playBtns: 'customPlayBtns',
+      primaryBtns: 'customPrimaryBtns',
+      touchBar: 'customTouchBar',
+      primaryTxt: 'customPrimaryTxt',
+      secondaryTxt: 'customSecondaryTxt'
+    };
+
+    let newKey = keyList[key];
+
+    setColorInLocalStorage(newKey, color);
 
     if (!keepOpen) {
       // Handle closing the color picker if needed
@@ -304,21 +316,30 @@ function WebPlayback(props) {
   }
 
   const getColorsFromLocalStorage = () => {
-    let defaultColors = {
-      primaryBg: defaultTheme.palette.background.default,
-      secondaryBg: defaultTheme.palette.background.dark,
-      playBtns: defaultTheme.palette.primary.main,
-      primaryBtns: defaultTheme.palette.secondary.main,
-      touchBar: defaultTheme.palette.secondary.dark,
-      primaryTxt: defaultTheme.palette.text.primary,
-      secondaryTxt: defaultTheme.palette.text.secondary
+
+    let cpb = localStorage.getItem('customPrimaryBg') || defaultTheme.palette.background.default;
+    let csb = localStorage.getItem('customSecondaryBg') || defaultTheme.palette.background.dark;
+    let cPBtns = localStorage.getItem('customPlayBtns') || defaultTheme.palette.primary.main;
+    let pBtns = localStorage.getItem('customPrimaryBtns') || defaultTheme.palette.secondary.main;
+    let tb = localStorage.getItem('customTouchBar') || defaultTheme.palette.secondary.dark;
+    let pt = localStorage.getItem('customPrimaryTxt') || defaultTheme.palette.text.primary;
+    let st = localStorage.getItem('customSecondaryTxt') || defaultTheme.palette.text.secondary;
+
+    let newColors = {
+      primaryBg: cpb,
+      secondaryBg: csb,
+      playBtns: cPBtns,
+      primaryBtns: pBtns,
+      touchBar: tb,
+      primaryTxt: pt,
+      secondaryTxt: st
     };
-    defaultColors = JSON.stringify(defaultColors);
-    return localStorage.getItem('customColors') || defaultColors;
+    
+    return newColors;
   }
 
-  const setColorsInLocalStorage = (newColors) => {
-    localStorage.setItem('customColors', newColors);
+  const setColorInLocalStorage = (key, newColor) => {
+    localStorage.setItem(key, newColor);
   }
 
   const getCornersFromLocalStorage = () => {
