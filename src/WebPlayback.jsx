@@ -50,6 +50,58 @@ function formatTime(milliseconds) {
   return `${minutes}:${seconds.toString().padStart(2, '0')}`;
 }
 
+const getFontFromLocalStorage = () => {
+  let ret = localStorage.getItem('customFont') || customTheme.typography.fontFamily;
+  console.log("grabbedFont: " + (localStorage.getItem('customFont') || "err"));
+  return ret;
+}
+
+const getCornersFromLocalStorage = () => {
+  let ret = localStorage.getItem('customCorners') || customTheme.typography.borderRadius;
+  console.log("grabbedCorners: " + (localStorage.getItem('customCorners') || "err"));
+  return ret;
+}
+
+const getColorsFromLocalStorage = () => {
+  console.log('Executing getColorsFromLocalStorage');
+  try {
+    let cpb = localStorage.getItem('customPrimaryBg') || defaultTheme.palette.background.default;
+    let csb = localStorage.getItem('customSecondaryBg') || defaultTheme.palette.background.dark;
+    let cPBtns = localStorage.getItem('customPlayBtns') || defaultTheme.palette.primary.main;
+    let pBtns = localStorage.getItem('customPrimaryBtns') || defaultTheme.palette.secondary.main;
+    let tb = localStorage.getItem('customTouchBar') || defaultTheme.palette.secondary.dark;
+    let pt = localStorage.getItem('customPrimaryTxt') || defaultTheme.palette.text.primary;
+    let st = localStorage.getItem('customSecondaryTxt') || defaultTheme.palette.text.secondary;
+
+    console.log('Stored customPrimaryBg:', cpb);
+
+    let newColors = {
+      primaryBg: cpb,
+      secondaryBg: csb,
+      playBtns: cPBtns,
+      primaryBtns: pBtns,
+      touchBar: tb,
+      primaryTxt: pt,
+      secondaryTxt: st
+    };
+    console.log('Returning colors:', newColors);
+
+    return newColors;
+  } catch (error) {
+    console.error('Error in getColorsFromLocalStorage:', error);
+    // Return a default value or handle the error as needed
+    return {
+      primaryBg: defaultTheme.palette.background.default,
+      secondaryBg: defaultTheme.palette.background.dark,
+      playBtns: defaultTheme.palette.primary.main,
+      primaryBtns: defaultTheme.palette.secondary.main,
+      touchBar: defaultTheme.palette.secondary.dark,
+      primaryTxt: defaultTheme.palette.text.primary,
+      secondaryTxt: defaultTheme.palette.text.secondary
+    };
+  }
+};
+
 function WebPlayback(props) {
   const [is_paused, setPaused] = useState(false);
   const [is_active, setActive] = useState(false);
@@ -290,60 +342,12 @@ function WebPlayback(props) {
     setCornersInLocalStorage(hasRoundedCorners.toString());
   };
 
-  const getFontFromLocalStorage = () => {
-    return localStorage.getItem('customFont') || customTheme.typography.fontFamily;
-  }
-
   const setFontInLocalStorage = (newFont) => {
     localStorage.setItem('customFont', newFont);
   }
 
-  const getColorsFromLocalStorage = () => {
-    console.log('Executing getColorsFromLocalStorage');
-    try {
-      let cpb = localStorage.getItem('customPrimaryBg') || defaultTheme.palette.background.default;
-      let csb = localStorage.getItem('customSecondaryBg') || defaultTheme.palette.background.dark;
-      let cPBtns = localStorage.getItem('customPlayBtns') || defaultTheme.palette.primary.main;
-      let pBtns = localStorage.getItem('customPrimaryBtns') || defaultTheme.palette.secondary.main;
-      let tb = localStorage.getItem('customTouchBar') || defaultTheme.palette.secondary.dark;
-      let pt = localStorage.getItem('customPrimaryTxt') || defaultTheme.palette.text.primary;
-      let st = localStorage.getItem('customSecondaryTxt') || defaultTheme.palette.text.secondary;
-  
-      console.log('Stored customPrimaryBg:', cpb);
-  
-      let newColors = {
-        primaryBg: cpb,
-        secondaryBg: csb,
-        playBtns: cPBtns,
-        primaryBtns: pBtns,
-        touchBar: tb,
-        primaryTxt: pt,
-        secondaryTxt: st
-      };
-      console.log('Returning colors:', newColors);
-  
-      return newColors;
-    } catch (error) {
-      console.error('Error in getColorsFromLocalStorage:', error);
-      // Return a default value or handle the error as needed
-      return {
-        primaryBg: defaultTheme.palette.background.default,
-        secondaryBg: defaultTheme.palette.background.dark,
-        playBtns: defaultTheme.palette.primary.main,
-        primaryBtns: defaultTheme.palette.secondary.main,
-        touchBar: defaultTheme.palette.secondary.dark,
-        primaryTxt: defaultTheme.palette.text.primary,
-        secondaryTxt: defaultTheme.palette.text.secondary
-      };
-    }
-  };
-
   const setColorInLocalStorage = (key, newColor) => {
     localStorage.setItem(key, newColor.toString());
-  }
-
-  const getCornersFromLocalStorage = () => {
-    return localStorage.getItem('customCorners') || customTheme.typography.borderRadius;
   }
 
   const setCornersInLocalStorage = (newCorners) => {
