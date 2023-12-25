@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.2c694fad.css",
-    "main.js": "/static/js/main.3d417576.js",
+    "main.js": "/static/js/main.5a92cc6a.js",
     "static/media/nunito-latin-wght-normal.woff2": "/static/media/nunito-latin-wght-normal.00a333ae2bb6e9b0d7a4.woff2",
     "static/media/nunito-latin-ext-wght-normal.woff2": "/static/media/nunito-latin-ext-wght-normal.d3a427785681605e1277.woff2",
     "static/media/gamja-flower-37-400-normal.woff2": "/static/media/gamja-flower-37-400-normal.2d8b37267ed7a052dd59.woff2",
@@ -224,10 +224,10 @@
     "static/media/gamja-flower-93-400-normal.woff": "/static/media/gamja-flower-93-400-normal.b3f78f57af8d003a9159.woff",
     "index.html": "/index.html",
     "main.2c694fad.css.map": "/static/css/main.2c694fad.css.map",
-    "main.3d417576.js.map": "/static/js/main.3d417576.js.map"
+    "main.5a92cc6a.js.map": "/static/js/main.5a92cc6a.js.map"
   },
   "entrypoints": [
     "static/css/main.2c694fad.css",
-    "static/js/main.3d417576.js"
+    "static/js/main.5a92cc6a.js"
   ]
 }

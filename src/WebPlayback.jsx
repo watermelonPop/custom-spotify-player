@@ -187,16 +187,6 @@ function WebPlayback(props) {
 
       handleApplySettings();
 
-      console.log("before");
-      let orig = getThemeFromLocalStorage();
-      console.log("orig: " + orig);
-      orig = parseInt(orig);
-      console.log("int: " + orig);
-      const held = themes[orig];
-      console.log("local storage: " + held.name);
-      setTheme(held);
-      console.log("curr theme: " + current_theme.name);
-
       
       player.connect();
     };
@@ -502,7 +492,19 @@ function WebPlayback(props) {
 
     console.log("custom theme updated");
 
-    handleCustomModalClose();
+    console.log("before");
+    let orig = getThemeFromLocalStorage();
+    console.log("orig: " + orig);
+    orig = parseInt(orig);
+    console.log("int: " + orig);
+    if(orig == themes.length - 1){
+      setTheme(updatedTheme);
+    }
+    console.log("curr theme: " + current_theme.name);
+
+    if(isCustomModalOpen){
+      handleCustomModalClose();
+    }
   }
     
 
@@ -804,8 +806,8 @@ function WebPlayback(props) {
                       variant="h1"
                       color="textPrimary"
                       textAlign="center"
-                      marginBottom="6rem"
-                      marginTop="6rem"
+                      style={{marginBottom:"6rem",
+                      marginTop:"6rem"}}
                       gutterBottom
                     >
                       Queued Tracks
@@ -889,8 +891,8 @@ function WebPlayback(props) {
                         variant="h1"
                         color="textPrimary"
                         textAlign="center"
-                        marginBottom="6rem"
-                        marginTop="6rem"
+                        style={{marginBottom:"6rem",
+                        marginTop:"6rem"}}
                         gutterBottom
                       >
                         History
@@ -987,8 +989,8 @@ function WebPlayback(props) {
                         }}
                       />
                     </Button>
-                    <div marginBottom="6rem" >
-                      <Typography component="h1" variant="h1" color="textPrimary" textAlign="center" marginTop="6rem" marginBottom="2rem" gutterBottom>
+                    <div style={{marginBottom:"6rem"}} >
+                      <Typography component="h1" variant="h1" color="textPrimary" textAlign="center" style={{marginTop:"6rem", marginBottom:"2rem"}} gutterBottom>
                         Settings
                       </Typography>
                       <Typography
@@ -1145,8 +1147,8 @@ function WebPlayback(props) {
                         }}
                       />
                     </Button>
-                      <div marginBottom="6rem">
-                      <Typography component="h1" variant="h1" color="textPrimary" textAlign="center" marginTop="6rem" marginBottom="2rem" gutterBottom>
+                      <div style={{marginBottom:"6rem"}}>
+                      <Typography component="h1" variant="h1" color="textPrimary" textAlign="center" style={{ marginTop:"6rem", marginBottom:"2rem" }} gutterBottom>
                         Customize Theme
                       </Typography>
                       <div style={{marginTop: "2rem", width: "100%", textAlign: "justify", justifyContent: "space-around"}}>
