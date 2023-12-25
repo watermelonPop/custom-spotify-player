@@ -58,8 +58,8 @@ const getFontFromLocalStorage = () => {
 
 const getCornersFromLocalStorage = () => {
   let boolStr = localStorage.getItem('customCorners');
-  let ret = (boolStr.toLowerCase() === "true") || false;
-  console.log("grabbedCorners: " + ((boolStr) || "err"));
+  let ret = (boolStr && boolStr.toLowerCase() === "true") || false;
+  console.log("grabbedCorners: " + (boolStr || "err"));
   return ret;
 }
 
@@ -343,6 +343,7 @@ function WebPlayback(props) {
     console.log("before corners: " + getCornersFromLocalStorage());
     setCornersInLocalStorage(event.target.checked);
     console.log("after corners: " + getCornersFromLocalStorage());
+    console.log();
   };
 
   const setFontInLocalStorage = (newFont) => {
