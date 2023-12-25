@@ -57,8 +57,9 @@ const getFontFromLocalStorage = () => {
 }
 
 const getCornersFromLocalStorage = () => {
-  let ret = localStorage.getItem('customCorners') || customTheme.typography.borderRadius;
-  console.log("grabbedCorners: " + (localStorage.getItem('customCorners') || "err"));
+  let boolStr = localStorage.getItem('customCorners');
+  let ret = (boolStr.toLowerCase() === "true") || false;
+  console.log("grabbedCorners: " + ((boolStr) || "err"));
   return ret;
 }
 
@@ -122,7 +123,7 @@ function WebPlayback(props) {
   const fonts = ["Montserrat", "Courier Prime", "Vidaloka", "Gamja Flower", "Oswald Variable", "Nunito Variable", 'Spectral'];
   const [selectedFont, setSelectedFont] = useState(getFontFromLocalStorage());
   const [selectedColors, setSelectedColors] = useState(getColorsFromLocalStorage());
-  const [hasRoundedCorners, setHasRoundedCorners] = useState(getCornersFromLocalStorage().toLowerCase() === "true");
+  const [hasRoundedCorners, setHasRoundedCorners] = useState(getCornersFromLocalStorage());
 
 
 
@@ -339,7 +340,9 @@ function WebPlayback(props) {
 
   const handleRoundedCornersChange = (event) => {
     setHasRoundedCorners(event.target.checked);
-    setCornersInLocalStorage(hasRoundedCorners.toString());
+    console.log("before corners: " + getCornersFromLocalStorage());
+    setCornersInLocalStorage(event.target.checked);
+    console.log("after corners: " + getCornersFromLocalStorage());
   };
 
   const setFontInLocalStorage = (newFont) => {
@@ -351,7 +354,10 @@ function WebPlayback(props) {
   }
 
   const setCornersInLocalStorage = (newCorners) => {
-    localStorage.setItem('customCorners', newCorners);
+    console.log("entered value: " + newCorners.toString());
+    console.log("before setting local storage: " + localStorage.getItem("customCorners"));
+    localStorage.setItem('customCorners', newCorners.toString());
+    console.log("after setting local storage: " + localStorage.getItem("customCorners"));
   }
 
   const handleApplySettings = () => {
