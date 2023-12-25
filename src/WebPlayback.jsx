@@ -68,17 +68,9 @@ function WebPlayback(props) {
   const [themes, setThemes] = useState([defaultTheme, strawberryTheme, pjTheme, tteokTheme, ambTheme, earthTheme, sunsetTheme, customTheme]);
   const [playerName, setPlayerName] = useState("Custom Spotify Player");
   const fonts = ["Montserrat", "Courier Prime", "Vidaloka", "Gamja Flower", "Oswald Variable", "Nunito Variable", 'Spectral'];
-  const [selectedFont, setSelectedFont] = useState(fonts[0]);
-  const [selectedColors, setSelectedColors] = useState({
-    primaryBg: defaultTheme.palette.background.default,
-    secondaryBg: defaultTheme.palette.background.dark,
-    playBtns: defaultTheme.palette.primary.main,
-    primaryBtns: defaultTheme.palette.secondary.main,
-    touchBar: defaultTheme.palette.secondary.dark,
-    primaryTxt: defaultTheme.palette.text.primary,
-    secondaryTxt: defaultTheme.palette.text.secondary
-  });
-  const [hasRoundedCorners, setHasRoundedCorners] = useState(false);
+  const [selectedFont, setSelectedFont] = useState(getFontFromLocalStorage());
+  const [selectedColors, setSelectedColors] = useState(getColorsFromLocalStorage());
+  const [hasRoundedCorners, setHasRoundedCorners] = useState(getCornersFromLocalStorage().toLowerCase() === "true");
 
 
 
@@ -139,15 +131,6 @@ function WebPlayback(props) {
       const storedThemeIndex = getThemeFromLocalStorage().toString();
       let chosenTheme = themes[storedThemeIndex];
       setTheme(chosenTheme);
-
-      const storedCustomFont = getFontFromLocalStorage();
-      setSelectedFont(storedCustomFont);
-
-      const storedCustomColors = getColorsFromLocalStorage();
-      setSelectedColors(storedCustomColors);
-
-      const storedRoundedCorners = !!getCornersFromLocalStorage();
-      setHasRoundedCorners(storedRoundedCorners);
 
       handleApplySettings();
       
