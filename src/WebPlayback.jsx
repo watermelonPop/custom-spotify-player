@@ -103,6 +103,10 @@ const getColorsFromLocalStorage = () => {
   }
 };
 
+const getThemeFromLocalStorage = () => {
+  return localStorage.getItem('currentTheme') || "0";
+};
+
 function WebPlayback(props) {
   const [is_paused, setPaused] = useState(false);
   const [is_active, setActive] = useState(false);
@@ -181,11 +185,18 @@ function WebPlayback(props) {
         setPlayerName(storedPlayerName);
       });
 
-      const storedThemeIndex = getThemeFromLocalStorage().toString();
-      let chosenTheme = themes[storedThemeIndex];
-      setTheme(chosenTheme);
-
       handleApplySettings();
+
+      console.log("before");
+      let orig = getThemeFromLocalStorage();
+      console.log("orig: " + orig);
+      orig = parseInt(orig);
+      console.log("int: " + orig);
+      const held = themes[orig];
+      console.log("local storage: " + held.name);
+      setTheme(held);
+      console.log("curr theme: " + current_theme.name);
+
       
       player.connect();
     };
@@ -274,10 +285,6 @@ function WebPlayback(props) {
 
   const setThemeInLocalStorage = (newInd) => {
     localStorage.setItem('currentTheme', newInd.toString());
-  };
-
-  const getThemeFromLocalStorage = () => {
-    return localStorage.getItem('currentTheme') || "0";
   };
 
   // Function to set player name in local storage
@@ -506,13 +513,12 @@ function WebPlayback(props) {
       <>
         <ThemeProvider theme={current_theme || defaultTheme}>
           <div className="container" style={{backgroundColor: current_theme.palette.background.main, height: "100vh"}}>
-            <div className="main-wrapper">
+            <div className="main-wrapper" style={{verticalAlign: "middle"}}> 
               <Typography
                 component="h2"
                 variant="h2"
                 align="center"
                 color="textPrimary"
-                verticalAlign="middle"
                 gutterBottom
               > Instance not active. Transfer your playback using your Spotify app </Typography>
             </div>
