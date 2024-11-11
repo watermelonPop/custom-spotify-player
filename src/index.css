@@ -1,19 +1,23 @@
 .topBar{
   background-color: blue;
   width: 100%;
-  height: 5%;
+  height: 10%;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  position: fixed;
+  top: 0;
 }
 
 .bottomBar{
   background-color: lightblue;
   width: 100%;
-  height: 10%;
+  height: 12%;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  position: fixed;
+  bottom: 0;
 }
 .leftSide{
   background-color: yellow;
@@ -53,7 +57,78 @@
   background-color: pink;
 }
 
+.results{
+  background-color: green;
+  width: 100%;
+  height: 78%;
+  position: fixed;
+  top: 10vh;
+  right: 0;
+  display: flex;
+}
 
 .result{
+  display: flex;
+  background-color: aqua;
+  width: 80%;
+  height: 9vh;
+  border-radius: 8px;
+  margin-top: 1.5%;
+  margin-bottom: 1.5%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.searchImg{
+  width: auto;
+  height: 100%;
+}
+
+.outerSearchResults{
   background-color: green;
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.leftBar{
+  background-color: brown;
+  width: 22%;
+  height: 100%;
+}
+
+.rightBar{
+  background-color: cadetblue;
+  width: 78vw;
+  height: 100%;
+}
+
+
+.profileInfo{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 10%;
+}
+
+.profileImg{
+  width: auto;
+  height: 6vh;
+  border-radius: 50%;
+}
+
+.searchBar{
+  width: 50%;
+  height: 60%;
+  border-radius: 8px;
+}
+
+.leftSearchDiv{
+  display: flex;
+  width: 50%;
+  height: 100%;
+  column-gap: 5%;
 }

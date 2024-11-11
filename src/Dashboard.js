@@ -17,11 +17,200 @@ export default function Dashboard({ code }) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [shuffleOn, setShuffleOn] = useState(null);
   const [repeatState, setRepeatState] = useState(null);
+  const [userName, setUserName] = useState(null);
+  const [userImg, setUserImg] = useState(null);
+  const [recentlyPlayed, setRecentlyPlayed] = useState([]);
+  const [queue, setQueue] = useState([]);
+  const [showHistory, setShowHistory] = useState(false);
+  const [showQueue, setShowQueue] = useState(false);
+  const [likedSongs, setLikedSongs] = useState([]);
+  const [showLikedSongs, setShowLikedSongs] = useState(false);
+  const [userId, setUserId] = useState(null);
+  const [playlists, setPlaylists] = useState([]);
+  const [showPlaylists, setShowPlaylists] = useState(false);
+  const [artists, setArtists] = useState([]);
+  const [showArtists, setShowArtists] = useState(false);
+  const [albums, setAlbums] = useState([]);
+  const [showAlbums, setShowAlbums] = useState(false);
+  const [atHome, setAtHome] = useState(true);
 
         useEffect(() => {
                 //alert("TOKEN: " + accessToken);
                 if (!accessToken) return;
                 spotifyApi.setAccessToken(accessToken);
+        }, [accessToken]);
+
+        useEffect(() => {
+                //alert("TOKEN: " + accessToken);
+                if (!accessToken) return;
+                //spotifyApi.setAccessToken(accessToken);
+                if(showAlbums == false && showArtists == false && showHistory == false && showQueue == false && showPlaylists == false && showLikedSongs == false){
+                        setAtHome(true);
+                }else{
+                        setAtHome(false);
+                }
+        }, [accessToken, showAlbums, showArtists, showHistory, showQueue, showPlaylists, showLikedSongs]);
+
+        useEffect(() => {
+                if (!accessToken) return;
+            
+                const fetchUserData = async () => {
+                    try {
+                        const response = await fetch("https://api.spotify.com/v1/me", {
+                            method: "GET",
+                            headers: { Authorization: `Bearer ${accessToken}` },
+                        });
+            
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+            
+                        const data = await response.json();
+                        //alert(data.display_name); // Process the user data as needed
+                        if (data && data.display_name) {
+                                setUserName(data.display_name);
+                        } 
+                        if (data && data.images) {
+                                setUserImg(data.images[0].url);
+                        }
+                        if(data && data.id){
+                                //alert(data.id)
+                                setUserId(data.id);
+                        }
+                    } catch (err) {
+                        console.error('Error fetching user data:', err);
+                    }
+                };
+                
+                fetchUserData();
+        }, [accessToken]);
+
+        useEffect(() => {
+                if (!accessToken) return;
+                
+                const fetchLikedSongs = async () => {
+                        try {
+                                const response = await fetch("https://api.spotify.com/v1/me/tracks", {
+                                    method: "GET",
+                                    headers: { Authorization: `Bearer ${accessToken}` },
+                                });
+                    
+                                if (!response.ok) {
+                                    throw new Error('Network response was not ok');
+                                }
+                    
+                                const data = await response.json();
+                                //alert(data.display_name); // Process the user data as needed
+                                if (data && data.items) {
+                                        //alert(data.items);
+                                        setLikedSongs(data.items);
+                                } 
+                            } catch (err) {
+                                console.error('Error fetching user data:', err);
+                            }
+                };
+                
+                fetchLikedSongs();
+        }, [accessToken]);
+
+        useEffect(() => {
+                if (!accessToken) return;
+                
+                const fetchQueue = async () => {
+                        try {
+                                const response = await fetch("https://api.spotify.com/v1/me/player/queue", {
+                                    method: "GET",
+                                    headers: { Authorization: `Bearer ${accessToken}` },
+                                });
+                    
+                                if (!response.ok) {
+                                    throw new Error('Network response was not ok');
+                                }
+                    
+                                const data = await response.json();
+                                if (data && data.queue) {
+                                        setQueue(data.queue);
+                                } 
+                            } catch (err) {
+                                console.error('Error fetching user data:', err);
+                            }
+                };
+                
+                fetchQueue();
+        }, [accessToken, currentSong]);
+
+        useEffect(() => {
+                if (!accessToken) return;
+                
+                const fetchRecentlyPlayed = async () => {
+                        spotifyApi.getMyRecentlyPlayedTracks({
+                                limit : 10
+                              }).then(function(data) {
+                                  // Output items
+                                  //alert(data.body.items);
+                                  console.log("Your 20 most recently played tracks are:");
+                                  data.body.items.forEach(item => console.log(item.track.id));
+                                  setRecentlyPlayed(data.body.items);
+                                }, function(err) {
+                                  console.log('Something went wrong!', err);
+                                });
+                };
+                
+                fetchRecentlyPlayed();
+        }, [accessToken, currentSong]);
+
+        useEffect(() => {
+                if (!accessToken) return;
+                
+                const fetchPlaylists = async () => {
+                        spotifyApi.getUserPlaylists(userId)
+                        .then(function(data) {
+                                console.log('Retrieved playlists', data.body);
+                                //alert(data.body.items);
+                                setPlaylists(data.body.items);
+                        },function(err) {
+                                console.log('Something went wrong!', err);
+                        });
+                };
+                
+                fetchPlaylists();
+        }, [accessToken]);
+
+        useEffect(() => {
+                if (!accessToken) return;
+                
+                const fetchAlbums = async () => {
+                        spotifyApi.getMySavedAlbums({
+                                limit : 50
+                              })
+                              .then(function(data) {
+                                // Output items
+                                console.log(data.body.items);
+                                setAlbums(data.body.items);
+                              }, function(err) {
+                                console.log('Something went wrong!', err);
+                              });
+                };
+                
+                fetchAlbums();
+        }, [accessToken]);
+
+        useEffect(() => {
+                if (!accessToken) return;
+                
+                const fetchArtists = async () => {
+                        spotifyApi.getFollowedArtists({ limit : 50 })
+                        .then(function(data) {
+                                // 'This user is following 1051 artists!'
+                                //console.log('This user is following ', data.body.artists.total, ' artists!');
+                                //alert(data.body.artists.items);
+                                setArtists(data.body.artists.items);
+                        }, function(err) {
+                                console.log('Something went wrong!', err);
+                        });
+                };
+                
+                fetchArtists();
         }, [accessToken]);
 
         useEffect(() => {
@@ -192,6 +381,94 @@ export default function Dashboard({ code }) {
                 }
         };
 
+        const toggleHistory = () => {
+                if(showHistory == false){
+                        setShowQueue(false);
+                        setShowLikedSongs(false);
+                        setShowPlaylists(false);
+                        setShowArtists(false);
+                        setShowAlbums(false);
+                        setShowHistory(true);
+                }else if(showHistory == true){
+                        setShowHistory(false);
+                }
+        };
+
+        const toggleQueue = () => {
+                if(showQueue == false){
+                        setShowHistory(false);
+                        setShowLikedSongs(false);
+                        setShowPlaylists(false);
+                        setShowArtists(false);
+                        setShowAlbums(false);
+                        setShowQueue(true);
+                }else if(showQueue == true){
+                        setShowQueue(false);
+                }
+        };
+
+        const toggleLikedSongs = () => {
+                if(showLikedSongs == false){
+                        setShowHistory(false);
+                        setShowQueue(false);
+                        setShowPlaylists(false);
+                        setShowArtists(false);
+                        setShowAlbums(false);
+                        setShowLikedSongs(true);
+                }else if(showLikedSongs == true){
+                        setShowLikedSongs(false);
+                }
+        };
+
+        const togglePlaylists = () => {
+                if(showPlaylists == false){
+                        setShowHistory(false);
+                        setShowQueue(false);
+                        setShowLikedSongs(false);
+                        setShowArtists(false);
+                        setShowAlbums(false);
+                        setShowPlaylists(true);
+                }else if(showPlaylists == true){
+                        setShowPlaylists(false);
+                }
+        };
+
+        const toggleArtists = () => {
+                if(showArtists == false){
+                        setShowHistory(false);
+                        setShowQueue(false);
+                        setShowLikedSongs(false);
+                        setShowPlaylists(false);
+                        setShowAlbums(false);
+                        setShowArtists(true);
+                }else if(showArtists == true){
+                        setShowArtists(false);
+                }
+        };
+
+        const toggleAlbums = () => {
+                if(showAlbums == false){
+                        setShowHistory(false);
+                        setShowQueue(false);
+                        setShowLikedSongs(false);
+                        setShowPlaylists(false);
+                        setShowArtists(false);
+                        setShowAlbums(true);
+                }else if(showAlbums == true){
+                        setShowAlbums(false);
+                }
+        };
+
+        const goHome = () => {
+                setShowHistory(false);
+                setShowQueue(false);
+                setShowLikedSongs(false);
+                setShowPlaylists(false);
+                setShowArtists(false);
+                setShowAlbums(false);
+        };
+        
+
         const handleSetRepeatState = (val) => {
                 spotifyApi.setRepeat(val)
                 .then(function () {
@@ -214,6 +491,16 @@ export default function Dashboard({ code }) {
         };
 
 
+        const convertMsToMin = (ms) => {
+                const totalSeconds = Math.floor(ms / 1000); // Convert milliseconds to seconds
+                const minutes = Math.floor(totalSeconds / 60); // Get minutes
+                const seconds = totalSeconds % 60; // Get remaining seconds
+
+                // Format minutes and seconds with leading zeros if needed
+                return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+        };
+
+
 
         
 
@@ -226,17 +513,173 @@ export default function Dashboard({ code }) {
                         value={search}
                         placeholder="Artists, songs, etc..."
                         onChange={(e) => setSearch(e.target.value)}
-                        style={{width: "60%", height: "90%"}}
+                        className="searchBar"
                         />
+                        <div className="profileInfo">
+                                <img className="profileImg" src={userImg}/>
+                                <p>{userName}</p>
+                        </div>
                 </div>
                 <div className="results">
-                        {results ? (
-                                results.map(track => (
-                                <div className="result" key={track.id}>{track.name} by {track.artists[0].name}</div>
-                                ))
-                        ) : (
-                                <div>No results found</div>
-                        )}
+                        <div className="leftBar">
+                                <p onClick={goHome} style={{ color: atHome ? "black" : "inherit" }}>Home</p>
+                                <p onClick={toggleLikedSongs} style={{ color: showLikedSongs ? "black" : "inherit" }}>liked songs</p>
+                                <p onClick={togglePlaylists} style={{ color: showPlaylists ? "black" : "inherit" }}>playlists</p>
+                                <p onClick={toggleArtists} style={{ color: showArtists ? "black" : "inherit" }}>artists</p>
+                                <p onClick={toggleAlbums} style={{ color: showAlbums ? "black" : "inherit" }}>albums</p>
+                        </div>
+                        <div className="rightBar">
+                                {results.length > 0 ? ( // Check if results array has items
+                                        <div className="outerSearchResults">
+                                                <p>Search Results</p>
+                                        {results.map(track => ( // Correctly wrap the map function
+                                                <div className="result" key={track.id}>
+                                                        <div className="leftSearchDiv">
+                                                                <img className="searchImg" src={track.album.images.length > 0 ? track.album.images[0].url : ""} alt={`Album cover for ${track.name}`} />
+                                                                <div className="trackInfo">
+                                                                        <p>{track.name}</p>
+                                                                        <p>{track.artists[0].name}</p>
+                                                                </div>
+                                                        </div>
+                                                        <div className="duration">
+                                                                <p>{convertMsToMin(track.duration_ms)}</p>
+                                                        </div>
+                                                </div>
+                                        ))}
+                                        </div>
+                                ) : (
+                                        <div></div>
+                                )}
+
+                                {showHistory && recentlyPlayed ? ( // Check if results array has items
+                                        <div className="outerSearchResults">
+                                                <p>Recently Played</p>
+                                        {recentlyPlayed.map(item => ( // Correctly wrap the map function
+                                                <div className="result" key={item.track.id}>
+                                                        <div className="leftSearchDiv">
+                                                                <img className="searchImg" src={item.track.album.images.length > 0 ? item.track.album.images[0].url : ""} alt={`Album cover for ${item.track.name}`} />
+                                                                <div className="trackInfo">
+                                                                        <p>{item.track.name}</p>
+                                                                        <p>{item.track.artists[0].name}</p>
+                                                                </div>
+                                                        </div>
+                                                        <div className="duration">
+                                                                <p>{convertMsToMin(item.track.duration_ms)}</p>
+                                                        </div>
+                                                </div>
+                                        ))}
+                                        </div>
+                                ) : (
+                                        <div></div>
+                                )}
+
+                                {showQueue && queue ? ( // Check if results array has items
+                                        <div className="outerSearchResults">
+                                                <p>Queue</p>
+                                        {queue.map(track => ( // Correctly wrap the map function
+                                                <div className="result" key={track.id}>
+                                                        <div className="leftSearchDiv">
+                                                                <img className="searchImg" src={track.album.images.length > 0 ? track.album.images[0].url : ""} alt={`Album cover for ${track.name}`} />
+                                                                <div className="trackInfo">
+                                                                        <p>{track.name}</p>
+                                                                        <p>{track.artists[0].name}</p>
+                                                                </div>
+                                                        </div>
+                                                        <div className="duration">
+                                                                <p>{convertMsToMin(track.duration_ms)}</p>
+                                                        </div>
+                                                </div>
+                                        ))}
+                                        </div>
+                                ) : (
+                                        <div></div>
+                                )}
+
+                                {showLikedSongs && likedSongs ? ( // Check if results array has items
+                                        <div className="outerSearchResults">
+                                                <p>Liked Songs</p>
+                                        {likedSongs.map(item => ( // Correctly wrap the map function
+                                                <div className="result" key={item.track.id}>
+                                                        <div className="leftSearchDiv">
+                                                                <img className="searchImg" src={item.track.album.images[0].url} />
+                                                                <div className="trackInfo">
+                                                                        <p>{item.track.name}</p>
+                                                                </div>
+                                                        </div>
+                                                        <div className="duration">
+                                                                <p></p>
+                                                        </div>
+                                                </div>
+                                        ))}
+                                        </div>
+                                ) : (
+                                        <div></div>
+                                )}
+
+                                {showPlaylists && playlists ? ( // Check if results array has items
+                                        <div className="outerSearchResults">
+                                                <p>Playlists</p>
+                                                {playlists.map(item => ( // Correctly wrap the map function
+                                                        <div className="result" key={item.id}>
+                                                                <div className="leftSearchDiv">
+                                                                        <img className="searchImg" src={item.images.length > 0 ? item.images[0].url : ""} />
+                                                                        <div className="trackInfo">
+                                                                                <p>{item.name}</p>
+                                                                        </div>
+                                                                </div>
+                                                                <div className="duration">
+                                                                        <p></p>
+                                                                </div>
+                                                        </div>
+                                                ))}
+                                        </div>
+                                ) : (
+                                        <div></div>
+                                )}
+
+                                {showArtists && artists ? ( // Check if results array has items
+                                        <div className="outerSearchResults">
+                                                <p>Artists</p>
+                                        {artists.map(item => ( // Correctly wrap the map function
+                                                <div className="result" key={item.id}>
+                                                        <div className="leftSearchDiv">
+                                                                <img className="searchImg" src={item.images.length > 0 ? item.images[0].url : ""} />
+                                                                <div className="trackInfo">
+                                                                        <p>{item.name}</p>
+                                                                </div>
+                                                        </div>
+                                                        <div className="duration">
+                                                                <p></p>
+                                                        </div>
+                                                </div>
+                                        ))}
+                                        </div>
+                                ) : (
+                                        <div></div>
+                                )}
+
+                                {showAlbums && albums ? ( // Check if results array has items
+                                        <div className="outerSearchResults">
+                                                <p>Albums</p>
+                                        {albums.map(item => ( // Correctly wrap the map function
+                                                <div className="result" key={item.album.id}>
+                                                        <div className="leftSearchDiv">
+                                                                <img className="searchImg" src={item.album.images.length > 0 ? item.album.images[0].url : ""} />
+                                                                <div className="trackInfo">
+                                                                        <p>{item.album.name}</p>
+                                                                        <p>{item.album.artists[0].name}</p>
+                                                                </div>
+                                                        </div>
+                                                        <div className="duration">
+                                                                <p></p>
+                                                        </div>
+                                                </div>
+                                        ))}
+                                        </div>
+                                ) : (
+                                        <div></div>
+                                )}
+                        </div>
                 </div>
                 <div className="bottomBar">
                         <div className="leftSide">
@@ -279,6 +722,8 @@ export default function Dashboard({ code }) {
                                 
                         </div>
                         <div className="rightSide">
+                                <p><i className="fa-solid fa-clock-rotate-left" onClick={toggleHistory} style={{ color: showHistory ? "black" : "inherit" }}></i></p>
+                                <p><i className="fa-solid fa-list" onClick={toggleQueue} style={{ color: showQueue ? "black" : "inherit" }}></i></p>
                                 <p><i className="fa-solid fa-volume-low"></i></p>
                                 <input 
                                         type="range" 
