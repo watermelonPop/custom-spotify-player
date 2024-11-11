@@ -33,12 +33,38 @@ export default function Dashboard({ code }) {
   const [albums, setAlbums] = useState([]);
   const [showAlbums, setShowAlbums] = useState(false);
   const [atHome, setAtHome] = useState(true);
+  const [queuedTrackId, setQueuedTrackId] = useState(null);
+  const [likedStatus, setLikedStatus] = useState({});
 
         useEffect(() => {
                 //alert("TOKEN: " + accessToken);
                 if (!accessToken) return;
                 spotifyApi.setAccessToken(accessToken);
         }, [accessToken]);
+
+        useEffect(() => {
+                if (!accessToken || results.length === 0) return;
+            
+                const fetchLikedStatus = async () => {
+                    const newLikedStatus = { ...likedStatus };
+                    const ids = results.map(track => track.id);
+            
+                    try {
+                        const bools = await checkIfLiked(ids);
+                        for (let i = 0; i < bools.length; i++) {
+                            newLikedStatus[ids[i]] = bools[i];
+                        }
+                    } catch (error) {
+                        console.error('Error fetching liked status for tracks:', error);
+                        // Set all tracks to false in case of error
+                        ids.forEach(id => newLikedStatus[id] = false);
+                    }
+            
+                    setLikedStatus(newLikedStatus);
+                };
+            
+                fetchLikedStatus();
+        }, [accessToken, results]);
 
         useEffect(() => {
                 //alert("TOKEN: " + accessToken);
@@ -500,9 +526,57 @@ export default function Dashboard({ code }) {
                 return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
         };
 
+        const handleAddToQueue = async (uri) => {
+                try {
+                        const response = await fetch(`https://api.spotify.com/v1/me/player/queue?uri=${encodeURIComponent(uri)}`, {
+                            method: "POST",
+                            headers: { Authorization: `Bearer ${accessToken}` },
+                        });
+            
+                        if (!response.ok) {
+                            throw new Error('Failed to add to queue');
+                        }
+                        else{
+                                //alert("Queued");
+                                setQueuedTrackId(uri);
 
+                                // Reset the icon after 2 seconds
+                                setTimeout(() => {
+                                        setQueuedTrackId(null);
+                                }, 2000);
+                        }
+                } catch (err) {
+                        console.error('Error fetching user data:', err);
+                }
+        };
 
-        
+        const checkIfLiked = async (ids) => {
+                try {
+                    let idsStr = "";
+                    for (let i = 0; i < ids.length; i++) {
+                        idsStr += ids[i];
+                        if (i < ids.length - 1) {
+                            idsStr += "%2C";
+                        }
+                    }
+            
+                    const response = await fetch(`https://api.spotify.com/v1/me/tracks/contains?ids=${idsStr}`, {
+                        method: "GET",
+                        headers: { Authorization: `Bearer ${accessToken}` },
+                    });
+            
+                    if (!response.ok) {
+                        throw new Error('Failed to check liked songs');
+                    }
+            
+                    const data = await response.json();
+                    return data;
+                    
+                } catch (err) {
+                    console.error('Error fetching liked status:', err);
+                    return ids.map(() => false); // Return an array of false values if there's an error
+                }
+        };
 
   return (
         <div className="outerDiv">
@@ -543,6 +617,9 @@ export default function Dashboard({ code }) {
                                                         </div>
                                                         <div className="duration">
                                                                 <p>{convertMsToMin(track.duration_ms)}</p>
+                                                                <p><i className={queuedTrackId === track.uri ? "fa-solid fa-check" : "fa-regular fa-rectangle-list"} onClick={() => handleAddToQueue(track.uri)}></i></p>
+                                                                <p><i className={likedStatus[track.id] ? "fa-solid fa-heart" : "fa-regular fa-heart"}></i></p>
+                                                                <p><i className="fa-solid fa-ellipsis-vertical"></i></p>
                                                         </div>
                                                 </div>
                                         ))}
@@ -565,6 +642,8 @@ export default function Dashboard({ code }) {
                                                         </div>
                                                         <div className="duration">
                                                                 <p>{convertMsToMin(item.track.duration_ms)}</p>
+                                                                <p><i className={queuedTrackId === item.track.uri ? "fa-solid fa-check" : "fa-regular fa-rectangle-list"} onClick={() => handleAddToQueue(item.track.uri)}></i></p>
+                                                                <p><i className="fa-solid fa-ellipsis-vertical"></i></p>
                                                         </div>
                                                 </div>
                                         ))}
@@ -587,6 +666,7 @@ export default function Dashboard({ code }) {
                                                         </div>
                                                         <div className="duration">
                                                                 <p>{convertMsToMin(track.duration_ms)}</p>
+                                                                <p><i className="fa-solid fa-ellipsis-vertical"></i></p>
                                                         </div>
                                                 </div>
                                         ))}
@@ -604,10 +684,13 @@ export default function Dashboard({ code }) {
                                                                 <img className="searchImg" src={item.track.album.images[0].url} />
                                                                 <div className="trackInfo">
                                                                         <p>{item.track.name}</p>
+                                                                        <p>{item.track.artists[0].name}</p>
                                                                 </div>
                                                         </div>
                                                         <div className="duration">
-                                                                <p></p>
+                                                                <p>{convertMsToMin(item.track.duration_ms)}</p>
+                                                                <p><i className={queuedTrackId === item.track.uri ? "fa-solid fa-check" : "fa-regular fa-rectangle-list"} onClick={() => handleAddToQueue(item.track.uri)}></i></p>
+                                                                <p><i className="fa-solid fa-ellipsis-vertical"></i></p>
                                                         </div>
                                                 </div>
                                         ))}
@@ -628,7 +711,8 @@ export default function Dashboard({ code }) {
                                                                         </div>
                                                                 </div>
                                                                 <div className="duration">
-                                                                        <p></p>
+                                                                        <p>{item.tracks.total} songs</p>
+                                                                        <p><i className="fa-solid fa-ellipsis-vertical"></i></p>
                                                                 </div>
                                                         </div>
                                                 ))}
@@ -649,7 +733,7 @@ export default function Dashboard({ code }) {
                                                                 </div>
                                                         </div>
                                                         <div className="duration">
-                                                                <p></p>
+                                                                <p><i className="fa-solid fa-ellipsis-vertical"></i></p>
                                                         </div>
                                                 </div>
                                         ))}
@@ -671,7 +755,7 @@ export default function Dashboard({ code }) {
                                                                 </div>
                                                         </div>
                                                         <div className="duration">
-                                                                <p></p>
+                                                                <p><i className="fa-solid fa-ellipsis-vertical"></i></p>
                                                         </div>
                                                 </div>
                                         ))}

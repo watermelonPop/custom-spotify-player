@@ -128,7 +128,16 @@
 
 .leftSearchDiv{
   display: flex;
-  width: 50%;
+  width: 70%;
   height: 100%;
   column-gap: 5%;
+}
+
+.duration{
+  width: 30%;
+  height: 100%;
+  column-gap: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
