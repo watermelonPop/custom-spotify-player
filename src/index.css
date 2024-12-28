@@ -1,5 +1,32 @@
+
+:root {
+  --backgroundColor1: #232723;
+  --backgroundColor2: #A8B2A8;
+  --txtColor1: white;
+  --txtColor2: #232723;
+  --accentColor: #457E59;
+  --fontFamily: "Montserrat", sans-serif;
+}
+
+/*:root {
+  --backgroundColor1: white;
+  --backgroundColor2: gray;
+  --txtColor1: black;
+  --txtColor2: white;
+  --accentColor: pink;
+  --fontFamily: "Roboto Mono", serif;
+}*/
+
+.spotifyLogo{
+  font-family: var(--fontFamily);
+  font-weight: 700;
+  font-style: normal;
+  font-size: 1.75rem;
+  color: var(--txtColor1);
+}
+
 .topBar{
-  background-color: blue;
+  background-color: var(--backgroundColor1);
   width: 100%;
   height: 10%;
   display: flex;
@@ -10,7 +37,7 @@
 }
 
 .bottomBar{
-  background-color: lightblue;
+  background-color: var(--backgroundColor1);
   width: 100%;
   height: 12%;
   display: flex;
@@ -20,9 +47,8 @@
   bottom: 0;
 }
 .leftSide{
-  background-color: yellow;
   display: flex;
-  width: 30%;
+  width: 45%;
   height: 90%;
   align-items: center;
   justify-content: space-evenly;
@@ -30,11 +56,11 @@
 
 .albumArt{
   width: fit-content;
-  height: 100%;
+  height: 90%;
+  border-radius: 8px;
 }
 
 .middle{
-  background-color: aquamarine;
   width: 30%;
   display: flex;
   justify-content: space-evenly;
@@ -42,8 +68,18 @@
   align-items: center;
 }
 
+.middle p{
+  color: var(--txtColor1);
+  cursor: pointer;
+}
+
+.rightSide p{
+  color: var(--txtColor1);
+  cursor: pointer;
+}
+
 .rightSide{
-  background-color: yellow;
+  background-color: var(--backgroundColor1);
   width: 30%;
   height: 90%;
   display: flex;
@@ -54,11 +90,10 @@
 .outerDiv{
   width: 100vw;
   height: 100vh;
-  background-color: pink;
+  background-color: var(--backgroundColor1);
 }
 
 .results{
-  background-color: green;
   width: 100%;
   height: 78%;
   position: fixed;
@@ -69,7 +104,7 @@
 
 .result{
   display: flex;
-  background-color: aqua;
+  background-color: var(--backgroundColor1);
   width: 80%;
   height: 9vh;
   border-radius: 8px;
@@ -77,15 +112,67 @@
   margin-bottom: 1.5%;
   justify-content: space-between;
   align-items: center;
+
+  font-family: var(--fontFamily);
+  font-weight: 700;
+  font-style: normal;
+  font-size: 1rem;
+  color: var(--txtColor1);
+  cursor: pointer;
 }
 
-.searchImg{
-  width: auto;
+.result:hover{
+  color: var(--accentColor);
+}
+
+.searchImgOuter{
+  height: 70px;
+  width: 90px;
+  border-radius: 8px;
+}
+
+.profileImgOuter{
+  height: 150px;
+  width: 150px;
+  border-radius: 8px;
+}
+
+.outerLoader{
+  width: 100%;
   height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader {
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid var(--accentColor); /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.innerPlaylistImgDiv{
+  height: 150px;
+  width: 150px;
+  border-radius: 8px;
+}
+
+.searchImg {
+  width: 100%; /* Ensures the image takes up the full width of its container */
+  height: 100%; /* Ensures the image fills the container height */
+  object-fit: cover; /* Ensures the image will cover the container, cropping where necessary */
+  border-radius: 8px; /* Keeps the rounded corners */
 }
 
 .outerSearchResults{
-  background-color: green;
   width: 100%;
   height: 100%;
   overflow-y: scroll;
@@ -95,14 +182,29 @@
 }
 
 .leftBar{
-  background-color: brown;
-  width: 22%;
+  background-color: var(--backgroundColor1);
+  width: 23%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: top;
+  row-gap: 5%;
+  margin-top: 5%;
+}
+
+.leftBarLinks{
+  font-family: var(--fontFamily);
+  font-weight: 700;
+  font-style: normal;
+  font-size: 1.5rem;
+  color: var(--txtColor1);
+  cursor: pointer;
 }
 
 .rightBar{
-  background-color: cadetblue;
-  width: 78vw;
+  background-color: var(--backgroundColor2);
+  width: 77vw;
   height: 100%;
 }
 
@@ -112,6 +214,7 @@
   justify-content: center;
   align-items: center;
   column-gap: 10%;
+  cursor: pointer;
 }
 
 .profileImg{
@@ -124,6 +227,14 @@
   width: 50%;
   height: 60%;
   border-radius: 8px;
+  padding-left: 2.5%;
+  padding-right: 2.5%;
+  background-color: var(--backgroundColor2);
+  font-family: var(--fontFamily);
+  font-weight: 700;
+  font-style: normal;
+  font-size: 1rem;
+  color: var(--txtColor2);
 }
 
 .leftSearchDiv{
@@ -136,8 +247,702 @@
 .duration{
   width: 30%;
   height: 100%;
-  column-gap: 10%;
+  column-gap: 5%;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-right: 5%;
+}
+
+.songInfo{
+  font-family: var(--fontFamily);
+  font-weight: 700;
+  font-style: normal;
+  font-size: 1.3rem;
+  width: 70%;
+  height: 100%;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  color: var(--txtColor1);
+}
+
+.songInfo p{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  height: 40%;
+  display: flex;
+  align-items: center;
+}
+
+.title{
+  font-family: var(--fontFamily);
+  font-weight: 700;
+  font-style: normal;
+  font-size: 1.5rem;
+  margin-top: 5%;
+  margin-bottom: 3%;
+  color: var(--txtColor2);
+}
+
+.subtitle{
+  font-family: var(--fontFamily);
+  font-weight: 700;
+  font-style: normal;
+  font-size: 1rem;
+  margin: 0;
+  margin-bottom: 2%;
+  color: var(--txtColor2);
+}
+
+.followArtistBtn{
+  font-family: var(--fontFamily);
+  font-weight: 700;
+  font-style: normal;
+  font-size: 1rem;
+  margin: 0;
+  margin-bottom: 2%;
+  color: var(--txtColor2);
+  border-radius: 8px;
+  border: 2px black solid;
+  padding: 2%;
+  cursor: pointer;
+}
+
+.followArtistBtn:hover{
+  background-color: var(--accentColor);
+}
+
+.followingArtistBtn{
+  font-family: var(--fontFamily);
+  font-weight: 700;
+  font-style: normal;
+  font-size: 1rem;
+  margin: 0;
+  margin-bottom: 2%;
+  color: var(--txtColor1);
+  border-radius: 8px;
+  padding: 2%;
+  background-color: var(--backgroundColor1);
+  cursor: pointer;
+}
+
+.followingArtistBtn:hover{
+  color: var(--accentColor);
+}
+
+/* Style the slider track */
+input[type="range"] {
+  -webkit-appearance: none;
+  height: 5px;
+  border-radius: 5px;
+  background: var(--backgroundColor2);
+  outline: none;
+}
+
+/* Style the slider thumb */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: var(--accentColor); /* Spotify green color */
+  cursor: pointer;
+}
+
+.trackInfo{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+
+}
+.outerPlaylistDisplay{
+  width: 85%;
+  height: 20%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.playlistDisplayLeft{
+  width: 30%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.playlistDisplayRight{
+  width: 70%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/* Dropdown Button */
+/*.dropbtn {
+  background-color: #3498DB;
+  color: var(--txtColor1);
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}*/
+
+/* Dropdown button on hover & focus */
+/*.dropbtn:hover, .dropbtn:focus {
+  background-color: #2980B9;
+}*/
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: fixed;
+  background-color: var(--backgroundColor1);
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1000;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: var(--txtColor1);
+  padding: 12px 16px;
+  text-decoration: none;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  column-gap: 5%;
+  cursor: pointer;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: var(--accentColor); color: var(--txtColor2)}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1000; /* Ensure it's on top of other elements */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow-y: auto; /* Enable vertical scroll if needed */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: var(--backgroundColor2);
+  margin: 5% auto; /* Reduced from 15% to 5% to show more content */
+  padding: 20px;
+  width: 80%; /* Could be more or less, depending on screen size */
+  max-height: 75vh; /* Set a maximum height */
+  overflow-y: auto; /* Enable scroll for content if it exceeds max-height */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10%;
+  border-radius: 8px;
+}
+
+/* The Close Button */
+.close {
+  color: var(--txtColor2);
+  align-self: flex-end; /* Align to the right */
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: var(--accentColor);
+  text-decoration: none;
+}
+
+
+.followAlbumBtn{
+  font-family: var(--fontFamily);
+  font-weight: 700;
+  font-style: normal;
+  font-size: 1rem;
+  margin: 0;
+  margin-bottom: 2%;
+  color: var(--txtColor2);
+  border-radius: 8px;
+  border: 2px black solid;
+  padding: 2%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 10%;
+  cursor: pointer;
+}
+
+
+.followAlbumBtn:hover{
+  background-color: var(--accentColor);
+}
+
+.followingAlbumBtn{
+  font-family: var(--fontFamily);
+  font-weight: 700;
+  font-style: normal;
+  font-size: 1rem;
+  margin: 0;
+  margin-bottom: 2%;
+  color: var(--txtColor1);
+  border-radius: 8px;
+  padding: 2%;
+  background-color: var(--backgroundColor1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 10%;
+  cursor: pointer;
+}
+
+.followingAlbumBtn:hover{
+  color: var(--accentColor);
+}
+
+.duration p{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fa-ellipsis-vertical{
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.fa-ellipsis-vertical:hover{
+  color: var(--txtColor2);
+}
+
+.fa-heart{
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.fa-heart:hover{
+  color: var(--txtColor2);
+}
+
+.searchTabs{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 80%;
+}
+
+.searchTabs p{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--fontFamily);
+  font-weight: 700;
+  font-style: normal;
+  font-size: 1.2rem;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  border-radius: 8px;
+}
+
+.selectedSearchTab{
+  background-color: var(--backgroundColor1);
+  color: var(--txtColor1);
+  cursor: pointer;
+}
+
+.unselectedSearchTab{
+  color: var(--txtColor2);
+  cursor: pointer;
+}
+
+#homeDesign{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.onTopHomeDiv{
+  width: 85%;
+  border-radius: 8px;
+  height: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+.innerHomeDiv{
+  width: 25%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.flip-card-front p{
+  width: 80%;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--fontFamily);
+  font-weight: 700;
+  font-style: normal;
+  font-size: 3rem;
+  color: var(--txtColor1);
+}
+
+.flip-card-back p{
+  width: 80%;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--fontFamily);
+  font-weight: 700;
+  font-style: normal;
+  font-size: 1.5rem;
+  color: var(--txtColor2);
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.innerHomeDiv:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+  border-radius: 8px;
+}
+
+/* Style the front side (fallback if image is missing) */
+.flip-card-front {
+  background-color: var(--backgroundColor1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  perspective: 1000px;
+  color: var(--txtColor1);
+}
+
+/* Style the back side */
+.flip-card-back {
+  background-color: var(--accentColor);
+  color: var(--txtColor2);
+  transform: rotateY(180deg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.outerThemesDiv {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.outerTypesDiv{
+  width: 85%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.themeDiv {
+  width: calc(33.33% - 10px);
+  aspect-ratio: 1 / 1;
+  border: 4px solid;
+  border-radius: 8px;
+  flex: 0 0 auto;
+  border-color: transparent;
+  cursor: pointer;
+}
+
+.outerTypeDiv{
+  width: calc(33.33% - 10px);
+  aspect-ratio: 1 / 1;
+  border: 4px solid;
+  border-radius: 8px;
+  flex: 0 0 auto;
+  border-color: var(--backgroundColor2);
+  cursor: pointer;
+}
+
+.typeDiv{
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.typeDiv p{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-shadow: 0 0 3px black, 0 0 5px white;
+  font-family: var(--fontFamily);
+  font-weight: 700;
+  font-style: normal;
+  font-size: 1.5rem;
+}
+
+.themeColorDiv{
+  width: 100%;
+  height: 20%;
+  border-radius: 1.5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.themeColorDiv p{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-shadow: 0 0 3px black, 0 0 5px white;
+}
+
+.themeFormDiv{
+  width: 85%;
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  row-gap: 2%;
+}
+
+.themeFormItemDiv{
+  width: 100%;
+  height: 14%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.themeFormItemDiv p{
+  font-weight: 700;
+  font-style: normal;
+  font-size: 1.2rem;
+  font-family: var(--fontFamily);
+  width: 30%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--txtColor2);
+}
+
+
+.themeFormSelect{
+  width: 60%;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 1.2rem;
+  font-family: var(--fontFamily);
+  border-radius: 8px;
+  border-style: solid 1px;
+  border-color: var(--txtColor2);
+  outline: none;
+  background-color: var(--backgroundColor2);
+  text-align: center;
+}
+
+.themeFormInput{
+  width: 60%;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 1.2rem;
+  font-family: var(--fontFamily);
+  border-radius: 8px;
+  border-style: solid 1px;
+  border-color: var(--txtColor2);
+  outline: none;
+  background-color: var(--backgroundColor2);
+  text-align: center;
+}
+
+.themeFormSelect option{
+  font-weight: 700;
+  font-style: normal;
+  font-size: 1.2rem;
+}
+
+.color-fields{
+  width: 38vw;
+  height: 3.8vh;
+  font-family: var(--fontFamily);
+  font-weight: 700;
+  font-style: normal;
+  font-size: 1rem;
+  text-align: center;
+  border-radius: 8px;
+  border-style: solid 1px;
+  border-color: var(--txtColor2);
+  outline: none;
+  background-color: var(--backgroundColor2);
+}
+
+.color-fields-edit{
+  width: 38vw;
+  height: 3.8vh;
+  font-family: var(--fontFamily);
+  font-weight: 700;
+  font-style: normal;
+  font-size: 1rem;
+  text-align: center;
+  border-radius: 8px;
+  border-style: solid 1px;
+  border-color: var(--txtColor2);
+  outline: none;
+  background-color: var(--backgroundColor2);
+}
+
+.color-fields-outer{
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.themeFormSubmitDiv{
+  width: 85%;
+  height: 20%;
+  margin-top: 2%;
+  margin-bottom: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.themeFormSubmit{
+  font-family: var(--fontFamily);
+  font-weight: 700;
+  font-style: normal;
+  font-size: 1rem;
+  margin: 0;
+  margin-bottom: 2%;
+  background-color: var(--backgroundColor2);
+  color: var(--txtColor2);
+  border-radius: 8px;
+  border: 2px black solid;
+  padding: 2%;
+  cursor: pointer;
+}
+
+.themesContainer {
+  width: 85%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10%;
+}
+
+.themeBtns{
+  width: 85%;
+  height: fit-content;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 2%;
+}
+
+
+.themeBtn{
+  font-family: var(--fontFamily);
+  font-weight: 700;
+  font-style: normal;
+  font-size: 1rem;
+  margin: 0;
+  margin-bottom: 2%;
+  color: var(--txtColor2);
+  border-radius: 8px;
+  border: 2px black solid;
+  padding: 2%;
+  cursor: pointer;
+}
+
+.themeBtn:hover{
+  background-color: var(--accentColor);
+}
+
+
+.editThemeBtn{
+  width: 90% !important;
+  height: 100%;
+  display: flex;
+  justify-content: right !important;
+}
+
+.editThemeBtn:hover{
+  color: var(--txtColor2);
 }
