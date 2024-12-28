@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 function Login() {
 
-    const AUTH_URL = "https://accounts.spotify.com/authorize?client_id=4eb7fa6a3b80412595f5ef4932d67cfd&response_type=code&redirect_uri=https://custom-spotify-player.vercel.app/&scope=streaming%20user-read-email%20user-read-private%20user-library-read%20user-library-modify%20user-read-playback-state%20user-modify-playback-state%20user-read-recently-played%20user-follow-read%20playlist-read-private%20playlist-modify-public%20playlist-modify-private%20user-follow-modify";
+    const AUTH_URL = "https://accounts.spotify.com/authorize?client_id=4eb7fa6a3b80412595f5ef4932d67cfd&response_type=code&redirect_uri=https://custom-spotify-player.vercel.app/callback&scope=streaming%20user-read-email%20user-read-private%20user-library-read%20user-library-modify%20user-read-playback-state%20user-modify-playback-state%20user-read-recently-played%20user-follow-read%20playlist-read-private%20playlist-modify-public%20playlist-modify-private%20user-follow-modify";
 
     return (
         <div className="App">

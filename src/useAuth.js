@@ -7,19 +7,23 @@ export default function useAuth(code) {
   const [expiresIn, setExpiresIn] = useState();
 
   useEffect(() => {
-    axios.post("https://custom-web-player-server.glitch.me/login", { code })
-      .then((res) => {
-        //alert("LOGIN");
-        setAccessToken(res.data.accessToken);
-        setRefreshToken(res.data.refreshToken);
-        setExpiresIn(res.data.expiresIn);
-        window.history.pushState({}, null, "/");
-      })
-      .catch((err) => {
-        //alert("CATCH");
-        console.log(err);
-        window.location = "/";
-      });
+    const urlParams = new URLSearchParams(window.location.search);
+    const code = urlParams.get('code');
+    if (code) {
+      axios.post("https://custom-web-player-server.glitch.me/login", { code })
+        .then((res) => {
+          //alert("LOGIN");
+          setAccessToken(res.data.accessToken);
+          setRefreshToken(res.data.refreshToken);
+          setExpiresIn(res.data.expiresIn);
+          window.history.pushState({}, null, "/");
+        })
+        .catch((err) => {
+          //alert("CATCH");
+          console.log(err);
+          window.location = "/";
+        });
+      }
   }, [code]);
 
   useEffect(() => {
