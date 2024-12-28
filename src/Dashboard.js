@@ -628,9 +628,10 @@ const [editThemeAccent, setEditThemeAccent] = useState(null);
         }, [accessToken, search]);
 
         useEffect(() => {
-                //alert("TOKEN: " + accessToken);
-                if (!accessToken){
-                        setIsLoading(true);
+                if (!accessToken) {
+                  setIsLoading(true);
+                } else {
+                  setIsLoading(false);
                 }
         }, [accessToken]);
 
