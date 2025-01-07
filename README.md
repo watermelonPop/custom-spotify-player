@@ -3,7 +3,9 @@
 
 This Reactjs project is a Spotify Web Player that allows users to log into spotify, browse, and play music through the site. 
 The Spotify API only works for premium accounts, so free accounts cannot use this site.
+
 This is a continuation/expansion of my previous custom spotify player repository: https://github.com/watermelonPop/spotify-web-player
+
 Provides 6 themes for all users, and allows users to create their own themes and choose their own effects for the home page.
 This is app uses a separate backend server: https://custom-web-player-server.glitch.me
 
