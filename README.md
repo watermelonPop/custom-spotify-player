@@ -24,6 +24,7 @@ https://custom-spotify-player.vercel.app/
 - Timeskip using the sliding bar
 - View liked songs, playlists, artists, and albums
 - Users can like or unlike any songs, artists, or albums
+- Users can add songs to any saved playlist
 - Profile & Settings
     - Shows profile information, username, image, etc.
     - Users can choose between 6 themes or create a new custom theme
