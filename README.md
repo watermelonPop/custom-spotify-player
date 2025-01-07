@@ -1,61 +1,31 @@
-# Web Playback SDK Javascript Tutorial
 
-This repository contains the source code for the [Web Playback SDK Guide](https://developer.spotify.com/documentation/web-playback-sdk/guide/).
+# Custom Spotify Web Player WEB API
 
-## Using your own credentials
+This Reactjs project is a Spotify Web Player that allows users to log into spotify, browse, and play music through the site. 
+The Spotify API only works for premium accounts, so free accounts cannot use this site.
+This is a continuation/expansion of my previous custom spotify player repository: https://github.com/watermelonPop/spotify-web-player
+Provides 6 themes for all users, and allows users to create their own themes and choose their own effects for the home page.
+This is app uses a separate backend server: https://custom-web-player-server.glitch.me
 
-You will need to register your app and get your own credentials from the
-[Spotify for Developers Dashboard](https://developer.spotify.com/dashboard/)
 
-To do so, go to your Spotify for Developers Dashboard, create your
-application and register the following callback URI:
+## Demo
+https://custom-spotify-player.vercel.app/
 
-`http://localhost:3000/auth/callback`
+## Features
 
-Once you have created your app, create a file called `.env` in the root folder
-of the repository with your Spotify credentials:
-
-```bash
-SPOTIFY_CLIENT_ID='my_client_id'
-SPOTIFY_CLIENT_SECRET='my_client_secret'
-```
-
-## Installation
-
-These examples run on Node.js. On its
-[website](http://www.nodejs.org/download/) you can find instructions on how to
-install it.
-
-Once installed, clone the repository and install its dependencies running:
-
-```bash
-npm install
-```
-
-## Running the example
-
-Start both client and server with the following command:
-
-```bash
-npm run dev
-```
-
-The React application will start on `http://localhost:3000`
-
-## Resources
-
-- Follow [@SpotifyPlatform](https://twitter.com/SpotifyPlatform) on Twitter for Spotify for Developers updates.
-- Join the [Spotify for Developers Community Forum](https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer).
-
-## Code of Conduct
-
-This project adheres to the [Open Source Code of
-Conduct](https://github.com/spotify/code-of-conduct/blob/master/code-of-conduct.md).
-By participating, you are expected to honor this code.
-
-## License
-
-Copyright 2021 Spotify AB.
-
-Licensed under the Apache License, Version 2.0: http://www.apache.org/licenses/LICENSE-2.0
+- Uses Spotify Web API to display the current playing music
+- Users can pause, play, skip, and go back
+- Search function, with separate functions for tracks, albums, and artists
+- Click on any song to play it -- just like in the spotify app
+- Shows listening history & queue
+- Timeskip using the sliding bar
+- View liked songs, playlists, artists, and albums
+- Users can like or unlike any songs, artists, or albums
+- Profile & Settings
+    - Shows profile information, username, image, etc.
+    - Users can choose between 6 themes or create a new custom theme
+    - Custom themes allow users to choose colors and a font
+    - Users can choose between 6 special effects to show on the background of the home page -- Uses VantaJS for special effects
+- All features except for themes use the Spotify API to communicate with the database
+- Themes persist through local storage -- There is a reset button to delete all created themes and return to the default theme
 
