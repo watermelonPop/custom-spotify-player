@@ -1,5 +1,6 @@
 
 # Custom Spotify Web Player WEB API
+![favicon](https://github.com/watermelonPop/spotify-web-player/assets/123035480/67534007-8c09-41db-aec0-4fe703f0b4f1)
 
 This Reactjs project is a Spotify Web Player that allows users to log into spotify, browse, and play music through the site. 
 The Spotify API only works for premium accounts, so free accounts cannot use this site.
